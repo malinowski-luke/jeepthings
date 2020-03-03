@@ -2,7 +2,11 @@ require('dotenv').config()
 const express = require('express'),
   session = require('express-session'),
   massive = require('massive'),
-  app = express()
+  app = express(),
+  authCtrl = require('./controllers/authController'),
+  userCtrl = require('./controllers/userController'),
+  postCtrl = require('./controllers/postController'),
+  chatCtrl = require('./controllers/chatController')
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
 app.use(express.json())
@@ -29,11 +33,15 @@ massive({
   })
   .catch(err => console.log(`db not connected ${err}`))
 
-// AUTH
-// app.post('/api/auth/login') //POST body{username, password}
-// app.post('/api//auth/register') //POST body{username, password}
-// app.post('/api/auth/logout') //POST
-// app.get('/api/auth/getUser') //GET *if user is save on session
+// --------------AUTH-----------------
+app.post('/api/auth/login', authCtrl.login)
+app.post('/api/auth/register', authCtrl.register)
+app.post('/api/auth/logout', authCtrl.logout)
+app.get('/api/auth/get_user', authCtrl.getUser)
+
+// ----------UPDATE-USER_INFO---------
+// app.post('/api/user/make_admin', userCtrl)
+app.post('/api/user/change_profile_pic', userCtrl.updateProfileImg)
 
 // POSTS
 // app./api/posts GET   *gets all user posts
