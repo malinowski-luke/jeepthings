@@ -1,0 +1,99 @@
+/* centers to middle of page */
+.Auth {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* holds all the input and buttons */
+.auth-input-container {
+  width: 90vw;
+  height: 65vh;
+  background: #ad4d29;
+  border-radius: 10px;
+  opacity: 0.93;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.auth-header {
+  color: #ffffff;
+  font-size: 4.5em;
+}
+
+.auth-input {
+  width: 80vw;
+  height: 5vh;
+  font-size: 1.8em;
+  color: #298aad;
+}
+
+.auth-button {
+  width: 45vw;
+  height: 6vh;
+  background: #298aad;
+  color: #ffffff;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.8em;
+}
+
+.auth-change-text {
+  color: #ffffff;
+  font-size: 2em;
+}
+
+.auth-link {
+  text-decoration: underline;
+}
+
+@media (min-width: 1000px) {
+  .auth-header {
+    color: #ffffff;
+    font-size: 10em;
+  }
+  .auth-button {
+    width: 30vw;
+    height: 8vh;
+    font-size: 3em;
+  }
+  .auth-change-text {
+    font-size: 3em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .auth-input-container {
+    width: 40vw;
+    height: 65vh;
+  }
+
+  .auth-header {
+    color: #ffffff;
+    font-size: 7em;
+  }
+
+  .auth-input {
+    width: 35vw;
+    height: 5vh;
+  }
+
+  .auth-button {
+    width: 15vw;
+    height: 8vh;
+    font-size: 2em;
+  }
+
+  .auth-change-text {
+    font-size: 2em;
+  }
+
+  /* show on desktop can't hover on mobile */
+  .auth-link:hover {
+    color: #298aad;
+  }
+}
