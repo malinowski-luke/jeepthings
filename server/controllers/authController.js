@@ -21,7 +21,6 @@ module.exports = {
     const { username, password } = req.body
     let user = await db.check_user([username])
     user = user[0]
-    console.log(user)
     if (user) return res.status(400).send('user already exists')
     const salt = bcrypt.genSaltSync(10),
       hash = bcrypt.hashSync(password, salt)
