@@ -1,15 +1,19 @@
 import React from 'react'
+import icon from '../../assets/icon.svg'
 import './Nav.css'
 
 function Nav(props) {
   return (
     <header className='Nav'>
-      <div className='profile-img-container'>
-        <img
-          src={props.user.profile_img}
-          alt='profile img'
-          className='profile-img'
-        />
+      <div className='nav-logo-profile-container'>
+        <h1 id='nav-logo'>jeepThings</h1>
+        <div className='profile-img-container'>
+          <img
+            src={props.user.profile_img}
+            alt='profile img'
+            className='profile-img'
+          />
+        </div>
       </div>
       <div>
         <button
@@ -21,6 +25,7 @@ function Nav(props) {
           }}
         >
           Menu
+          <img src={icon} alt='menu-icon' />
         </button>
         <ul id='mobile-nav' className='hide'>
           <li>about</li>
@@ -38,7 +43,13 @@ function Nav(props) {
           <li>about</li>
           <li>post</li>
           <li>profile</li>
-          <li>logout</li>
+          <li
+            onClick={() => {
+              props.logout()
+            }}
+          >
+            logout
+          </li>
         </ul>
       </div>
     </header>
