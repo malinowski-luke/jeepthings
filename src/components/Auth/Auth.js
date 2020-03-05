@@ -65,12 +65,12 @@ function Auth(props) {
             </button>
             <p className='auth-change-text'>
               If you already have a account click{' '}
-              <a
+              <span
                 className='auth-link'
                 onClick={() => setRegisterBool(!registerBool)}
               >
                 here
-              </a>{' '}
+              </span>{' '}
               to login
             </p>
           </>
@@ -93,12 +93,12 @@ function Auth(props) {
             </button>
             <p className='auth-change-text'>
               If you don't have a account click{' '}
-              <a
+              <span
                 className='auth-link'
                 onClick={() => setRegisterBool(!registerBool)}
               >
                 here
-              </a>{' '}
+              </span>{' '}
               to sign up
             </p>
           </>

@@ -5,9 +5,12 @@ import img1 from './assets/img1.jpg'
 import img2 from './assets/img2.jpg'
 import img3 from './assets/img3.jpg'
 import img4 from './assets/img4.jpg'
+import Nav from './components/Nav/Nav'
+import { connect } from 'react-redux'
+import { logout } from './redux/userReducer'
 import './App.css'
 
-function App() {
+function App(props) {
   const imgArr = [img1, img2, img3, img4]
   let [imgIndex, setImgIndex] = useState(0)
   useEffect(() => {
@@ -27,9 +30,20 @@ function App() {
         transition: '1s'
       }}
     >
+      {/* pass props to nav ...props to make history.push to work */}
+      {props.location.pathname === '/' ? (
+        <></>
+      ) : (
+        <Nav {...props} user={props.user} logout={props.logout} />
+      )}
       {routes}
     </div>
   )
 }
 
-export default withRouter(App)
+const mapStateToProps = reduxState => {
+  const { user } = reduxState
+  return { user }
+}
+
+export default connect(mapStateToProps, { logout })(withRouter(App))

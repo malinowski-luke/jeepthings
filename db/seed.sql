@@ -5,3 +5,13 @@ CREATE TABLE users (
   profile_img VARCHAR(350),
   is_admin BOOLEAN
 );
+
+CREATE TABLE posts (
+  post_id SERIAL PRIMARY KEY,
+  title VARCHAR(255),
+  img VARCHAR(500),
+  content VARCHAR(500),
+  city VARCHAR(100),
+  state VARCHAR(2),
+  author_id INT REFERENCES users(user_id)
+);

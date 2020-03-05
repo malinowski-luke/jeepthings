@@ -57,7 +57,6 @@ export default function userReducer(state = initialState, action) {
     case LOGIN + '_PENDING':
       return { ...state }
     case LOGIN + '_FULFILLED':
-      console.log('hit')
       return { ...state, user: payload.data }
     case LOGIN + '_REJECTED':
       return {

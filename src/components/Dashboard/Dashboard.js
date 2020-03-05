@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Nav from '../Nav/Nav'
 import { connect } from 'react-redux'
 import { checkUser, logout } from '../../redux/userReducer'
+import './Dashboard.css'
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -16,12 +16,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <Nav user={this.props.user} logout={this.props.logout} />
-        Dashboard.js
-      </div>
-    )
+    return <div className='Dashboard'>Dashboard.js</div>
   }
 }
 
@@ -30,9 +25,4 @@ const mapStateToProps = state => {
   return { user }
 }
 
-const mapDispatchToProps = {
-  checkUser,
-  logout
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
+export default connect(mapStateToProps, { checkUser })(Dashboard)

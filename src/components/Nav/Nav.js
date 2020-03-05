@@ -28,9 +28,34 @@ function Nav(props) {
           <img src={icon} alt='menu-icon' />
         </button>
         <ul id='mobile-nav' className='hide'>
-          <li>about</li>
-          <li>post</li>
-          <li>profile</li>
+          <li
+            onClick={() => {
+              props.history.push('/about')
+            }}
+          >
+            about
+          </li>
+          <li
+            onClick={() => {
+              props.history.push('/dashboard')
+            }}
+          >
+            Dashboard
+          </li>
+          <li
+            onClick={() => {
+              props.history.push('/post')
+            }}
+          >
+            post
+          </li>
+          <li
+            onClick={() => {
+              props.history.push('/profile')
+            }}
+          >
+            profile
+          </li>
           <li
             onClick={() => {
               props.logout()
@@ -40,9 +65,34 @@ function Nav(props) {
           </li>
         </ul>
         <ul id='desktop-nav'>
-          <li>about</li>
-          <li>post</li>
-          <li>profile</li>
+          <li
+            onClick={() => {
+              props.history.push('/about')
+            }}
+          >
+            about
+          </li>
+          <li
+            onClick={() => {
+              props.history.push('/dashboard')
+            }}
+          >
+            Dashboard
+          </li>
+          <li
+            onClick={() => {
+              props.history.push('/post')
+            }}
+          >
+            post
+          </li>
+          <li
+            onClick={() => {
+              props.history.push('/profile')
+            }}
+          >
+            profile
+          </li>
           <li
             onClick={() => {
               props.logout()
