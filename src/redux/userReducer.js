@@ -2,7 +2,6 @@ import axios from 'axios'
 
 const initialState = {
   user: {},
-  loading: false,
   err: false,
   errMsg: ''
 }
@@ -10,6 +9,7 @@ const initialState = {
 const LOGIN = 'LOGIN',
   REGISTER = 'REGISTER',
   CHECK_USER = 'CHECK_USER',
+  LOGOUT = 'LOGOUT',
   CLEAR_REDUCER = 'CLEAR_REDUCER'
 
 export function clearReducer() {
@@ -43,44 +43,56 @@ export function checkUser() {
   return action
 }
 
+export function logout() {
+  let action = {
+    type: LOGOUT,
+    payload: axios.post('/api/auth/logout')
+  }
+  return action
+}
+
 export default function userReducer(state = initialState, action) {
   const { type, payload } = action
   switch (type) {
     case LOGIN + '_PENDING':
-      return { ...state, loading: true }
+      return { ...state }
     case LOGIN + '_FULFILLED':
-      return { ...state, loading: false, user: payload.data }
+      console.log('hit')
+      return { ...state, user: payload.data }
     case LOGIN + '_REJECTED':
       return {
         ...state,
-        loading: false,
         err: true,
         errMsg: payload.response.data
       }
     case REGISTER + '_PENDING':
-      return { ...state, loading: true }
+      return { ...state }
     case REGISTER + '_FULFILLED':
-      return { ...state, loading: false, user: payload.data }
+      return { ...state, user: payload.data }
     case REGISTER + '_REJECTED':
       return {
         ...state,
-        loading: false,
         err: true,
         errMsg: payload.response.data
       }
     case CHECK_USER + '_PENDING':
-      return { ...state, loading: true }
+      return { ...state }
     case CHECK_USER + '_FULFILLED':
-      return { ...state, loading: false, user: payload.data }
+      return { ...state, user: payload.data }
     case CHECK_USER + '_REJECTED':
       return {
-        ...state,
-        loading: false,
-        err: true,
-        errMsg: payload.response.data
+        ...state
+      }
+    case LOGOUT + '_PENDING':
+      return { ...state }
+    case LOGOUT + '_FULFILLED':
+      return { ...state, user: {} }
+    case LOGOUT + '_REJECTED':
+      return {
+        ...state
       }
     case CLEAR_REDUCER:
-      return { ...(state = initialState) }
+      return { initialState }
     default:
       return state
   }
