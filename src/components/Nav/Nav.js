@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import icon from '../../assets/icon.svg'
 import './Nav.css'
 import { Link } from 'react-router-dom'
 
 function Nav(props) {
-  useEffect(() => {
-    props.checkUser()
-    if (!props.user.user_name) props.history.push('/')
-  }, [props.user])
+  //comment out only when working on css to not login every refresh
+  // useEffect(() => {
+  //   props.checkUser()
+  //   if (!props.user.user_name) props.history.push('/')
+  // }, [props.user])
   return (
     <header className='Nav'>
       <div className='nav-logo-profile-container'>
@@ -32,7 +33,15 @@ function Nav(props) {
           Menu
           <img src={icon} alt='menu-icon' />
         </button>
-        <ul id='mobile-nav' className='hide'>
+        <ul
+          id='mobile-nav'
+          className='hide'
+          onClick={() => {
+            const mobileNav = document.getElementById('mobile-nav')
+            mobileNav.classList.toggle('hide')
+            mobileNav.classList.toggle('show')
+          }}
+        >
           <li>
             <Link to='/about' className='Link'>
               about

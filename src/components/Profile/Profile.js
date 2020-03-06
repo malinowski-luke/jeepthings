@@ -12,64 +12,61 @@ function Profile(props) {
   return (
     <div className='Profile'>
       <div className='profile-container'>
-        <div className='personal-info-container'>
-          <img
-            src={user.profile_img}
-            alt={`profile pic ${user.user_name}`}
-            className='profile-img-lg'
-          />
-          <p className='user-name-text'>{user.user_name}</p>
-          {!editBool ? (
-            <>
+        {/* <div className='personal-info-container'> */}
+        <img
+          src={user.profile_img}
+          alt={`profile pic ${user.user_name}`}
+          className='profile-img-lg'
+        />
+        <p className='user-name-text'>{user.user_name}</p>
+        {!editBool ? (
+          <>
+            <button
+              className='profile-button'
+              onClick={() => setEditBool(!editBool)}
+            >
+              update img
+            </button>
+          </>
+        ) : (
+          <div className='update-profile-form'>
+            <input
+              value={imgPath}
+              placeholder='img path'
+              className='profile-img-input'
+              onChange={e => setImgPath(e.target.value)}
+            />
+            <div className='update-button-container'>
               <button
-                className='profile-button'
-                onClick={() => setEditBool(!editBool)}
-              >
-                update img
-              </button>
-            </>
-          ) : (
-            <div className='update-profile-form'>
-              <input
-                value={imgPath}
-                placeholder='img path'
-                className='profile-img-input'
-                onChange={e => setImgPath(e.target.value)}
-              />
-              <div className='update-button-container'>
-                <button
-                  className='profile-button profile-edit-button'
-                  onClick={() => {
-                    if (imgPath !== '') {
-                      props.updateProfileImg(user.user_id, imgPath)
-                      setEditBool(!editBool)
-                      setImgPath('')
-                    } else {
-                      toast.error('please enter a valid img path', {
-                        position: toast.POSITION.BOTTOM_RIGHT
-                      })
-                    }
-                  }}
-                >
-                  save
-                </button>
-                <button
-                  className='profile-button profile-edit-button'
-                  onClick={() => {
+                className='profile-button profile-edit-button'
+                onClick={() => {
+                  if (imgPath !== '') {
+                    props.updateProfileImg(user.user_id, imgPath)
                     setEditBool(!editBool)
                     setImgPath('')
-                  }}
-                >
-                  cancel
-                </button>
-              </div>
+                  } else {
+                    toast.error('please enter a valid img path', {
+                      position: toast.POSITION.BOTTOM_RIGHT
+                    })
+                  }
+                }}
+              >
+                save
+              </button>
+              <button
+                className='profile-button profile-edit-button'
+                onClick={() => {
+                  setEditBool(!editBool)
+                  setImgPath('')
+                }}
+              >
+                cancel
+              </button>
             </div>
-          )}
-        </div>
-        <div>
-          <h1>my posts</h1>
-        </div>
+          </div>
+        )}
       </div>
+      {/* </div> */}
       <ToastContainer close={2000} />
     </div>
   )

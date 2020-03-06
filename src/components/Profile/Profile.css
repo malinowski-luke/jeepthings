@@ -15,22 +15,20 @@
   opacity: 0.95;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   text-align: center;
 }
 
 .profile-img-lg {
-  margin-top: 10vw;
   border: 6px solid #228899;
-  max-width: 65vw;
+  max-width: 75vw;
   box-shadow: 2px 2px 10px black;
 }
 
 .user-name-text {
-  margin-top: 2vh;
   color: #228899;
-  font-size: 35px;
+  font-size: 70px;
   text-transform: capitalize;
 }
 
@@ -38,15 +36,16 @@
   margin-top: 2vh;
   background-color: #228899;
   color: #ffffff;
-  width: 35vw;
-  height: 5vh;
-  font-size: 18px;
+  width: 50vw;
+  height: 10vh;
+  font-size: 25px;
   text-transform: uppercase;
   border-radius: 10px;
 }
 
 .profile-edit-button {
-  width: 25vw;
+  width: 30vw;
+  height: 8vh;
 }
 
 .update-profile-form {
@@ -54,84 +53,81 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 2vh;
+  margin-top: 5vh;
 }
 
 .profile-img-input {
-  width: 65vw;
+  width: 70vw;
   height: 4vh;
+  font-size: 25px;
   color: #228899;
 }
 
 .update-button-container {
-  width: 65vw;
+  width: 70vw;
   display: flex;
   justify-content: space-between;
 }
 
 @media (min-width: 767px) {
   .profile-img-lg {
-    margin-top: 5vw;
-    max-width: 50vw;
+    max-width: 65vw;
   }
   .user-name-text {
-    margin-top: 1vh;
-    font-size: 50px;
+    font-size: 75px;
   }
 
   .profile-button {
-    margin-top: 1vh;
     width: 30vw;
-    font-size: 25px;
+    font-size: 35px;
   }
 
   .update-button-container {
     margin-top: 2vh;
-    width: 50vw;
+    width: 65vw;
     display: flex;
     justify-content: space-between;
   }
 
   .profile-edit-button {
-    width: 20vw;
+    width: 30vw;
+    font-size: 40px;
   }
 
   .profile-img-input {
-    width: 50vw;
-    height: 4vh;
+    width: 65vw;
+    height: 5vh;
   }
 }
 
 @media (min-width: 1024px) {
   .profile-container {
-    width: 50vw;
+    width: 40vw;
   }
-
   .profile-img-lg {
-    margin-top: 2vh;
-    max-width: 20vw;
+    max-width: 25vw;
   }
   .user-name-text {
-    font-size: 40px;
+    font-size: 55px;
   }
 
   .profile-button {
-    width: 12vw;
-    height: 7vh;
-    font-size: 25px;
+    width: 15vw;
+    height: 10vh;
+    font-size: 30px;
   }
 
   .update-button-container {
-    margin-top: 1vh;
-    width: 20vw;
+    width: 25vw;
   }
 
   .profile-edit-button {
-    width: 8vw;
+    width: 10vw;
+    height: 8vh;
   }
 
   .profile-img-input {
-    width: 20vw;
+    width: 25vw;
     font-size: 25px;
   }
 }

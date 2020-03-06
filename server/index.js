@@ -40,17 +40,16 @@ app.post('/api/auth/logout', authCtrl.logout)
 app.get('/api/auth/get_user', authCtrl.getUser)
 
 // ----------UPDATE-USER_INFO---------
-// app.post('/api/user/make_admin', userCtrl)
 app.post('/api/user/change_profile_pic', userCtrl.updateProfileImg)
 
-// POSTS
-// app./api/posts GET   *gets all user posts
-// app./api/posts/:user_id  GET  *gets all posts from logged in user
-// app./api/posts/:user_id/:post_id GET  * get selected post for the logged in user
-// app./api/posts/:post_id PUT  body{title, content, price}  *edit selected posts title, content, price
-// app./api/posts/:post_id DELETE *delete selected post
+// --------------POSTS----------------
+app.get('/api/posts', postCtrl.getAllUserPosts) // get user posts
+// app.get('/api/posts/:user_id',postCtrl) // GET  *gets all posts from logged in user
+// app.get('/api/posts/:user_id/:post_id', postCtrl) // GET  * get selected post for the logged in user
+// app.put('/api/posts/:post_id', postCtrl) //PUT  body{title, content, price}  //*edit selected posts title, content, price
+// app.delete('/api/posts/:post_id', postCtrl)
 
-// CHAT
+// CHAT LAST*****************************
 // app./api/chats/:user_id GET   *gets all Chat Rooms for the current user
 // app./api/chats/:chat_id/:user_id GET  * get selected chat for the logged in user
 // app./api/chats/:chat_id/:user_id POST body{text}  * posts a chat in the chat room

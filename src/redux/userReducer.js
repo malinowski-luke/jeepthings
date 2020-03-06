@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const initialState = {
   user: {},
+  posts: [],
   err: false,
   errMsg: ''
 }
@@ -11,6 +12,7 @@ const LOGIN = 'LOGIN',
   CHECK_USER = 'CHECK_USER',
   LOGOUT = 'LOGOUT',
   UPDATE_PROFILE_IMG = 'UPDATE_PROFILE_IMG',
+  GET_ALL_USER_POSTS = 'GET_ALL_USER_POSTS',
   CLEAR_REDUCER = 'CLEAR_REDUCER'
 
 export function clearReducer() {
@@ -63,6 +65,14 @@ export function updateProfileImg(userId, newProfileImg) {
   return action
 }
 
+export function getAllUserPosts() {
+  let action = {
+    type: GET_ALL_USER_POSTS,
+    payload: axios.get('/api/posts')
+  }
+  return action
+}
+
 export default function userReducer(state = initialState, action) {
   const { type, payload } = action
   switch (type) {
@@ -103,6 +113,12 @@ export default function userReducer(state = initialState, action) {
     case UPDATE_PROFILE_IMG + '_FULFILLED':
       return { ...state, user: payload.data }
     case UPDATE_PROFILE_IMG + '_REJECTED':
+      return { ...state }
+    case GET_ALL_USER_POSTS + '_PENDING':
+      return { ...state }
+    case GET_ALL_USER_POSTS + '_FULFILLED':
+      return { ...state, posts: payload.data }
+    case GET_ALL_USER_POSTS + '_REJECTED':
       return { ...state }
     case CLEAR_REDUCER:
       return { ...initialState }
