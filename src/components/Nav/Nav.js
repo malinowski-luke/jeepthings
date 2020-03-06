@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import icon from '../../assets/icon.svg'
 import './Nav.css'
 import { Link } from 'react-router-dom'
@@ -7,7 +7,7 @@ function Nav(props) {
   useEffect(() => {
     props.checkUser()
     if (!props.user.user_name) props.history.push('/')
-  })
+  }, [props.user])
   return (
     <header className='Nav'>
       <div className='nav-logo-profile-container'>
@@ -43,7 +43,7 @@ function Nav(props) {
               dashboard
             </Link>
           </li>
-          <li>
+          <li className=''>
             <Link to='/post' className='Link'>
               post
             </Link>

@@ -21,9 +21,8 @@ function Auth(props) {
     props.clearReducer()
   }
   useEffect(() => {
-    props.checkUser()
     if (props.user.user_name) props.history.push('/dashboard')
-  })
+  }, [props.user])
   const resetInput = () => {
     setUsername('')
     setPassword('')

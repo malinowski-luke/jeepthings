@@ -79,9 +79,7 @@ export default function userReducer(state = initialState, action) {
     case CHECK_USER + '_FULFILLED':
       return { ...state, user: payload.data }
     case CHECK_USER + '_REJECTED':
-      return {
-        ...state
-      }
+      return { ...state, user: {} }
     case LOGOUT + '_PENDING':
       return { ...state }
     case LOGOUT + '_FULFILLED':
@@ -91,7 +89,7 @@ export default function userReducer(state = initialState, action) {
         ...state
       }
     case CLEAR_REDUCER:
-      return { initialState }
+      return { ...initialState }
     default:
       return state
   }
