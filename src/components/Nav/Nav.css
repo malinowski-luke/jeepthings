@@ -50,6 +50,11 @@
   border: 1px solid #ffffff;
 }
 
+.Link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
 .hide {
   height: 0;
 }
@@ -79,9 +84,12 @@
   #mobile-nav > li {
     font-size: 30px;
   }
+  .show {
+    height: 41vh;
+  }
 }
-
-@media (min-width: 1000px) {
+/* 1024 ipod pro */
+@media (min-width: 1025px) {
   #nav-button,
   #mobile-nav {
     display: none;
@@ -96,6 +104,7 @@
     font-size: 40px;
     color: #ffffff;
   }
+  .Link:hover,
   #desktop-nav li:hover {
     color: #228899;
   }

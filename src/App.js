@@ -7,7 +7,7 @@ import img3 from './assets/img3.jpg'
 import img4 from './assets/img4.jpg'
 import Nav from './components/Nav/Nav'
 import { connect } from 'react-redux'
-import { logout } from './redux/userReducer'
+import { logout, checkUser } from './redux/userReducer'
 import './App.css'
 
 function App(props) {
@@ -34,7 +34,12 @@ function App(props) {
       {props.location.pathname === '/' ? (
         <></>
       ) : (
-        <Nav {...props} user={props.user} logout={props.logout} />
+        <Nav
+          {...props}
+          user={props.user}
+          logout={props.logout}
+          checkUser={props.checkUser}
+        />
       )}
       {routes}
     </div>
@@ -46,4 +51,9 @@ const mapStateToProps = reduxState => {
   return { user }
 }
 
-export default connect(mapStateToProps, { logout })(withRouter(App))
+const mapDispatchToProps = {
+  checkUser,
+  logout
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App))

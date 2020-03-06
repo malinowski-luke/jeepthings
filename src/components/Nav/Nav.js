@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import icon from '../../assets/icon.svg'
 import './Nav.css'
+import { Link } from 'react-router-dom'
 
 function Nav(props) {
+  useEffect(() => {
+    props.checkUser()
+    if (!props.user.user_name) props.history.push('/')
+  })
   return (
     <header className='Nav'>
       <div className='nav-logo-profile-container'>
@@ -28,33 +33,25 @@ function Nav(props) {
           <img src={icon} alt='menu-icon' />
         </button>
         <ul id='mobile-nav' className='hide'>
-          <li
-            onClick={() => {
-              props.history.push('/about')
-            }}
-          >
-            about
+          <li>
+            <Link to='/about' className='Link'>
+              about
+            </Link>
           </li>
-          <li
-            onClick={() => {
-              props.history.push('/dashboard')
-            }}
-          >
-            Dashboard
+          <li>
+            <Link to='/dashboard' className='Link'>
+              dashboard
+            </Link>
           </li>
-          <li
-            onClick={() => {
-              props.history.push('/post')
-            }}
-          >
-            post
+          <li>
+            <Link to='/post' className='Link'>
+              post
+            </Link>
           </li>
-          <li
-            onClick={() => {
-              props.history.push('/profile')
-            }}
-          >
-            profile
+          <li>
+            <Link to='/profile' className='Link'>
+              profile
+            </Link>
           </li>
           <li
             onClick={() => {
@@ -65,33 +62,25 @@ function Nav(props) {
           </li>
         </ul>
         <ul id='desktop-nav'>
-          <li
-            onClick={() => {
-              props.history.push('/about')
-            }}
-          >
-            about
+          <li>
+            <Link to='/about' className='Link'>
+              about
+            </Link>
           </li>
-          <li
-            onClick={() => {
-              props.history.push('/dashboard')
-            }}
-          >
-            Dashboard
+          <li>
+            <Link to='/dashboard' className='Link'>
+              dashboard
+            </Link>
           </li>
-          <li
-            onClick={() => {
-              props.history.push('/post')
-            }}
-          >
-            post
+          <li>
+            <Link to='/post' className='Link'>
+              post
+            </Link>
           </li>
-          <li
-            onClick={() => {
-              props.history.push('/profile')
-            }}
-          >
-            profile
+          <li>
+            <Link to='/profile' className='Link'>
+              profile
+            </Link>
           </li>
           <li
             onClick={() => {
