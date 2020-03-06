@@ -10,6 +10,7 @@ const LOGIN = 'LOGIN',
   REGISTER = 'REGISTER',
   CHECK_USER = 'CHECK_USER',
   LOGOUT = 'LOGOUT',
+  UPDATE_PROFILE_IMG = 'UPDATE_PROFILE_IMG',
   CLEAR_REDUCER = 'CLEAR_REDUCER'
 
 export function clearReducer() {
@@ -51,6 +52,17 @@ export function logout() {
   return action
 }
 
+export function updateProfileImg(userId, newProfileImg) {
+  let action = {
+    type: UPDATE_PROFILE_IMG,
+    payload: axios.post('/api/user/change_profile_pic', {
+      userId,
+      newProfileImg
+    })
+  }
+  return action
+}
+
 export default function userReducer(state = initialState, action) {
   const { type, payload } = action
   switch (type) {
@@ -85,9 +97,13 @@ export default function userReducer(state = initialState, action) {
     case LOGOUT + '_FULFILLED':
       return { ...state, user: {} }
     case LOGOUT + '_REJECTED':
-      return {
-        ...state
-      }
+      return { ...state }
+    case UPDATE_PROFILE_IMG + '_PENDING':
+      return { ...state }
+    case UPDATE_PROFILE_IMG + '_FULFILLED':
+      return { ...state, user: payload.data }
+    case UPDATE_PROFILE_IMG + '_REJECTED':
+      return { ...state }
     case CLEAR_REDUCER:
       return { ...initialState }
     default:

@@ -42,6 +42,11 @@
   height: 5vh;
   font-size: 18px;
   text-transform: uppercase;
+  border-radius: 10px;
+}
+
+.profile-edit-button {
+  width: 25vw;
 }
 
 .update-profile-form {
@@ -56,4 +61,77 @@
   width: 65vw;
   height: 4vh;
   color: #228899;
+}
+
+.update-button-container {
+  width: 65vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (min-width: 767px) {
+  .profile-img-lg {
+    margin-top: 5vw;
+    max-width: 50vw;
+  }
+  .user-name-text {
+    margin-top: 1vh;
+    font-size: 50px;
+  }
+
+  .profile-button {
+    margin-top: 1vh;
+    width: 30vw;
+    font-size: 25px;
+  }
+
+  .update-button-container {
+    margin-top: 2vh;
+    width: 50vw;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .profile-edit-button {
+    width: 20vw;
+  }
+
+  .profile-img-input {
+    width: 50vw;
+    height: 4vh;
+  }
+}
+
+@media (min-width: 1024px) {
+  .profile-container {
+    width: 50vw;
+  }
+
+  .profile-img-lg {
+    margin-top: 2vh;
+    max-width: 20vw;
+  }
+  .user-name-text {
+    font-size: 40px;
+  }
+
+  .profile-button {
+    width: 12vw;
+    height: 7vh;
+    font-size: 25px;
+  }
+
+  .update-button-container {
+    margin-top: 1vh;
+    width: 20vw;
+  }
+
+  .profile-edit-button {
+    width: 8vw;
+  }
+
+  .profile-img-input {
+    width: 20vw;
+    font-size: 25px;
+  }
 }

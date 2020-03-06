@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { updateProfileImg } from '../../redux/userReducer'
+import { toast, ToastContainer } from 'react-toastify'
 
 import './Profile.css'
 
@@ -34,12 +36,33 @@ function Profile(props) {
                 className='profile-img-input'
                 onChange={e => setImgPath(e.target.value)}
               />
-              <button
-                className='profile-button'
-                onClick={() => setEditBool(!editBool)}
-              >
-                save
-              </button>
+              <div className='update-button-container'>
+                <button
+                  className='profile-button profile-edit-button'
+                  onClick={() => {
+                    if (imgPath !== '') {
+                      props.updateProfileImg(user.user_id, imgPath)
+                      setEditBool(!editBool)
+                      setImgPath('')
+                    } else {
+                      toast.error('please enter a valid img path', {
+                        position: toast.POSITION.BOTTOM_RIGHT
+                      })
+                    }
+                  }}
+                >
+                  save
+                </button>
+                <button
+                  className='profile-button profile-edit-button'
+                  onClick={() => {
+                    setEditBool(!editBool)
+                    setImgPath('')
+                  }}
+                >
+                  cancel
+                </button>
+              </div>
             </div>
           )}
         </div>
@@ -47,6 +70,7 @@ function Profile(props) {
           <h1>my posts</h1>
         </div>
       </div>
+      <ToastContainer close={2000} />
     </div>
   )
 }
@@ -56,4 +80,4 @@ const mapStateToProps = reduxState => {
   return { user }
 }
 
-export default connect(mapStateToProps)(Profile)
+export default connect(mapStateToProps, { updateProfileImg })(Profile)
