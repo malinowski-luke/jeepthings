@@ -12,7 +12,6 @@ function Profile(props) {
   return (
     <div className='Profile'>
       <div className='profile-container'>
-        {/* <div className='personal-info-container'> */}
         <img
           src={user.profile_img}
           alt={`profile pic ${user.user_name}`}
@@ -66,8 +65,7 @@ function Profile(props) {
           </div>
         )}
       </div>
-      {/* </div> */}
-      <ToastContainer close={2000} />
+      <ToastContainer autoClose={2000} />
     </div>
   )
 }
