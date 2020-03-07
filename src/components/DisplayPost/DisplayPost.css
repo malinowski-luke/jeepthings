@@ -32,3 +32,27 @@
   border: 6px solid #f3f3f3;
   box-shadow: 2px 2px 10px black;
 }
+
+@media (min-width: 767px) {
+  .display-post-header {
+    margin: 2vw;
+  }
+  .display-post-text {
+    font-size: 40px;
+  }
+  .display-post-img {
+    max-width: 25vw;
+  }
+}
+@media (min-width: 1024px) {
+  .DisplayPost {
+    width: 48vw;
+    height: 40vh;
+  }
+  .display-post-header {
+    margin: 2vw;
+  }
+  .display-post-img {
+    max-width: 10vw;
+  }
+}

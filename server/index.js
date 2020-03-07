@@ -43,11 +43,12 @@ app.get('/api/auth/get_user', authCtrl.getUser)
 app.post('/api/user/change_profile_pic', userCtrl.updateProfileImg)
 
 // --------------POSTS----------------
-app.get('/api/posts', postCtrl.getAllUserPosts) // get user posts
-// app.get('/api/posts/:user_id',postCtrl) // GET  *gets all posts from logged in user
-// app.get('/api/posts/:user_id/:post_id', postCtrl) // GET  * get selected post for the logged in user
-// app.put('/api/posts/:post_id', postCtrl) //PUT  body{title, content, price}  //*edit selected posts title, content, price
-// app.delete('/api/posts/:post_id', postCtrl)
+app.get('/api/posts', postCtrl.getAllUserPosts)
+app.get('/api/posts/:user_id', postCtrl.getUserPosts)
+app.get('/api/posts/:user_id/:post_id', postCtrl.getCurrentPost)
+app.post('/api/posts/:user_id', postCtrl.addPost)
+app.put('/api/posts/:post_id', postCtrl.editPost)
+app.delete('/api/posts/:post_id', postCtrl.deletePost)
 
 // CHAT LAST*****************************
 // app./api/chats/:user_id GET   *gets all Chat Rooms for the current user
