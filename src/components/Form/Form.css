@@ -1,9 +1,35 @@
 .Form {
   display: flex;
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   justify-content: center;
+  flex-direction: column;
   align-items: center;
-  color: white;
-  font-size: 70px;
+}
+
+.form-container {
+  position: fixed;
+  top: 18vh;
+  width: 90vw;
+  height: 79vh;
+  background: #f3f3f3;
+  border-radius: 10px;
+  opacity: 0.95;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.form-header {
+  color: #228899;
+  font-size: 40px;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.form-img {
+  border: 6px solid #228899;
+  max-width: 70vw;
+  box-shadow: 2px 2px 10px black;
 }

@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom'
 
 function Nav(props) {
   //comment out only when working on css to not login every refresh
-  useEffect(() => {
-    props.checkUser()
-    if (!props.user.user_name) props.history.push('/')
-  }, [props.user])
+  // useEffect(() => {
+  //   props.checkUser()
+  //   if (!props.user.user_name) props.history.push('/')
+  // }, [props.user])
   return (
     <header className='Nav'>
       <div className='nav-logo-profile-container'>
