@@ -12,16 +12,29 @@ function Post(props) {
   useEffect(() => {
     if (props.posts.length === 0) {
       props.getAllUserPosts()
-    } else setPosts(props.posts)
-  }, [props.posts])
+    }
+    setPosts([...filterUserPosts()])
+  }, [props.posts[0], userPostBool])
   const filterByPrice = filterVar => {
     return postsArr.sort((a, b) => {
       return filterVar === 'max' ? b.price - a.price : a.price - b.price
     })
   }
+  const filterUserPosts = () => {
+    if (userPostBool)
+      return postsArr.filter(elm => props.user.user_id === elm.author_id)
+    else return [...props.posts]
+  }
+  const filterByKeyword = () => {
+    console.log(serachText)
+    if (serachText !== '') {
+      return postsArr.filter(elm => elm.title.includes(serachText))
+    } else return [...props.posts]
+  }
   const resetFilterVars = () => {
     setSearchText('')
     setUserPostBool(false)
+    setPosts([...filterByKeyword()])
   }
   const postDisplayArr = postsArr.map(elm => {
     return (
@@ -63,7 +76,7 @@ function Post(props) {
                 toast.error('please enter a keyword', {
                   position: toast.POSITION.BOTTOM_RIGHT
                 })
-              }
+              } else setPosts([...filterByKeyword()])
             }}
           >
             search
@@ -81,7 +94,10 @@ function Post(props) {
           <span>
             <label>my posts</label>
             <input
-              onChange={() => setUserPostBool(!userPostBool)}
+              onChange={() => {
+                setUserPostBool(!userPostBool)
+                // setPosts([...filterUserPosts()])
+              }}
               type='checkbox'
             />
           </span>
@@ -95,8 +111,8 @@ function Post(props) {
 }
 
 const mapStateToProps = reduxState => {
-  const { posts } = reduxState
-  return { posts }
+  const { posts, user } = reduxState
+  return { posts, user }
 }
 
 const mapDispatchToProps = {

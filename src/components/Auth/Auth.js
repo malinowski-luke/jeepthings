@@ -21,7 +21,7 @@ function Auth(props) {
     props.clearReducer()
   }
   useEffect(() => {
-    if (props.user.user_name) props.history.push('/dashboard')
+    if (props.user.user_name) props.history.push('/post')
   }, [props.user])
   const resetInput = () => {
     setUsername('')
