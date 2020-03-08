@@ -18,7 +18,9 @@
 .display-post-text {
   color: #ffffff;
   font-size: 30px;
-  overflow-x: scroll;
+  text-transform: capitalize;
+  margin-top: 2vh;
+  /* overflow-x: scroll; weird*/
 }
 
 .display-post-content {

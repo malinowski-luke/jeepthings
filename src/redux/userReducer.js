@@ -13,6 +13,7 @@ const LOGIN = 'LOGIN',
   LOGOUT = 'LOGOUT',
   UPDATE_PROFILE_IMG = 'UPDATE_PROFILE_IMG',
   GET_ALL_USER_POSTS = 'GET_ALL_USER_POSTS',
+  ADD_POST = 'ADD_POST',
   CLEAR_REDUCER = 'CLEAR_REDUCER'
 
 export function clearReducer() {
@@ -73,6 +74,15 @@ export function getAllUserPosts() {
   return action
 }
 
+export function addPost(postObj) {
+  const { user_id } = postObj
+  let action = {
+    type: ADD_POST,
+    payload: axios.post(`/api/posts/${user_id}`, postObj)
+  }
+  return action
+}
+
 export default function userReducer(state = initialState, action) {
   const { type, payload } = action
   switch (type) {
@@ -119,6 +129,12 @@ export default function userReducer(state = initialState, action) {
     case GET_ALL_USER_POSTS + '_FULFILLED':
       return { ...state, posts: payload.data }
     case GET_ALL_USER_POSTS + '_REJECTED':
+      return { ...state }
+    case ADD_POST + '_PENDING':
+      return { ...state }
+    case ADD_POST + '_FULFILLED':
+      return { ...state }
+    case ADD_POST + '_REJECTED':
       return { ...state }
     case CLEAR_REDUCER:
       return { ...initialState }

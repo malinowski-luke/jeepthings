@@ -5,6 +5,8 @@ import About from './components/About/About'
 import Dashboard from './components/Dashboard/Dashboard'
 import Post from './components/Post/Post'
 import Profile from './components/Profile/Profile'
+import Form from './components/Form/Form'
+import Item from './components/Item/Item'
 
 export default (
   <Switch>
@@ -13,5 +15,7 @@ export default (
     <Route path='/dashboard' component={Dashboard} />
     <Route path='/post' component={Post} />
     <Route path='/profile' component={Profile} />
+    <Route path='/form' component={Form} />
+    <Route path='/item/:user_id/:post_id' component={Item} />
   </Switch>
 )

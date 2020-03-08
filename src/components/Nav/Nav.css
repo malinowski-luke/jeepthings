@@ -42,6 +42,7 @@
   overflow: hidden;
 }
 
+#mobile-nav > a > li,
 #mobile-nav > li {
   background-color: #228899;
   color: #ffffff;

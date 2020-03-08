@@ -4,6 +4,7 @@ import { getAllUserPosts } from '../../redux/userReducer'
 import { toast, ToastContainer } from 'react-toastify'
 import './Post.css'
 import DisplayPost from '../DisplayPost/DisplayPost'
+import { Link } from 'react-router-dom'
 
 function Post(props) {
   const [serachText, setSearchText] = useState('')
@@ -38,12 +39,13 @@ function Post(props) {
   }
   const postDisplayArr = postsArr.map(elm => {
     return (
-      <DisplayPost
+      <Link
         key={elm.post_id}
-        title={elm.title}
-        price={elm.price}
-        img={elm.img}
-      />
+        to={`/item/${props.user.user_id}/${elm.post_id}`}
+        className='Link'
+      >
+        <DisplayPost title={elm.title} price={elm.price} img={elm.img} />
+      </Link>
     )
   })
   return (
@@ -102,7 +104,9 @@ function Post(props) {
             />
           </span>
         </div>
-        <button className='post-button post-item-button'>Post Item</button>
+        <Link to='/form'>
+          <button className='post-button post-item-button'>Post Item</button>
+        </Link>
       </form>
       <div className='post-container'>{postDisplayArr}</div>
       <ToastContainer autoClose={2000} />

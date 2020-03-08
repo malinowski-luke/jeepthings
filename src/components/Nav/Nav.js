@@ -14,11 +14,13 @@ function Nav(props) {
       <div className='nav-logo-profile-container'>
         <h1 id='nav-logo'>jeepThings</h1>
         <div className='profile-img-container'>
-          <img
-            src={props.user.profile_img}
-            alt='profile img'
-            className='profile-img'
-          />
+          <Link to='/profile'>
+            <img
+              src={props.user.profile_img}
+              alt='profile img'
+              className='profile-img'
+            />
+          </Link>
         </div>
       </div>
       <div>
@@ -42,26 +44,18 @@ function Nav(props) {
             mobileNav.classList.toggle('show')
           }}
         >
-          <li>
-            <Link to='/about' className='Link'>
-              about
-            </Link>
-          </li>
-          <li>
-            <Link to='/dashboard' className='Link'>
-              dashboard
-            </Link>
-          </li>
-          <li className=''>
-            <Link to='/post' className='Link'>
-              post
-            </Link>
-          </li>
-          <li>
-            <Link to='/profile' className='Link'>
-              profile
-            </Link>
-          </li>
+          <Link to='/about' className='Link'>
+            <li>about</li>
+          </Link>
+          <Link to='/dashboard' className='Link'>
+            <li>dashboard</li>
+          </Link>
+          <Link to='/post' className='Link'>
+            <li>post</li>
+          </Link>
+          <Link to='/profile' className='Link'>
+            <li>profile</li>
+          </Link>
           <li
             onClick={() => {
               props.logout()
