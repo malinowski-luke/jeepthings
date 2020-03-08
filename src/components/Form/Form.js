@@ -13,23 +13,22 @@ function Form() {
           <img src={defaultImg} alt='post img' className='form-img' />
         </div>
         <form onSubmit={e => e.preventDefault()}>
-          <div>
+          <div className='form-input-container'>
             <input type='text' placeholder='title' />
             <input type='number' placeholder='price' />
-          </div>
-          <textarea></textarea>
-          <input type='text' placeholder='img path' />
-          <div>
-            <input type='text' placeholder='city' />
-            <select>
-              <option value=''>state</option>
-              {states}
-            </select>
-          </div>
-          <div>
-            <button>cancel</button>
-            <button>clear</button>
-            <button>post</button>
+            <textarea placeholder='item description'></textarea>
+            <input type='text' placeholder='img path' />
+            <div className='form-location-container'>
+              <input type='text' placeholder='city' />
+              <select>
+                <option value=''>state</option>
+                {states}
+              </select>
+            </div>
+            <div className='form-button-container'>
+              <button>cancel</button>
+              <button>post</button>
+            </div>
           </div>
         </form>
       </div>
