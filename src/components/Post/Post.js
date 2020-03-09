@@ -10,7 +10,6 @@ function Post(props) {
   const [serachText, setSearchText] = useState('')
   const [userPostBool, setUserPostBool] = useState(false)
   const [postsArr, setPosts] = useState([])
-
   useEffect(() => {
     const ref = useRef
     ref.current = postsArr
@@ -23,7 +22,6 @@ function Post(props) {
     else setPosts([...posts])
     console.log(ref.current.length, posts.length) //test
   }, [props.posts, userPostBool])
-
   const filterByPrice = filterVar => {
     return postsArr.sort((a, b) => {
       return filterVar === 'max' ? b.price - a.price : a.price - b.price
@@ -74,11 +72,13 @@ function Post(props) {
             value={serachText}
             placeholder='jk shark grill'
             onChange={e => setSearchText(e.target.value)}
+            required
           />
         </div>
         <div className='post-button-container'>
           <button
             className='post-button'
+            type='submit'
             onClick={() => {
               if (serachText === '') {
                 toast.error('please enter a keyword', {
