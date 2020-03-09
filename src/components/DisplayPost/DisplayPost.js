@@ -1,4 +1,5 @@
 import React from 'react'
+import defaultImg from '../../assets/default.png'
 import './DisplayPost.css'
 
 function DisplayPost(props) {
@@ -8,7 +9,7 @@ function DisplayPost(props) {
         <h1 className='display-post-text'>{props.title}</h1>
       </div>
       <div className='display-post-content'>
-        <img src={props.img} className='display-post-img' />
+        <img src={props.img || defaultImg} className='display-post-img' />
         <h1 className='display-post-text'>${props.price}</h1>
       </div>
     </div>

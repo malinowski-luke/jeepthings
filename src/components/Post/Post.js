@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
 import { getAllUserPosts } from '../../redux/userReducer'
 import { toast, ToastContainer } from 'react-toastify'
@@ -10,12 +10,20 @@ function Post(props) {
   const [serachText, setSearchText] = useState('')
   const [userPostBool, setUserPostBool] = useState(false)
   const [postsArr, setPosts] = useState([])
+
   useEffect(() => {
-    if (props.posts.length === 0) {
+    const ref = useRef
+    ref.current = props.posts
+    const { posts } = props
+    console.log(ref.current.length, posts.length) //test
+    if (ref.current.length === 0 || ref.current.length !== posts.length) {
       props.getAllUserPosts()
     }
-    setPosts([...filterUserPosts()])
-  }, [props.posts[0], userPostBool])
+    if (userPostBool) setPosts([...filterUserPosts()])
+    else setPosts([...posts])
+    console.log(ref.current.length, posts.length) //test
+  }, [props.posts, userPostBool])
+
   const filterByPrice = filterVar => {
     return postsArr.sort((a, b) => {
       return filterVar === 'max' ? b.price - a.price : a.price - b.price
@@ -27,15 +35,13 @@ function Post(props) {
     else return [...props.posts]
   }
   const filterByKeyword = () => {
-    console.log(serachText)
-    if (serachText !== '') {
+    if (serachText !== '')
       return postsArr.filter(elm => elm.title.includes(serachText))
-    } else return [...props.posts]
   }
   const resetFilterVars = () => {
     setSearchText('')
     setUserPostBool(false)
-    setPosts([...filterByKeyword()])
+    setPosts([...props.posts])
   }
   const postDisplayArr = postsArr.map(elm => {
     return (
@@ -87,7 +93,7 @@ function Post(props) {
             className='post-button'
             type='reset'
             onClick={() => {
-              setPosts([...filterByPrice('')])
+              setPosts([...props.posts])
               resetFilterVars()
             }}
           >
@@ -98,7 +104,6 @@ function Post(props) {
             <input
               onChange={() => {
                 setUserPostBool(!userPostBool)
-                // setPosts([...filterUserPosts()])
               }}
               type='checkbox'
             />
