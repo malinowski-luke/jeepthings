@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { addPost } from '../../redux/userReducer'
 import states from './States.js'
 import defaultImg from '../../assets/default.png'
+import { toast, ToastContainer } from 'react-toastify'
 import './Form.css'
 
 function Form(props) {
@@ -24,9 +25,7 @@ function Form(props) {
       state: ''
     })
   }
-  useEffect(() => {
-    console.log(post)
-  }, [props.user_id])
+  // useEffect(() => {}, [props.user_id])
   return (
     <div className='Form'>
       <div className='form-container'>
@@ -45,17 +44,20 @@ function Form(props) {
               type='text'
               placeholder='title'
               onChange={e => setPost({ ...post, title: e.target.value })}
+              required
             />
             <input
               value={post.price}
               type='number'
               placeholder='price'
               onChange={e => setPost({ ...post, price: e.target.value })}
+              required
             />
             <textarea
               value={post.content}
               placeholder='item description'
               onChange={e => setPost({ ...post, content: e.target.value })}
+              required
             ></textarea>
             <input
               value={post.img}
@@ -69,9 +71,11 @@ function Form(props) {
                 type='text'
                 placeholder='city'
                 onChange={e => setPost({ ...post, city: e.target.value })}
+                required
               />
               <select
                 onChange={e => setPost({ ...post, state: e.target.value })}
+                required
               >
                 <option value=''>state</option>
                 {states}
@@ -89,6 +93,15 @@ function Form(props) {
               </button>
               <button
                 onClick={() => {
+                  for (let key in post) {
+                    if (key !== 'img' && post[key] == false)
+                      return toast.error(
+                        'please fill out the required fields',
+                        {
+                          position: toast.POSITION.BOTTOM_RIGHT
+                        }
+                      )
+                  }
                   const { user_id } = props.user
                   props.addPost({ ...post, user_id })
                   props.history.push('/post')
@@ -100,6 +113,7 @@ function Form(props) {
           </div>
         </form>
       </div>
+      <ToastContainer autoClose={2000} />
     </div>
   )
 }

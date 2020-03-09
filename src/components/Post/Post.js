@@ -13,7 +13,7 @@ function Post(props) {
 
   useEffect(() => {
     const ref = useRef
-    ref.current = props.posts
+    ref.current = postsArr
     const { posts } = props
     console.log(ref.current.length, posts.length) //test
     if (ref.current.length === 0 || ref.current.length !== posts.length) {
