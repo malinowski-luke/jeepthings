@@ -4,18 +4,6 @@ module.exports = {
     let posts = await db.get_all_user_posts()
     return res.status(202).send(posts)
   },
-  getUserPosts: async (req, res) => {
-    const db = req.app.get('db')
-    const { user_id } = req.params
-    let posts = await db.get_user_posts([user_id])
-    return res.status(202).send(posts)
-  },
-  getCurrentPost: async (req, res) => {
-    const db = req.app.get('db')
-    const { user_id, post_id } = req.params
-    let post = await db.get_current_post([user_id, post_id])
-    return res.status(202).send(post)
-  },
   addPost: (req, res) => {
     const db = req.app.get('db')
     const { user_id } = req.params
@@ -28,6 +16,7 @@ module.exports = {
         return res.sendStatus(500)
       })
   },
+  //work here VVVV
   editPost: (req, res) => {
     const db = req.app.get('db')
   },

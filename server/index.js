@@ -44,8 +44,6 @@ app.post('/api/user/change_profile_pic', userCtrl.updateProfileImg)
 
 // --------------POSTS----------------
 app.get('/api/posts', postCtrl.getAllUserPosts)
-app.get('/api/posts/:user_id', postCtrl.getUserPosts)
-app.get('/api/posts/:user_id/:post_id', postCtrl.getCurrentPost)
 app.post('/api/posts/:user_id', postCtrl.addPost)
 app.put('/api/posts/:post_id', postCtrl.editPost)
 app.delete('/api/posts/:post_id', postCtrl.deletePost)

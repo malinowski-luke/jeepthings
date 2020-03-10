@@ -3,6 +3,7 @@ import axios from 'axios'
 const initialState = {
   user: {},
   posts: [],
+  post: {},
   err: false,
   errMsg: ''
 }
@@ -14,6 +15,7 @@ const LOGIN = 'LOGIN',
   UPDATE_PROFILE_IMG = 'UPDATE_PROFILE_IMG',
   GET_ALL_USER_POSTS = 'GET_ALL_USER_POSTS',
   ADD_POST = 'ADD_POST',
+  DELETE_POST = 'DELETE_POST',
   CLEAR_REDUCER = 'CLEAR_REDUCER'
 
 export function clearReducer() {
@@ -55,11 +57,11 @@ export function logout() {
   return action
 }
 
-export function updateProfileImg(userId, newProfileImg) {
+export function updateProfileImg(user_id, newProfileImg) {
   let action = {
     type: UPDATE_PROFILE_IMG,
     payload: axios.post('/api/user/change_profile_pic', {
-      userId,
+      user_id,
       newProfileImg
     })
   }
@@ -79,6 +81,14 @@ export function addPost(postObj) {
   let action = {
     type: ADD_POST,
     payload: axios.post(`/api/posts/${user_id}`, postObj)
+  }
+  return action
+}
+
+export function deletePost(user_id) {
+  let action = {
+    type: DELETE_POST,
+    payload: axios.delete(`/api/post/${user_id}`)
   }
   return action
 }
@@ -135,6 +145,12 @@ export default function userReducer(state = initialState, action) {
     case ADD_POST + '_FULFILLED':
       return { ...state }
     case ADD_POST + '_REJECTED':
+      return { ...state }
+    case DELETE_POST + '_PENDING':
+      return { ...state }
+    case DELETE_POST + '_FULFILLED':
+      return { ...state }
+    case DELETE_POST + '_REJECTED':
       return { ...state }
     case CLEAR_REDUCER:
       return { ...initialState }
