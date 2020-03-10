@@ -83,6 +83,7 @@
   #nav-button {
     font-size: 25px;
   }
+  #mobile-nav > a > li,
   #mobile-nav > li {
     font-size: 30px;
   }
@@ -90,7 +91,7 @@
     height: 41vh;
   }
 }
-/* 1024 ipod pro */
+/* 1024 ipad pro */
 @media (min-width: 1025px) {
   #nav-button,
   #mobile-nav {
