@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import GoogleMapReact from 'google-map-react'
 import Geocode from 'react-geocode'
+import Marker from '../Marker/Marker'
+import defaultImg from '../../assets/default.png'
 import { connect } from 'react-redux'
 import { deletePost } from '../../redux/userReducer'
 import './Item.css'
@@ -32,19 +34,38 @@ function Item(props) {
         })
         .catch(err => console.log(err))
     }
-
-    console.log(post)
   }, [post])
   return (
     <div className='Item'>
       <div className='item-container'>
-        <div className='item-map background'>
+        <div className='item-flex-container'>
+          <h1>{post.title}</h1>
+          <h1>${post.price}</h1>
+        </div>
+        <div className='item-flex-container'>
+          <p>{post.content}</p>
+        </div>
+        <img src={post.img || defaultImg} className='item-map-img' />
+        <h1 className='item-location'>Location:{post.city}</h1>
+        <div className='item-map-img'>
           <GoogleMapReact
             bootstrapURLKeys={{ key: props.apiKey }}
             center={center}
-            marker={center}
             defaultZoom={props.zoom}
-          ></GoogleMapReact>
+          >
+            <Marker lat={center.lat} lng={center.lng} />
+          </GoogleMapReact>
+        </div>
+        <div className='item-flex-container'>
+          {post.author_id === props.user.user_id ? (
+            <button onClick={()=>{
+              props.deletePost(props.match.params.post_id)
+              props.history.push('/post')
+            }}>delete</button>
+          ) : (
+            <></>
+          )}
+          <button>msg</button>
         </div>
       </div>
     </div>

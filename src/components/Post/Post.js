@@ -43,11 +43,7 @@ function Post(props) {
   }
   const postDisplayArr = postsArr.map(elm => {
     return (
-      <Link
-        key={elm.post_id}
-        to={`/item/${props.user.user_id}/${elm.post_id}`}
-        className='Link'
-      >
+      <Link key={elm.post_id} to={`/item/${elm.post_id}`} className='Link'>
         <DisplayPost title={elm.title} price={elm.price} img={elm.img} />
       </Link>
     )

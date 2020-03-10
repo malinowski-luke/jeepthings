@@ -16,6 +16,6 @@ export default (
     <Route path='/post' component={Post} />
     <Route path='/profile' component={Profile} />
     <Route path='/form' component={Form} />
-    <Route path='/item/:user_id/:post_id' component={Item} />
+    <Route path='/item/:post_id' component={Item} />
   </Switch>
 )

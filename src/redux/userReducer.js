@@ -3,7 +3,6 @@ import axios from 'axios'
 const initialState = {
   user: {},
   posts: [],
-  post: {},
   err: false,
   errMsg: ''
 }
@@ -88,7 +87,7 @@ export function addPost(postObj) {
 export function deletePost(user_id) {
   let action = {
     type: DELETE_POST,
-    payload: axios.delete(`/api/post/${user_id}`)
+    payload: axios.delete(`/api/posts/${user_id}`)
   }
   return action
 }
