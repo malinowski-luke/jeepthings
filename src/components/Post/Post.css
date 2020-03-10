@@ -44,7 +44,8 @@
 }
 
 .post-input-container select {
-  font-size: 15px;
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
 .post-button-container {
@@ -111,13 +112,17 @@
     font-size: 25px;
   }
   .post-input-container select {
-    font-size: 25px;
+    font-size: 22px;
   }
   .post-button-container {
     width: 45vw;
   }
   .post-button-container label {
     font-size: 20px;
+  }
+  .post-button-container input[type='checkbox'] {
+    width: 22px;
+    height: 22px;
   }
   .post-button {
     width: 8vw;

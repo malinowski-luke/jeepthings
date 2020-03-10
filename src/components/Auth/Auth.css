@@ -29,54 +29,47 @@
 .auth-input {
   width: 80vw;
   height: 5vh;
-  font-size: 1.8em;
+  font-size: 25px;
   color: #298aad;
 }
 
 .auth-button {
   width: 45vw;
-  height: 6vh;
+  height: 8vh;
   background: #298aad;
   color: #ffffff;
   border-radius: 10px;
   border: none;
-  font-size: 1.8em;
+  font-size: 30px;
+  text-transform: uppercase;
 }
 
 .auth-change-text {
   text-align: center;
   color: #ffffff;
-  font-size: 2em;
+  font-size: 30px;
 }
 
 .auth-link {
   text-decoration: underline;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 764px) {
   .auth-header {
     color: #ffffff;
-    font-size: 10em;
+    font-size: 125px;
   }
   .auth-button {
     width: 30vw;
     height: 8vh;
-    font-size: 3em;
-  }
-  .auth-change-text {
-    font-size: 3em;
+    font-size: 40px;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1025px) {
   .auth-input-container {
     width: 40vw;
     height: 65vh;
-  }
-
-  .auth-header {
-    color: #ffffff;
-    font-size: 7em;
   }
 
   .auth-input {
@@ -85,13 +78,13 @@
   }
 
   .auth-button {
-    width: 15vw;
+    width: 12vw;
     height: 8vh;
-    font-size: 2em;
+    font-size: 30px;
   }
 
   .auth-change-text {
-    font-size: 2em;
+    font-size: 28px;
   }
 
   /* show on desktop can't hover on mobile */

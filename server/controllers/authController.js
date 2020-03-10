@@ -2,9 +2,9 @@ const bcrypt = require('bcryptjs'),
   img = require('../imgGenerator/imgGenerator')
 module.exports = {
   login: async (req, res) => {
-    const db = req.app.get('db')
-    const { session } = req
-    const { username, password } = req.body
+    const db = req.app.get('db'),
+      { session } = req,
+      { username, password } = req.body
     let user = await db.check_user([username])
     user = user[0]
     if (!user) return res.status(401).send('username not found')
@@ -16,9 +16,9 @@ module.exports = {
     } else return res.status(401).send('incorrect password')
   },
   register: async (req, res) => {
-    const db = req.app.get('db')
-    const { session } = req
-    const { username, password } = req.body
+    const db = req.app.get('db'),
+      { session } = req,
+      { username, password } = req.body
     let user = await db.check_user([username])
     user = user[0]
     if (user) return res.status(400).send('user already exists')

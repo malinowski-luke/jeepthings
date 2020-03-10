@@ -1,28 +1,46 @@
 module.exports = {
   getAllUserPosts: async (req, res) => {
     const db = req.app.get('db')
-    let posts = await db.get_all_user_posts()
-    return res.status(202).send(posts)
+    await db
+      .get_all_user_posts()
+      .then(response => {
+        console.log(response)
+        return res.status(202).send(response)
+      })
+      .catch(err => {
+        console.log(err)
+        return res.sendStatus(500)
+      })
   },
   addPost: (req, res) => {
-    const db = req.app.get('db')
-    const { user_id } = req.params
-    const { title, img, content, price, city, state } = req.body
+    const db = req.app.get('db'),
+      { user_id } = req.params,
+      { title, img, content, price, city, state } = req.body
     db.add_post({ title, img, content, price, city, state, user_id })
       .then(() => {
         return res.sendStatus(200)
       })
-      .catch(() => {
+      .catch(err => {
+        console.log(err)
         return res.sendStatus(500)
       })
   },
-  //work here VVVV
   editPost: (req, res) => {
-    const db = req.app.get('db')
+    const db = req.app.get('db'),
+      { title, img, content, price } = req.body
+    let { post_id } = req.params
+    db.update_post({ title, img, content, price, post_id })
+      .then(() => {
+        return res.sendStatus(200)
+      })
+      .catch(err => {
+        console.log(err)
+        return res.sendStatus(500)
+      })
   },
   deletePost: (req, res) => {
-    const db = req.app.get('db')
-    const { post_id } = req.params
+    const db = req.app.get('db'),
+      { post_id } = req.params
     db.delete_post([+post_id])
       .then(() => {
         return res.sendStatus(200)
