@@ -4,7 +4,6 @@ module.exports = {
     await db
       .get_all_user_posts()
       .then(response => {
-        console.log(response)
         return res.status(202).send(response)
       })
       .catch(err => {
