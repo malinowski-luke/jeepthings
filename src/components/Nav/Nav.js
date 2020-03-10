@@ -13,7 +13,6 @@ function Nav(props) {
     <header className='Nav'>
       <div className='nav-logo-profile-container'>
         <h1 id='nav-logo'>jeepThings</h1>
-        <div className='profile-img-container'>
           <Link to='/profile'>
             <img
               src={props.user.profile_img}
@@ -21,7 +20,6 @@ function Nav(props) {
               className='profile-img'
             />
           </Link>
-        </div>
       </div>
       <div>
         <button

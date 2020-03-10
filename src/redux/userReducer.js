@@ -149,6 +149,12 @@ export default function userReducer(state = initialState, action) {
       return { ...state }
     case actionList.DELETE_POST + '_REJECTED':
       return { ...state }
+      case actionList.UPDATE_POST + '_PENDING':
+      return { ...state }
+    case actionList.UPDATE_POST + '_FULFILLED':
+      return { ...state }
+    case actionList.UPDATE_POST + '_REJECTED':
+      return { ...state }
     case actionList.CLEAR_REDUCER:
       return { ...initialState }
     default:
