@@ -46,7 +46,7 @@ function Item(props) {
           <p>{post.content}</p>
         </div>
         <img src={post.img || defaultImg} className='item-map-img' />
-        <h1 className='item-location'>Location:{post.city}</h1>
+        <h1 className='item-location'>Location: {post.city}</h1>
         <div className='item-map-img'>
           <GoogleMapReact
             bootstrapURLKeys={{ key: props.apiKey }}
@@ -58,10 +58,17 @@ function Item(props) {
         </div>
         <div className='item-flex-container'>
           {post.author_id === props.user.user_id ? (
-            <button onClick={()=>{
-              props.deletePost(props.match.params.post_id)
-              props.history.push('/post')
-            }}>delete</button>
+            <>
+              <button
+                onClick={() => {
+                  props.deletePost(props.match.params.post_id)
+                  props.history.push('/post')
+                }}
+              >
+                delete
+              </button>
+              <button>edit</button>
+            </>
           ) : (
             <></>
           )}
