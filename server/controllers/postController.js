@@ -11,6 +11,19 @@ module.exports = {
         return res.sendStatus(500)
       })
   },
+  getCurrentPost: async (req, res) => {
+    const db = req.app.get('db'),
+      { post_id } = req.params
+    await db
+      .get_current_post([+post_id])
+      .then(post => {
+        return res.status(202).send(post[0])
+      })
+      .catch(err => {
+        console.log(err)
+        return res.sendStatus(500)
+      })
+  },
   addPost: (req, res) => {
     const db = req.app.get('db'),
       { user_id } = req.params,
@@ -26,9 +39,9 @@ module.exports = {
   },
   editPost: (req, res) => {
     const db = req.app.get('db'),
-      { title, img, content, price } = req.body
+      { title, img, content, price, city, state } = req.body
     let { post_id } = req.params
-    db.update_post({ title, img, content, price, post_id })
+    db.update_post({ title, img, content, price, city, state, post_id })
       .then(() => {
         return res.sendStatus(200)
       })

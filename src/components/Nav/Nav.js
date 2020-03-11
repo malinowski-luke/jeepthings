@@ -6,20 +6,22 @@ import { Link } from 'react-router-dom'
 function Nav(props) {
   //comment out only when working on css to not login every refresh
   useEffect(() => {
-    props.checkUser()
-    if (!props.user.user_name) props.history.push('/')
+    if (!props.user.user_name) {
+      props.checkUser()
+      props.history.push('/')
+    }
   }, [props.user])
   return (
     <header className='Nav'>
       <div className='nav-logo-profile-container'>
         <h1 id='nav-logo'>jeepThings</h1>
-          <Link to='/profile'>
-            <img
-              src={props.user.profile_img}
-              alt='profile img'
-              className='profile-img'
-            />
-          </Link>
+        <Link to='/profile'>
+          <img
+            src={props.user.profile_img}
+            alt='profile img'
+            className='profile-img'
+          />
+        </Link>
       </div>
       <div>
         <button
@@ -48,8 +50,8 @@ function Nav(props) {
           <Link to='/dashboard' className='Link'>
             <li>dashboard</li>
           </Link>
-          <Link to='/post' className='Link'>
-            <li>post</li>
+          <Link to='/posts' className='Link'>
+            <li>posts</li>
           </Link>
           <Link to='/profile' className='Link'>
             <li>profile</li>
@@ -74,8 +76,8 @@ function Nav(props) {
             </Link>
           </li>
           <li>
-            <Link to='/post' className='Link'>
-              post
+            <Link to='/posts' className='Link'>
+              posts
             </Link>
           </li>
           <li>

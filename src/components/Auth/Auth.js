@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import {
-  login,
-  register,
-  checkUser,
-  clearReducer
-} from '../../redux/userReducer'
+import { login, register, clearUserReducer } from '../../redux/userReducer'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './Auth.css'
@@ -18,10 +13,10 @@ function Auth(props) {
     toast.error(props.errMsg, {
       position: toast.POSITION.BOTTOM_RIGHT
     })
-    props.clearReducer()
+    props.clearUserReducer()
   }
   useEffect(() => {
-    if (props.user.user_name) props.history.push('/post')
+    if (props.user.user_name) props.history.push('/posts')
   }, [props.user])
   const resetInput = () => {
     setUsername('')
@@ -109,14 +104,13 @@ function Auth(props) {
 }
 
 const mapStateToProps = reduxState => {
-  return reduxState
+  return reduxState.userReducer
 }
 
 const mapDispatchToProps = {
   login,
   register,
-  checkUser,
-  clearReducer
+  clearUserReducer
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth)

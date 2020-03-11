@@ -71,7 +71,7 @@ function Profile(props) {
 }
 
 const mapStateToProps = reduxState => {
-  const { user } = reduxState
+  const { user } = reduxState.userReducer
   return { user }
 }
 

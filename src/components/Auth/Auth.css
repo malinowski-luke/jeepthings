@@ -64,6 +64,9 @@
     height: 8vh;
     font-size: 40px;
   }
+  .auth-input {
+    font-size: 35px;
+  }
 }
 
 @media (min-width: 1025px) {
