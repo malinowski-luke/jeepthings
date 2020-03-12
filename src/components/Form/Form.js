@@ -9,7 +9,7 @@ import {
 import states from './States.js'
 import defaultImg from '../../assets/default.png'
 import { toast, ToastContainer } from 'react-toastify'
-import './Form.css'
+import './Form.scss'
 
 function Form(props) {
   const [formValues, setFormValues] = useState({

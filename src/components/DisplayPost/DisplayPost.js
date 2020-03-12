@@ -1,6 +1,6 @@
 import React from 'react'
 import defaultImg from '../../assets/default.png'
-import './DisplayPost.css'
+import './DisplayPost.scss'
 
 function DisplayPost(props) {
   return (

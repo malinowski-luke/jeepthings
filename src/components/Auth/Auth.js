@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { login, register, clearUserReducer } from '../../redux/userReducer'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import './Auth.css'
+import './Auth.scss'
 
 function Auth(props) {
   const [username, setUsername] = useState('')

@@ -6,7 +6,7 @@ import img2 from './assets/img2.jpg'
 import img3 from './assets/img3.jpg'
 import img4 from './assets/img4.jpg'
 import Nav from './components/Nav/Nav'
-import './App.css'
+import './App.scss'
 
 function App(props) {
   const imgArr = [img1, img2, img3, img4]

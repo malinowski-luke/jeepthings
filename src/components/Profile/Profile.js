@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { updateProfileImg } from '../../redux/userReducer'
 import { toast, ToastContainer } from 'react-toastify'
 
-import './Profile.css'
+import './Profile.scss'
 
 function Profile(props) {
   const [editBool, setEditBool] = useState(false)

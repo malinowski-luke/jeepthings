@@ -1,0 +1,21 @@
+// colors
+$primary-color: #ad4d29;
+$secondary-color: #298aad;
+$white: #f3f3f3;
+$black: #1a1818;
+
+//fonts
+$main-font: 'Acme', sans-serif;
+$logo-font: 'Dancing Script', cursive;
+
+// breakpoints
+$tablet: 764px;
+$desktop: 1025px; //ipad pro 1024px
+
+// mixins for flexbox
+@mixin flex-box($dir: row, $just: space-evenly, $align: center) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $just;
+  align-items: $align;
+}

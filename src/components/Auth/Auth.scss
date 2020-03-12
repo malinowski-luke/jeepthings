@@ -1,10 +1,9 @@
-/* centers to middle of page */
+@import '../../sass/vars';
+
 .Auth {
   width: 100%;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-box(row, center, center);
 }
 
 .auth-input-container {
@@ -12,17 +11,14 @@
   top: 25vh;
   width: 90vw;
   height: 65vh;
-  background: #ad4d29;
+  background: $primary-color;
   border-radius: 10px;
   opacity: 0.93;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  @include flex-box(column, space-around, center);
 }
 
 .auth-header {
-  font-family: 'Dancing Script', cursive;
+  font-family: $logo-font;
   color: #ffffff;
   font-size: 4.5em;
 }
@@ -31,14 +27,14 @@
   width: 80vw;
   height: 5vh;
   font-size: 25px;
-  color: #298aad;
+  color: $secondary-color;
 }
 
 .auth-button {
   width: 45vw;
   height: 8vh;
-  background: #298aad;
-  color: #ffffff;
+  background: $secondary-color;
+  color: $white;
   border-radius: 10px;
   border: none;
   font-size: 30px;
@@ -47,7 +43,7 @@
 
 .auth-change-text {
   text-align: center;
-  color: #ffffff;
+  color: $white;
   font-size: 30px;
 }
 
@@ -55,9 +51,8 @@
   text-decoration: underline;
 }
 
-@media (min-width: 764px) {
+@media (min-width: $tablet) {
   .auth-header {
-    color: #ffffff;
     font-size: 125px;
   }
   .auth-button {
@@ -70,7 +65,7 @@
   }
 }
 
-@media (min-width: 1025px) {
+@media (min-width: $desktop) {
   .auth-input-container {
     width: 40vw;
     height: 65vh;
@@ -93,6 +88,6 @@
 
   /* show on desktop can't hover on mobile */
   .auth-link:hover {
-    color: #298aad;
+    color: $secondary-color;
   }
 }

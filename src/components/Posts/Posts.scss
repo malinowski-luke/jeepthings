@@ -1,9 +1,8 @@
+@import '../../sass/vars';
+
 .Posts {
   width: 100;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include flex-box(column, center, center);
 }
 
 .posts-container {
@@ -11,54 +10,46 @@
   top: 45vh;
   width: 90vw;
   height: 52vh;
-  background: #f3f3f3;
+  background: $white;
   border-radius: 10px;
   opacity: 0.95;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
   overflow-y: auto;
+  @include flex-box(column, flex-start, center);
 }
 
 .posts-filter {
   top: 18vh;
   height: 25vh;
-  justify-content: space-evenly;
   overflow-y: scroll;
+  @include flex-box(column, space-evenly, center);
 }
 
 .posts-filter > input {
   width: 80vw;
   height: 4vh;
-  color: #228899;
+  color: $secondary-color;
   font-size: 20px;
   margin-top: 2vh;
 }
 
 .posts-search-container {
   width: 80vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex-box(row, space-between, center);
 }
 
 .posts-search-container select {
-  color: #228899;
+  color: $secondary-color;
   font-size: 12px;
   text-transform: uppercase;
 }
 
 .posts-user-option-container {
   width: 80vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex-box(row, space-between, center);
 }
 
 .posts-user-option-container label {
-  color: #228899;
+  color: $secondary-color;
   font-size: 18px;
   text-transform: uppercase;
 }
@@ -73,8 +64,8 @@
 }
 
 .posts-button {
-  background-color: #228899;
-  color: #ffffff;
+  background-color: $secondary-color;
+  color: $white;
   width: 20vw;
   height: 5vh;
   font-size: 15px;
@@ -86,7 +77,7 @@
   width: 30vw;
 }
 
-@media (min-width: 767px) {
+@media (min-width: $tablet) {
   .posts-filter > input {
     font-size: 30px;
   }
@@ -108,7 +99,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: $desktop) {
   .posts-container {
     width: 50vw;
   }

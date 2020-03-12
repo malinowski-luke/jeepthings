@@ -5,7 +5,7 @@ import Marker from '../Marker/Marker'
 import defaultImg from '../../assets/default.png'
 import { connect } from 'react-redux'
 import { deletePost, getCurrentPost } from '../../redux/postReducer'
-import './Post.css'
+import './Post.scss'
 
 //default props
 Item.defaultProps = {

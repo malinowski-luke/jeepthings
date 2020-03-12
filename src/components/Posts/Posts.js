@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
 import { getAllUserPosts } from '../../redux/postReducer'
 import { toast, ToastContainer } from 'react-toastify'
-import './Posts.css'
+import './Posts.scss'
 import DisplayPost from '../DisplayPost/DisplayPost'
 import { Link } from 'react-router-dom'
 

@@ -3,7 +3,7 @@ import icon from '../../assets/icon.svg'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout, checkUser } from '../../redux/userReducer'
-import './Nav.css'
+import './Nav.scss'
 
 function Nav(props) {
   const { user } = props
@@ -54,7 +54,7 @@ function Nav(props) {
             mobileNav.classList.toggle('show')
           }}
         >
-          <Link to='/about' className='Link'>
+          <Link to='/' className='Link'>
             <li>about</li>
           </Link>
           <Link to='/dashboard' className='Link'>
@@ -80,7 +80,7 @@ function Nav(props) {
         </ul>
         <ul id='desktop-nav'>
           <li>
-            <Link to='/about' className='Link'>
+            <Link to='/' className='Link'>
               about
             </Link>
           </li>
