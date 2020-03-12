@@ -9,18 +9,18 @@ function Auth(props) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [registerBool, setRegisterBool] = useState(false)
-  if (props.err) {
-    toast.error(props.errMsg, {
-      position: toast.POSITION.BOTTOM_RIGHT
-    })
-    props.clearUserReducer()
-  }
   useEffect(() => {
     if (props.user.user_name) props.history.push('/posts')
   }, [props.user])
   const resetInput = () => {
     setUsername('')
     setPassword('')
+  }
+  if (props.err) {
+    toast.error(props.errMsg, {
+      position: toast.POSITION.BOTTOM_RIGHT
+    })
+    props.clearUserReducer()
   }
   return (
     <section className='Auth'>

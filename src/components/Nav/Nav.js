@@ -1,27 +1,37 @@
 import React, { useEffect } from 'react'
 import icon from '../../assets/icon.svg'
-import './Nav.css'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { logout, checkUser } from '../../redux/userReducer'
+import './Nav.css'
 
 function Nav(props) {
-  //comment out only when working on css to not login every refresh
+  const { user } = props
   useEffect(() => {
-    if (!props.user.user_name) {
-      props.checkUser()
-      props.history.push('/')
-    }
-  }, [props.user])
+    if (!user.user_name) props.checkUser()
+  }, [user.user_name])
   return (
     <header className='Nav'>
       <div className='nav-logo-profile-container'>
-        <h1 id='nav-logo'>jeepThings</h1>
-        <Link to='/profile'>
-          <img
-            src={props.user.profile_img}
-            alt='profile img'
-            className='profile-img'
-          />
-        </Link>
+        {user.user_name ? (
+          <div className='profile-info-container'>
+            <h1 id='nav-logo' className='hide-logo-mobile'>
+              jeepThings
+            </h1>
+            <div className='profile-info-container'>
+              <Link to='/profile' className='Link'>
+                <img
+                  src={user.profile_img}
+                  alt='profile img'
+                  className='profile-img'
+                />
+              </Link>
+              <p className='profile-user-name'>{user.user_name}</p>
+            </div>
+          </div>
+        ) : (
+          <h1 id='nav-logo'>jeepThings</h1>
+        )}
       </div>
       <div>
         <button
@@ -53,16 +63,20 @@ function Nav(props) {
           <Link to='/posts' className='Link'>
             <li>posts</li>
           </Link>
-          <Link to='/profile' className='Link'>
-            <li>profile</li>
-          </Link>
-          <li
-            onClick={() => {
-              props.logout()
-            }}
-          >
-            logout
-          </li>
+          {props.user.user_name ? (
+            <li
+              onClick={() => {
+                props.logout()
+                props.history.push('/')
+              }}
+            >
+              logout
+            </li>
+          ) : (
+            <Link to='/login' className='Link'>
+              <li>login</li>
+            </Link>
+          )}
         </ul>
         <ul id='desktop-nav'>
           <li>
@@ -80,22 +94,33 @@ function Nav(props) {
               posts
             </Link>
           </li>
-          <li>
-            <Link to='/profile' className='Link'>
-              profile
+          {user.user_name ? (
+            <li
+              onClick={() => {
+                props.logout()
+                props.history.push('/')
+              }}
+            >
+              logout
+            </li>
+          ) : (
+            <Link to='/login' className='Link'>
+              <li>login</li>
             </Link>
-          </li>
-          <li
-            onClick={() => {
-              props.logout()
-            }}
-          >
-            logout
-          </li>
+          )}
         </ul>
       </div>
     </header>
   )
 }
+const mapStateToProps = reduxState => {
+  const { user } = reduxState.userReducer
+  return { user }
+}
 
-export default Nav
+const mapDispatchToProps = {
+  logout,
+  checkUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav)

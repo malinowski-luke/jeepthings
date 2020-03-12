@@ -26,39 +26,50 @@
   top: 18vh;
   height: 25vh;
   justify-content: space-evenly;
-  overflow-y: hidden;
+  overflow-y: scroll;
 }
 
-.posts-input-container {
+.posts-filter > input {
+  width: 80vw;
+  height: 4vh;
+  color: #228899;
+  font-size: 20px;
+  margin-top: 2vh;
+}
+
+.posts-search-container {
   width: 80vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.posts-input-container input {
-  width: 50vw;
-  height: 4vh;
+.posts-search-container select {
   color: #228899;
-  font-size: 20px;
-}
-
-.posts-input-container select {
   font-size: 12px;
   text-transform: uppercase;
 }
 
-.posts-button-container {
+.posts-user-option-container {
   width: 80vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.posts-button-container label {
+.posts-user-option-container label {
   color: #228899;
   font-size: 18px;
   text-transform: uppercase;
+}
+.posts-user-option-container input[type='checkbox'] {
+  width: 15px;
+  height: 15px;
+}
+.posts-filter > input,
+.posts-search-container,
+.posts-user-option-container {
+  margin-bottom: 2vh;
 }
 
 .posts-button {
@@ -66,7 +77,7 @@
   color: #ffffff;
   width: 20vw;
   height: 5vh;
-  font-size: 14px;
+  font-size: 15px;
   text-transform: uppercase;
   border-radius: 10px;
 }
@@ -76,23 +87,24 @@
 }
 
 @media (min-width: 767px) {
-  .posts-input-container input {
+  .posts-filter > input {
     font-size: 30px;
   }
 
-  .posts-input-container select {
-    font-size: 25px;
+  .posts-search-container select {
+    font-size: 20px;
   }
+
+  .posts-user-option-container label {
+    font-size: 30px;
+  }
+  .posts-user-option-container input[type='checkbox'] {
+    width: 25px;
+    height: 25px;
+  }
+
   .posts-button {
-    height: 7vh;
     font-size: 30px;
-  }
-  .posts-button-container label {
-    font-size: 30px;
-  }
-  .posts-button-container input[type='checkbox'] {
-    width: 30px;
-    height: 30px;
   }
 }
 
@@ -100,36 +112,31 @@
   .posts-container {
     width: 50vw;
   }
-  .posts-input-container {
+
+  .posts-filter > input {
     width: 45vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    font-size: 20px;
   }
-  .posts-input-container input {
-    width: 30vw;
-    height: 5vh;
+
+  .posts-search-container {
+    width: 45vw;
+  }
+
+  .posts-search-container select {
+    font-size: 20px;
+  }
+
+  .posts-user-option-container {
+    width: 45vw;
+  }
+
+  .posts-button {
+    width: 10vw;
+    height: 6vh;
     font-size: 25px;
   }
-  .posts-input-container select {
-    font-size: 22px;
-  }
-  .posts-button-container {
-    width: 45vw;
-  }
-  .posts-button-container label {
-    font-size: 20px;
-  }
-  .posts-button-container input[type='checkbox'] {
-    width: 22px;
-    height: 22px;
-  }
-  .posts-button {
-    width: 8vw;
-    height: 6vh;
-    font-size: 20px;
-  }
+
   .posts-item-button {
-    width: 10vw;
+    width: 12vw;
   }
 }

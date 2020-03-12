@@ -54,7 +54,13 @@ function Posts(props) {
         onSubmit={e => e.preventDefault()}
         className='posts-container posts-filter'
       >
-        <div className='posts-input-container'>
+        <input
+          value={serachText}
+          placeholder='search keyword'
+          onChange={e => setSearchText(e.target.value)}
+          required
+        />
+        <div className='posts-search-container'>
           <select
             onChange={e => {
               setPosts([...filterByPrice(e.target.value)])
@@ -64,14 +70,6 @@ function Posts(props) {
             <option value='min'>low to high</option>
             <option value='max'>high to low</option>
           </select>
-          <input
-            value={serachText}
-            placeholder='jk shark grill'
-            onChange={e => setSearchText(e.target.value)}
-            required
-          />
-        </div>
-        <div className='posts-button-container'>
           <button
             className='posts-button'
             type='submit'
@@ -95,19 +93,27 @@ function Posts(props) {
           >
             clear
           </button>
-          <span>
-            <label>my posts</label>
-            <input
-              onChange={() => {
-                setUserPostBool(!userPostBool)
-              }}
-              type='checkbox'
-            />
-          </span>
         </div>
-        <Link to='/form'>
-          <button className='posts-button posts-item-button'>Post Item</button>
-        </Link>
+        {props.user.user_name ? (
+          <div className='posts-user-option-container'>
+            <span>
+              <label>my posts</label>
+              <input
+                onChange={() => {
+                  setUserPostBool(!userPostBool)
+                }}
+                type='checkbox'
+              />
+            </span>
+            <Link to='/form'>
+              <button className='posts-button posts-item-button'>
+                Post Item
+              </button>
+            </Link>
+          </div>
+        ) : (
+          <></>
+        )}
       </form>
       <div className='posts-container'>{postDisplayArr}</div>
       <ToastContainer autoClose={2000} />

@@ -7,8 +7,9 @@
   align-items: center;
 }
 
-/* holds all the input and buttons */
 .auth-input-container {
+  position: fixed;
+  top: 25vh;
   width: 90vw;
   height: 65vh;
   background: #ad4d29;

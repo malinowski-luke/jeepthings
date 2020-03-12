@@ -63,10 +63,21 @@
   align-items: center;
 }
 
+.form-location-container > input {
+  width: 40vw;
+}
+
 .form-location-container > input,
 .form-location-container > select {
   height: 3vh;
-  font-size: 15px;
+  font-size: 18px;
+}
+
+.form-input-container > input,
+.form-input-container > textarea,
+.form-location-container > input,
+.form-location-container > select {
+  color: #228899;
 }
 
 .form-button-container {

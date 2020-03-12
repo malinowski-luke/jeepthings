@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import routes from './routes'
 import { withRouter } from 'react-router-dom'
+import routes from './routes'
 import img1 from './assets/img1.jpg'
 import img2 from './assets/img2.jpg'
 import img3 from './assets/img3.jpg'
 import img4 from './assets/img4.jpg'
 import Nav from './components/Nav/Nav'
-import { connect } from 'react-redux'
-import { logout, checkUser } from './redux/userReducer'
 import './App.css'
 
 function App(props) {
@@ -30,30 +28,10 @@ function App(props) {
         transition: '1s'
       }}
     >
-      {/* pass props to nav ...props to make history.push to work */}
-      {props.location.pathname === '/' ? (
-        <></>
-      ) : (
-        <Nav
-          {...props}
-          user={props.user}
-          logout={props.logout}
-          checkUser={props.checkUser}
-        />
-      )}
+      <Nav {...props} />
       {routes}
     </div>
   )
 }
 
-const mapStateToProps = reduxState => {
-  const { user } = reduxState.userReducer
-  return { user }
-}
-
-const mapDispatchToProps = {
-  checkUser,
-  logout
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App))
+export default withRouter(App)
