@@ -52,7 +52,7 @@
 
 .form-location-container {
   width: 65vw;
-  @include flex-box(column, space-between, center);
+  @include flex-box(row, space-between, center);
 }
 
 .form-location-container > input {
@@ -74,7 +74,7 @@
 
 .form-button-container {
   width: 65vw;
-  @include flex-box(column, space-between, center);
+  @include flex-box(row, space-between, center);
 }
 
 .form-button-container button {

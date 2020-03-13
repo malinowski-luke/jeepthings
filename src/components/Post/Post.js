@@ -21,7 +21,7 @@ function Item(props) {
   const { post_id } = props.match.params
   useEffect(() => {
     props.getCurrentPost(+post_id)
-  }, [])
+  }, [post_id])
   if (!center.lat && props.post.state) {
     Geocode.fromAddress(`${props.post.city} ${props.post.state}`)
       .then(res => {
@@ -50,21 +50,20 @@ function Item(props) {
             defaultZoom={props.zoom}
           >
             <Marker lat={center.lat} lng={center.lng} />
-            <div></div>
           </GoogleMapReact>
         </div>
         <div className='post-flex-container'>
           <button onClick={() => props.history.push('/posts')}>back</button>
-          <button>msg</button>
           {props.post.author_id === props.user.user_id ? (
             <>
+              <button>msg</button>
               <button
                 onClick={() => {
                   props.deletePost(props.match.params.post_id)
                   props.history.push('/posts')
                 }}
               >
-                delete
+                del
               </button>
               <button
                 onClick={() => {

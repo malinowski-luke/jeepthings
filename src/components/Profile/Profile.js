@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { updateProfileImg } from '../../redux/userReducer'
-import { toast, ToastContainer } from 'react-toastify'
-
+import Upload from '../Upload/Upload'
 import './Profile.scss'
 
 function Profile(props) {
-  const [editBool, setEditBool] = useState(false)
-  const [imgPath, setImgPath] = useState('')
-  const { user } = props
+  const  {user, updateProfileImg} = props
   return (
     <div className='Profile'>
       <div className='profile-container'>
@@ -18,54 +15,8 @@ function Profile(props) {
           className='profile-img-lg'
         />
         <p className='user-name-text'>{user.user_name}</p>
-        {!editBool ? (
-          <>
-            <button
-              className='profile-button'
-              onClick={() => setEditBool(!editBool)}
-            >
-              update img
-            </button>
-          </>
-        ) : (
-          <div className='update-profile-form'>
-            <input
-              value={imgPath}
-              placeholder='img path'
-              className='profile-img-input'
-              onChange={e => setImgPath(e.target.value)}
-            />
-            <div className='update-button-container'>
-              <button
-                className='profile-button profile-edit-button'
-                onClick={() => {
-                  if (imgPath !== '') {
-                    props.updateProfileImg(user.user_id, imgPath)
-                    setEditBool(!editBool)
-                    setImgPath('')
-                  } else {
-                    toast.error('please enter a valid img path', {
-                      position: toast.POSITION.BOTTOM_RIGHT
-                    })
-                  }
-                }}
-              >
-                save
-              </button>
-              <button
-                className='profile-button profile-edit-button'
-                onClick={() => {
-                  setEditBool(!editBool)
-                  setImgPath('')
-                }}
-              >
-                cancel
-              </button>
-            </div>
-          </div>
-        )}
+        <Upload user_id={user.user_id} updateProfileImg={updateProfileImg} />
       </div>
-      <ToastContainer autoClose={2000} />
     </div>
   )
 }

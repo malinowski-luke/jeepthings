@@ -6,8 +6,9 @@ const express = require('express'),
   authCtrl = require('./controllers/authController'),
   userCtrl = require('./controllers/userController'),
   postCtrl = require('./controllers/postController'),
-  chatCtrl = require('./controllers/chatController')
-const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
+  emailCtrl = require('./controllers/emailController'),
+  s3Ctrl = require('./controllers/s3Controller'),
+  { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
 app.use(express.json())
 app.use(
@@ -49,7 +50,9 @@ app.post('/api/posts/:user_id', postCtrl.addPost)
 app.put('/api/posts/:post_id', postCtrl.editPost)
 app.delete('/api/posts/:post_id', postCtrl.deletePost)
 
-// CHAT LAST*****************************
-// app./api/chats/:user_id GET   *gets all Chat Rooms for the current user
-// app./api/chats/:chat_id/:user_id GET  * get selected chat for the logged in user
-// app./api/chats/:chat_id/:user_id POST body{text}  * posts a chat in the chat room
+// --------------AWS-S3----------------
+app.get('/api/sign-s3', s3Ctrl.signInS3)
+
+// --------------EMAIL-----------------
+app.post('/api/email', emailCtrl.sendEmail)
+// welcome and msg about a part

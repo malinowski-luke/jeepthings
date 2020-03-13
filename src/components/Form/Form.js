@@ -9,6 +9,7 @@ import {
 import states from './States.js'
 import defaultImg from '../../assets/default.png'
 import { toast, ToastContainer } from 'react-toastify'
+import Upload from '../Upload/Upload'
 import './Form.scss'
 
 function Form(props) {
@@ -30,15 +31,18 @@ function Form(props) {
       state: ''
     })
   }
-  const { post_id } = props.match.params
-  const { post } = props
+  const { post_id } = props.match.params,
+   { post } = props
   useEffect(() => {
+    if(!post_id) {
+      props.clearPostReducer()
+      setFormValues({...post})
+    }
     if (post_id) {
       props.getCurrentPost(post_id)
-    }
+    } 
     setFormValues({ ...post })
   }, [])
-
   return (
     <div className='Form'>
       <div className='form-container'>
@@ -54,6 +58,7 @@ function Form(props) {
         </div>
         <form onSubmit={e => e.preventDefault()}>
           <div className='form-input-container'>
+            <Upload formValues={formValues} setFormValues={setFormValues}/>
             <input
               value={formValues.title}
               type='text'
@@ -67,6 +72,7 @@ function Form(props) {
               value={formValues.price}
               type='number'
               placeholder='price'
+              min={0}
               onChange={e =>
                 setFormValues({ ...formValues, price: e.target.value })
               }
@@ -80,14 +86,6 @@ function Form(props) {
               }
               required
             ></textarea>
-            <input
-              value={formValues.img}
-              type='text'
-              placeholder='img path'
-              onChange={e =>
-                setFormValues({ ...formValues, img: e.target.value })
-              }
-            />
             <div className='form-location-container'>
               <input
                 value={formValues.city}
@@ -123,22 +121,8 @@ function Form(props) {
               {post_id ? (
                 <button
                   onClick={() => {
-                    const {
-                      title,
-                      img,
-                      content,
-                      price,
-                      city,
-                      state
-                    } = formValues
-                    props.updatePost(post_id, {
-                      title,
-                      img,
-                      content,
-                      price,
-                      city,
-                      state
-                    })
+                    console.log(formValues)
+                    props.updatePost(post_id, {...formValues})
                     props.clearPostReducer()
                     props.history.push(`/post/${post_id}`)
                   }}
@@ -149,7 +133,7 @@ function Form(props) {
                 <button
                   onClick={() => {
                     for (let key in formValues) {
-                      if (key !== 'img' && formValues[key] == false)
+                      if (key !== 'img' && formValues[key] == false )
                         return toast.error(
                           'please fill out the required fields',
                           {
