@@ -25,8 +25,8 @@ function Nav(props) {
                   alt='profile img'
                   className='profile-img'
                 />
+                <p className='profile-user-name'>{user.user_name}</p>
               </Link>
-              <p className='profile-user-name'>{user.user_name}</p>
             </div>
           </div>
         ) : (
@@ -57,9 +57,6 @@ function Nav(props) {
           <Link to='/' className='Link'>
             <li>about</li>
           </Link>
-          <Link to='/dashboard' className='Link'>
-            <li>dashboard</li>
-          </Link>
           <Link to='/posts' className='Link'>
             <li>posts</li>
           </Link>
@@ -82,11 +79,6 @@ function Nav(props) {
           <li>
             <Link to='/' className='Link'>
               about
-            </Link>
-          </li>
-          <li>
-            <Link to='/dashboard' className='Link'>
-              dashboard
             </Link>
           </li>
           <li>

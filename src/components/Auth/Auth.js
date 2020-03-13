@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { login, register, clearUserReducer } from '../../redux/userReducer'
+import {
+  login,
+  register,
+  sendWelcomeEmail,
+  clearUserReducer
+} from '../../redux/userReducer'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './Auth.scss'
@@ -24,13 +29,13 @@ function Auth(props) {
   }
   return (
     <section className='Auth'>
-      <div className='auth-input-container'>
+      <form onSubmit={e => e.preventDefault()} className='auth-input-container'>
         <h1 className='auth-header'>jeepThings</h1>
         <input
           value={username}
           className='auth-input'
-          type='text'
-          placeholder='username'
+          type='email'
+          placeholder='email'
           onChange={e => setUsername(e.target.value)}
         />
         <input
@@ -47,6 +52,7 @@ function Auth(props) {
               onClick={() => {
                 if (username !== '' && password !== '') {
                   props.register(username, password)
+                  props.sendWelcomeEmail(username)
                   resetInput()
                 } else {
                   toast.error('please fill out all the fields', {
@@ -97,7 +103,7 @@ function Auth(props) {
             </p>
           </>
         )}
-      </div>
+      </form>
       <ToastContainer autoClose={2000} />
     </section>
   )
@@ -110,6 +116,7 @@ const mapStateToProps = reduxState => {
 const mapDispatchToProps = {
   login,
   register,
+  sendWelcomeEmail,
   clearUserReducer
 }
 

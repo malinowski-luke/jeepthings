@@ -25,29 +25,8 @@
 
 .user-name-text {
   color: $secondary-color;
-  font-size: 70px;
+  font-size: 22px;
 }
-
-// .profile-button {
-//   margin-top: 2vh;
-//   background-color: $secondary-color;
-//   color: $white;
-//   width: 50vw;
-//   height: 10vh;
-//   font-size: 25px;
-//   text-transform: uppercase;
-//   border-radius: 10px;
-// }
-
-// .profile-edit-button {
-//   width: 30vw;
-//   height: 8vh;
-// }
-
-// .update-profile-form {
-//   margin-top: 5vh;
-//   @include flex-box(column, center, center);
-// }
 
 .profile-img-input {
   width: 70vw;
@@ -56,34 +35,13 @@
   color: $secondary-color;
 }
 
-// .update-button-container {
-//   width: 70vw;
-//   @include flex-box(row, space-between, center);
-// }
-
 @media (min-width: $tablet) {
   .profile-img-lg {
     max-width: 65vw;
   }
   .user-name-text {
-    font-size: 75px;
+    font-size: 45px;
   }
-
-  // .profile-button {
-  //   width: 30vw;
-  //   font-size: 35px;
-  // }
-
-  // .update-button-container {
-  //   margin-top: 2vh;
-  //   width: 65vw;
-  //   @include flex-box(row, space-between, center);
-  // }
-
-  // .profile-edit-button {
-  //   width: 30vw;
-  //   font-size: 40px;
-  // }
 
   .profile-img-input {
     width: 65vw;
@@ -100,26 +58,6 @@
     max-height: 40vh;
   }
   .user-name-text {
-    font-size: 55px;
+    font-size: 35px;
   }
-
-  // .profile-button {
-  //   width: 15vw;
-  //   height: 10vh;
-  //   font-size: 30px;
-  // }
-
-  // .update-button-container {
-  //   width: 25vw;
-  // }
-
-  // .profile-edit-button {
-  //   width: 10vw;
-  //   height: 8vh;
-  // }
-
-  // .profile-img-input {
-  //   width: 25vw;
-  //   font-size: 25px;
-  // }
 }

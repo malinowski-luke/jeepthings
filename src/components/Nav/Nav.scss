@@ -16,19 +16,16 @@
 
 .profile-img {
   margin-left: 2vw;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   border: 5px solid $white;
   box-shadow: 0px 0px 10px 5px $black;
 }
 
 .profile-user-name {
-  text-align: center;
-  color: $white;
-  font-size: 25px;
+  font-size: 15px;
   margin-top: 5px;
-  margin-left: 3vw;
 }
 
 #desktop-nav {
@@ -78,7 +75,7 @@
 }
 
 .show {
-  height: 26vh;
+  height: 20vh;
 }
 
 #nav-button {
@@ -101,16 +98,12 @@
   #mobile-nav > li {
     font-size: 30px;
   }
-  .show {
-    height: 41vh;
-  }
   .profile-img {
-    width: 115px;
-    height: 115px;
+    width: 90px;
+    height: 90px;
   }
   .profile-user-name {
-    font-size: 35px;
-    margin-left: 2vw;
+    font-size: 25px;
   }
 }
 @media (min-width: $desktop) {
@@ -120,7 +113,7 @@
   }
   #desktop-nav {
     margin-right: 1vw;
-    width: 65vw;
+    width: 50vw;
     text-transform: uppercase;
     font-size: 35px;
     color: $white;
@@ -131,11 +124,15 @@
     color: $secondary-color;
   }
   .profile-img {
-    width: 80px;
-    height: 80px;
+    width: 4vw;
+    height: 4vw;
   }
   .profile-user-name {
-    margin-left: 1vw;
+    margin-top: 10px;
+    font-size: 15px;
+  }
+  .profile-user-name:hover {
+    color: $secondary-color;
   }
   .hide-logo-mobile {
     display: inline;

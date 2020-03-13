@@ -10,8 +10,8 @@
 
 # production
 /build
-
 # misc
+/email
 .env
 .DS_Store
 .env.local
@@ -26,3 +26,4 @@ yarn-error.log*
 
 #planning stuff 
 /planning
+

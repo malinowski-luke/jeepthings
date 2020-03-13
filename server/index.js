@@ -54,5 +54,5 @@ app.delete('/api/posts/:post_id', postCtrl.deletePost)
 app.get('/api/sign-s3', s3Ctrl.signInS3)
 
 // --------------EMAIL-----------------
-app.post('/api/email', emailCtrl.sendEmail)
-// welcome and msg about a part
+app.post('/api/email/welcome', emailCtrl.sendWelcomeEmail)
+app.post('/api/email/msg', emailCtrl.sendMsgToUser)
