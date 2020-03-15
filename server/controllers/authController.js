@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs'),
-  img = require('../imgGenerator/imgGenerator')
+  img = require('../imgGenerator/imgGenerator'),
+  emailCtrl = require('./emailController')
 module.exports = {
   login: async (req, res) => {
     const db = req.app.get('db'),
@@ -27,11 +28,11 @@ module.exports = {
     let newUser = await db.register_user([
       username,
       hash,
-      img.generateRandomImg(),
-      false
+      img.generateRandomImg()
     ])
     newUser = newUser[0]
     session.user = newUser
+    emailCtrl.sendWelcomeEmail(username)
     return res.status(201).send(session.user)
   },
   logout: (req, res) => {

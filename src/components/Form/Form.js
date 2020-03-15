@@ -34,14 +34,13 @@ function Form(props) {
   const { post_id } = props.match.params,
    { post } = props
   useEffect(() => {
-    if(!post_id) {
-      props.clearPostReducer()
-      setFormValues({...post})
-    }
     if (post_id) {
       props.getCurrentPost(post_id)
-    } 
-    setFormValues({ ...post })
+      setFormValues({ ...post })
+    } else  props.clearPostReducer()
+    // console.log(post_id)
+    // console.log(post)
+    // console.log(formValues)
   }, [])
   return (
     <div className='Form'>

@@ -22,14 +22,6 @@ export function register(username, password) {
   return action
 }
 
-export function sendWelcomeEmail(email) {
-  let action = {
-    type: actionList.SEND_WELCOME_EMAIL,
-    payload: axios.post('/api/email/welcome', { email: email })
-  }
-  return action
-}
-
 export function checkUser() {
   let action = {
     type: actionList.CHECK_USER,
@@ -87,12 +79,6 @@ export default function userReducer(state = initialState, action) {
         err: true,
         errMsg: payload.response.data
       }
-    case actionList.SEND_WELCOME_EMAIL + '_PENDING':
-      return { ...state }
-    case actionList.SEND_WELCOME_EMAIL + '_FULFILLED':
-      return { ...state }
-    case actionList.SEND_WELCOME_EMAIL + '_REJECTED':
-      return { ...state }
     case actionList.CHECK_USER + '_PENDING':
       return { ...state }
     case actionList.CHECK_USER + '_FULFILLED':

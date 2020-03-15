@@ -18,8 +18,7 @@ function emailHtml(args) {
 }
 
 module.exports = {
-  sendWelcomeEmail: (req, res) => {
-    const { email } = req.body,
+  sendWelcomeEmail: (email) => {
       emailOptions = { ...options }
     emailOptions['to'] = email
     emailOptions['subject'] = 'Welcome to jeepThings!'
@@ -29,6 +28,7 @@ module.exports = {
       else return res.sendStatus(500)
     })
   },
+  // refer to this to make the front end work pay attention on whwat to pass in
   sendMsgToUser: (req, res) => {
     const { email, buyerEmail, msg, postTitle, img } = req.body,
       emailOptions = { ...options }

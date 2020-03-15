@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import {
   login,
   register,
-  sendWelcomeEmail,
   clearUserReducer
 } from '../../redux/userReducer'
 import { ToastContainer, toast } from 'react-toastify'
@@ -52,13 +51,12 @@ function Auth(props) {
               onClick={() => {
                 if (username !== '' && password !== '') {
                   props.register(username, password)
-                  props.sendWelcomeEmail(username)
                   resetInput()
                 } else {
                   toast.error('please fill out all the fields', {
                     position: toast.POSITION.BOTTOM_RIGHT
                   })
-                }
+                } 
               }}
             >
               Register
@@ -116,7 +114,6 @@ const mapStateToProps = reduxState => {
 const mapDispatchToProps = {
   login,
   register,
-  sendWelcomeEmail,
   clearUserReducer
 }
 
