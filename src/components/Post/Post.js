@@ -54,8 +54,7 @@ function Item(props) {
         </div>
         <div className='post-flex-container'>
           <button onClick={() => props.history.push('/posts')}>back</button>
-          {console.log(props.user.user_name)}
-          {props.user.user_name?<button>MSG</button>:<></>}
+          {props.user.user_name?<button>MSG</button>:null}
           {props.post.author_id === props.user.user_id ? (
             <>
               <button
@@ -75,7 +74,7 @@ function Item(props) {
               </button>
             </>
           ) : (
-            <></>
+            null
           )}
         </div>
       </div>

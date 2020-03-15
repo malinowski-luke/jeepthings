@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import {
-  login,
-  register,
+  login as loginRedux,
+  register as registerRedux,
   clearUserReducer
 } from '../../redux/userReducer'
 import { ToastContainer, toast } from 'react-toastify'
@@ -15,10 +15,35 @@ function Auth(props) {
   const [registerBool, setRegisterBool] = useState(false)
   useEffect(() => {
     if (props.user.user_name) props.history.push('/posts')
+    const slidedownForm = document.getElementById("login-form")
+    if (slidedownForm) {
+      slidedownForm.style.animation = 'slideDownAuth 0.5s ease-out forwards'
+      slidedownForm.classList.add('fade-in-auth')
+    }
   }, [props.user])
   const resetInput = () => {
     setUsername('')
     setPassword('')
+  }
+  const register = ()=>{
+    if (username !== '' && password !== '') {
+      props.registerRedux(username, password)
+      resetInput()
+    } else {
+      toast.error('please fill out all the fields', {
+        position: toast.POSITION.BOTTOM_RIGHT
+      })
+    } 
+  }
+  const login = () => {
+    if (username !== '' && password !== '') {
+      props.loginRedux(username, password)
+      resetInput()
+    } else {
+      toast.error('please fill out all the fields', {
+        position: toast.POSITION.BOTTOM_RIGHT
+      })
+    }
   }
   if (props.err) {
     toast.error(props.errMsg, {
@@ -28,7 +53,7 @@ function Auth(props) {
   }
   return (
     <section className='Auth'>
-      <form onSubmit={e => e.preventDefault()} className='auth-input-container'>
+      <form onSubmit={e => e.preventDefault()} className='auth-input-container' id='login-form'>
         <h1 className='auth-header'>jeepThings</h1>
         <input
           value={username}
@@ -48,16 +73,7 @@ function Auth(props) {
           <>
             <button
               className='auth-button'
-              onClick={() => {
-                if (username !== '' && password !== '') {
-                  props.register(username, password)
-                  resetInput()
-                } else {
-                  toast.error('please fill out all the fields', {
-                    position: toast.POSITION.BOTTOM_RIGHT
-                  })
-                } 
-              }}
+              onClick={()=>register()}
             >
               Register
             </button>
@@ -76,16 +92,7 @@ function Auth(props) {
           <>
             <button
               className='auth-button'
-              onClick={() => {
-                if (username !== '' && password !== '') {
-                  props.login(username, password)
-                  resetInput()
-                } else {
-                  toast.error('please fill out all the fields', {
-                    position: toast.POSITION.BOTTOM_RIGHT
-                  })
-                }
-              }}
+              onClick={()=>login()}
             >
               Login
             </button>
@@ -112,8 +119,8 @@ const mapStateToProps = reduxState => {
 }
 
 const mapDispatchToProps = {
-  login,
-  register,
+  loginRedux,
+  registerRedux,
   clearUserReducer
 }
 
