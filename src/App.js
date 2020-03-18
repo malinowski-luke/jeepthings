@@ -10,13 +10,10 @@ import './App.scss'
 
 function App(props) {
   const imgArr = [img1, img2, img3, img4]
-  const randomIndex =() =>(Math.floor(Math.random() * (imgArr.length - 1)))
+  const randomIndex = () => Math.floor(Math.random() * (imgArr.length - 1))
   let [imgIndex, setImgIndex] = useState(randomIndex())
   useEffect(() => {
-    const interval = setInterval(
-      () => setImgIndex(randomIndex()),
-      10000
-    )
+    const interval = setInterval(() => setImgIndex(randomIndex()), 30000)
     return () => {
       return clearInterval(interval)
     }

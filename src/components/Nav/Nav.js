@@ -11,7 +11,7 @@ function Nav(props) {
     if (!user.user_name) props.checkUser()
   }, [user.user_name])
   return (
-    <header className='Nav'>
+    <header className="Nav">
       <div className='nav-logo-profile-container'>
         {user.user_name ? (
           <div className='profile-info-container'>
@@ -33,75 +33,73 @@ function Nav(props) {
           <h1 id='nav-logo'>jeepThings</h1>
         )}
       </div>
-      <div>
-        <button
-          id='nav-button'
-          onClick={() => {
-            const mobileNav = document.getElementById('mobile-nav')
-            mobileNav.classList.toggle('hide')
-            mobileNav.classList.toggle('show')
-          }}
-        >
-          Menu
-          <img src={icon} alt='menu-icon' />
-        </button>
-        <ul
-          id='mobile-nav'
-          className='hide'
-          onClick={() => {
-            const mobileNav = document.getElementById('mobile-nav')
-            mobileNav.classList.toggle('hide')
-            mobileNav.classList.toggle('show')
-          }}
-        >
+      <button
+        id='button-nav'
+        onClick={() => {
+          const mobileNav = document.getElementById('mobile-nav')
+          mobileNav.classList.toggle('hide')
+          mobileNav.classList.toggle('show')
+        }}
+      >
+        Menu
+        <img src={icon} alt='menu-icon' />
+      </button>
+      <ul
+        id='mobile-nav'
+        className='hide'
+        onClick={() => {
+          const mobileNav = document.getElementById('mobile-nav')
+          mobileNav.classList.toggle('hide')
+          mobileNav.classList.toggle('show')
+        }}
+      >
+        <Link to='/' className='Link'>
+          <li>about</li>
+        </Link>
+        <Link to='/posts' className='Link'>
+          <li>posts</li>
+        </Link>
+        {props.user.user_name ? (
+          <li
+            onClick={() => {
+              props.logout()
+              props.history.push('/')
+            }}
+          >
+            logout
+          </li>
+        ) : (
+          <Link to='/login' className='Link'>
+            <li>login</li>
+          </Link>
+        )}
+      </ul>
+      <ul id='desktop-nav'>
+        <li>
           <Link to='/' className='Link'>
-            <li>about</li>
+            about
           </Link>
+        </li>
+        <li>
           <Link to='/posts' className='Link'>
-            <li>posts</li>
+            posts
           </Link>
-          {props.user.user_name ? (
-            <li
-              onClick={() => {
-                props.logout()
-                props.history.push('/')
-              }}
-            >
-              logout
-            </li>
-          ) : (
-            <Link to='/login' className='Link'>
-              <li>login</li>
-            </Link>
-          )}
-        </ul>
-        <ul id='desktop-nav'>
-          <li>
-            <Link to='/' className='Link'>
-              about
-            </Link>
+        </li>
+        {user.user_name ? (
+          <li
+            onClick={() => {
+              props.logout()
+              props.history.push('/')
+            }}
+          >
+            logout
           </li>
-          <li>
-            <Link to='/posts' className='Link'>
-              posts
-            </Link>
-          </li>
-          {user.user_name ? (
-            <li
-              onClick={() => {
-                props.logout()
-                props.history.push('/')
-              }}
-            >
-              logout
-            </li>
-          ) : (
-            <Link to='/login' className='Link'>
-              <li>login</li>
-            </Link>
-          )}
-        </ul>
-      </div>
+        ) : (
+          <Link to='/login' className='Link'>
+            <li>login</li>
+          </Link>
+        )}
+      </ul>
     </header>
   )
 }

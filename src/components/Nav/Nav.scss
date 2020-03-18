@@ -78,7 +78,7 @@
   height: 20vh;
 }
 
-#nav-button {
+#button-nav {
   width: 15vh;
   height: 8vh;
   margin-right: 2vw;
@@ -91,7 +91,7 @@
 }
 
 @media (min-width: $tablet) {
-  #nav-button {
+  #button-nav {
     font-size: 25px;
   }
   #mobile-nav > a > li,
@@ -107,7 +107,7 @@
   }
 }
 @media (min-width: $desktop) {
-  #nav-button,
+  #button-nav,
   #mobile-nav {
     display: none;
   }

@@ -6,13 +6,12 @@
 }
 
 .profile-container {
-  position: fixed;
-  top: 18vh;
   width: 90vw;
   height: 79vh;
   background: $white;
   border-radius: 10px;
-  opacity: 0.95;
+  opacity: 0;
+  transition: 1s;
   text-align: center;
   @include flex-box(column, space-evenly, center);
 }
@@ -35,6 +34,20 @@
   color: $secondary-color;
 }
 
+// animations
+.fade-in-profile {
+  opacity: 0.93;
+}
+
+@keyframes slideDownProfile {
+  from {
+    margin-top: 0;
+  }
+  to {
+    margin-top: 18vh;
+  }
+}
+
 @media (min-width: $tablet) {
   .profile-img-lg {
     max-width: 65vw;
@@ -42,7 +55,6 @@
   .user-name-text {
     font-size: 45px;
   }
-
   .profile-img-input {
     width: 65vw;
     height: 5vh;

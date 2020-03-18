@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import GoogleMapReact from 'google-map-react'
 import Geocode from 'react-geocode'
 import Marker from '../Marker/Marker'
+import MsgPopup from '../MsgPopup/MsgPopup'
 import defaultImg from '../../assets/default.png'
 import { connect } from 'react-redux'
 import { deletePost, getCurrentPost } from '../../redux/postReducer'
@@ -18,6 +19,7 @@ function Item(props) {
   Geocode.setLanguage('en')
   Geocode.enableDebug()
   const [center, setCenter] = useState({ lat: null, lng: null })
+  const [showPopup, setShowPopup] =  useState(false)
   const { post_id } = props.match.params
   useEffect(() => {
     props.getCurrentPost(+post_id)
@@ -26,7 +28,6 @@ function Item(props) {
     Geocode.fromAddress(`${props.post.city} ${props.post.state}`)
       .then(res => {
         const { lat, lng } = res.results[0].geometry.location
-        // console.log(lat, lng) test
         setCenter({ lat, lng })
       })
       .catch(err => console.log(err))
@@ -54,7 +55,7 @@ function Item(props) {
         </div>
         <div className='post-flex-container'>
           <button onClick={() => props.history.push('/posts')}>back</button>
-          {props.user.user_name?<button>MSG</button>:null}
+          {props.user.user_name?<button onClick={()=>setShowPopup(true)}>MSG</button>:null}
           {props.post.author_id === props.user.user_id ? (
             <>
               <button
@@ -78,6 +79,7 @@ function Item(props) {
           )}
         </div>
       </div>
+      {showPopup?<MsgPopup setShowPopup={setShowPopup}/>: null}
     </div>
   )
 }

@@ -42,8 +42,8 @@ module.exports = {
     emailOptions['subject'] = 'You Have a Potenial Buyer!'
     emailOptions['html'] = emailHtml({ email, buyerEmail, msg, postTitle, img })
     transporter.sendMail(emailOptions, (err, info) => {
-      if (!err) return res.sendStatus(200)
-      else return res.sendStatus(500)
+      if (!err) return res.status(200).send(`email sent to: ${email}`)
+      else return res.status(500).send(`failed to send email to: ${email}`)
     })
   }
 }
