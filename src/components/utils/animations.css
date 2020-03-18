@@ -1,0 +1,22 @@
+/* animations */
+.fade-in {
+  opacity: 0.93;
+}
+
+@keyframes slideDown {
+  from {
+    margin-top: 0;
+  }
+  to {
+    margin-top: 18vh;
+  }
+}
+
+@keyframes slideDownLogin {
+  from {
+    margin-top: 0;
+  }
+  to {
+    margin-top: 25vh;
+  }
+}

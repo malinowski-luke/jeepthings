@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { clearEmailReducer, sendMsgToUser } from '../../redux/emailReducer'
+import { sendMsgToUser } from '../../redux/emailReducer'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import './MsgPopup.scss'
 
 function MsgPopup(props) {
@@ -24,6 +26,22 @@ function MsgPopup(props) {
     fadeBackgroundForm.classList.remove('fade-in-popup')
     fadeBackgroundForm.classList.add('fade-out-popup')
   }
+  const submitMsg = e => {
+    if (msg) {
+      props.sendMsgToUser({
+        email: props.post.user_name,
+        buyerEmail: props.user.user_name,
+        msg,
+        postTitle: props.post.title,
+        img: props.post.img
+      })
+      cancelClicked(e)
+    } else {
+      toast.error('please fill out the msg field', {
+        position: toast.POSITION.BOTTOM_RIGHT
+      })
+    }
+  }
   return (
     <div className='Popup' id='popup-background'>
       <div className='popup-Container' id='popup'>
@@ -34,42 +52,22 @@ function MsgPopup(props) {
           placeholder='msg to seller...'
         ></textarea>
         <div className='popup-button-container'>
-          <button
-            onClick={e => {
-              cancelClicked(e)
-            }}
-          >
-            cancel
-          </button>
-          <button
-            onClick={e => {
-              props.sendMsgToUser({
-                email: props.post.user_name,
-                buyerEmail: props.user.user_name,
-                msg,
-                postTitle: props.post.title,
-                img: props.post.img
-              })
-              cancelClicked(e)
-            }}
-          >
-            send
-          </button>
+          <button onClick={e => cancelClicked(e)}>cancel</button>
+          <button onClick={e => submitMsg(e)}>send</button>
         </div>
       </div>
+      <ToastContainer autoClose={2000} />
     </div>
   )
 }
 
 const mapStateToProps = reduxState => {
-  const { toastMsg } = reduxState.emailReducer,
-    { post } = reduxState.postReducer,
+  const { post } = reduxState.postReducer,
     { user } = reduxState.userReducer
-  return { user, post, toastMsg }
+  return { user, post }
 }
 
 const mapDispatchToProps = {
-  clearEmailReducer,
   sendMsgToUser
 }
 

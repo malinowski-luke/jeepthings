@@ -6,6 +6,10 @@ import MsgPopup from '../MsgPopup/MsgPopup'
 import defaultImg from '../../assets/default.png'
 import { connect } from 'react-redux'
 import { deletePost, getCurrentPost } from '../../redux/postReducer'
+import { clearEmailReducer } from '../../redux/emailReducer'
+import { ToastContainer, toast } from 'react-toastify'
+import { slideDown } from '../utils/animations'
+import 'react-toastify/dist/ReactToastify.css'
 import './Post.scss'
 
 //default props
@@ -19,22 +23,41 @@ function Item(props) {
   Geocode.setLanguage('en')
   Geocode.enableDebug()
   const [center, setCenter] = useState({ lat: null, lng: null })
-  const [showPopup, setShowPopup] =  useState(false)
+  const [showPopup, setShowPopup] = useState(false)
   const { post_id } = props.match.params
+  const map = () => {
+    if (!center.lat && props.post.state) {
+      Geocode.fromAddress(`${props.post.city} ${props.post.state}`)
+        .then(res => {
+          const { lat, lng } = res.results[0].geometry.location
+          setCenter({ lat, lng })
+        })
+        .catch(err => console.log(err))
+    }
+  }
+  const emailPopup = () => {
+    if (props.toastMsg) {
+      if (props.toastMsg.substring(0, 5) === 'email') {
+        toast.success(props.toastMsg, {
+          position: toast.POSITION.BOTTOM_RIGHT
+        })
+      } else {
+        toast.error(props.toastMsg, {
+          position: toast.POSITION.BOTTOM_RIGHT
+        })
+      }
+      props.clearEmailReducer()
+    }
+  }
   useEffect(() => {
     props.getCurrentPost(+post_id)
+    slideDown('post')
   }, [post_id])
-  if (!center.lat && props.post.state) {
-    Geocode.fromAddress(`${props.post.city} ${props.post.state}`)
-      .then(res => {
-        const { lat, lng } = res.results[0].geometry.location
-        setCenter({ lat, lng })
-      })
-      .catch(err => console.log(err))
-  }
+  map()
+  emailPopup()
   return (
     <div className='Post'>
-      <div className='post-container'>
+      <div className='post-container' id='post'>
         <div className='post-flex-container'>
           <h1>{props.post.title}</h1>
           <h1>${props.post.price}</h1>
@@ -55,8 +78,12 @@ function Item(props) {
         </div>
         <div className='post-flex-container'>
           <button onClick={() => props.history.push('/posts')}>back</button>
-          {props.user.user_name?<button onClick={()=>setShowPopup(true)}>MSG</button>:null}
-          {props.post.author_id === props.user.user_id ? (
+          {props.user.user_name &&
+          props.user.user_name !== props.post.user_name ? (
+            <button onClick={() => setShowPopup(true)}>MSG</button>
+          ) : null}
+          {props.user.user_name &&
+          props.post.author_id === props.user.user_id ? (
             <>
               <button
                 onClick={() => {
@@ -74,25 +101,26 @@ function Item(props) {
                 edit
               </button>
             </>
-          ) : (
-            null
-          )}
+          ) : null}
         </div>
       </div>
-      {showPopup?<MsgPopup setShowPopup={setShowPopup}/>: null}
+      {showPopup ? <MsgPopup setShowPopup={setShowPopup} /> : null}
+      <ToastContainer autoClose={3000} />
     </div>
   )
 }
 
 const mapStateToProps = reduxState => {
   const { user } = reduxState.userReducer,
-    { post } = reduxState.postReducer
-  return { user, post }
+    { post } = reduxState.postReducer,
+    { toastMsg } = reduxState.emailReducer
+  return { user, post, toastMsg }
 }
 
 const mapDispatchToProps = {
   deletePost,
-  getCurrentPost
+  getCurrentPost,
+  clearEmailReducer
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Item)

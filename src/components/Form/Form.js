@@ -10,6 +10,7 @@ import states from './States.js'
 import defaultImg from '../../assets/default.png'
 import { toast, ToastContainer } from 'react-toastify'
 import Upload from '../Upload/Upload'
+import { slideDown } from '../utils/animations'
 import './Form.scss'
 
 function Form(props) {
@@ -32,19 +33,17 @@ function Form(props) {
     })
   }
   const { post_id } = props.match.params,
-   { post } = props
+    { post } = props
   useEffect(() => {
     if (post_id) {
       props.getCurrentPost(post_id)
       setFormValues({ ...post })
-    } else  props.clearPostReducer()
-    // console.log(post_id)
-    // console.log(post)
-    // console.log(formValues)
+    } else props.clearPostReducer()
+    slideDown('form')
   }, [])
   return (
     <div className='Form'>
-      <div className='form-container'>
+      <div className='form-container' id='form'>
         <div>
           <h1 className='form-header'>
             {post_id ? 'edit post' : 'create post'}
@@ -57,7 +56,7 @@ function Form(props) {
         </div>
         <form onSubmit={e => e.preventDefault()}>
           <div className='form-input-container'>
-            <Upload formValues={formValues} setFormValues={setFormValues}/>
+            <Upload formValues={formValues} setFormValues={setFormValues} />
             <input
               value={formValues.title}
               type='text'
@@ -121,7 +120,7 @@ function Form(props) {
                 <button
                   onClick={() => {
                     console.log(formValues)
-                    props.updatePost(post_id, {...formValues})
+                    props.updatePost(post_id, { ...formValues })
                     props.clearPostReducer()
                     props.history.push(`/post/${post_id}`)
                   }}
@@ -132,7 +131,7 @@ function Form(props) {
                 <button
                   onClick={() => {
                     for (let key in formValues) {
-                      if (key !== 'img' && formValues[key] == false )
+                      if (key !== 'img' && formValues[key] == false)
                         return toast.error(
                           'please fill out the required fields',
                           {

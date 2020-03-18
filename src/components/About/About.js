@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react'
 import Carousel from 'react-material-ui-carousel'
+import { slideDown } from '../utils/animations'
 import './About.scss'
 
 export default function About() {
   useEffect(() => {
-    const slidedownForm = document.getElementById('about')
-    if (slidedownForm) {
-      slidedownForm.style.animation = 'slideDownAbout 0.5s ease-out forwards'
-      slidedownForm.classList.add('fade-in-about')
-    }
+    slideDown('about')
   }, [])
   const imgPaths = [
     'https://jeepthings-img-bucket.s3.amazonaws.com/855f5f39-3d31-4226-a359-0409d6c71a4a-jeep.jpg',

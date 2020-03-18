@@ -34,20 +34,6 @@
   color: $secondary-color;
 }
 
-// animations
-.fade-in-profile {
-  opacity: 0.93;
-}
-
-@keyframes slideDownProfile {
-  from {
-    margin-top: 0;
-  }
-  to {
-    margin-top: 18vh;
-  }
-}
-
 @media (min-width: $tablet) {
   .profile-img-lg {
     max-width: 65vw;

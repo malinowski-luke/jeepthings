@@ -4,6 +4,7 @@ import { getAllUserPosts } from '../../redux/postReducer'
 import { toast, ToastContainer } from 'react-toastify'
 import './Posts.scss'
 import DisplayPost from '../DisplayPost/DisplayPost'
+import { slideDown } from '../utils/animations'
 import { Link } from 'react-router-dom'
 
 function Posts(props) {
@@ -11,8 +12,8 @@ function Posts(props) {
   const [userPostBool, setUserPostBool] = useState(false)
   const [postsArr, setPosts] = useState([])
   useEffect(() => {
-    const ref = useRef
-    ref.current = postsArr
+    const ref = useRef //allows to save prev props
+    ref.current = postsArr // setting prev props
     const { posts } = props
     //console.log(ref.current.length, posts.length) //test
     if (ref.current.length === 0 || ref.current.length !== posts.length) {
@@ -21,6 +22,7 @@ function Posts(props) {
     if (userPostBool) setPosts([...filterUserPosts()])
     else setPosts([...posts])
     //console.log(ref.current.length, posts.length) //test
+    slideDown('posts')
   }, [props.posts, userPostBool])
   const filterByPrice = filterVar => {
     return postsArr.sort((a, b) => {
@@ -50,72 +52,74 @@ function Posts(props) {
   })
   return (
     <div className='Posts'>
-      <form
-        onSubmit={e => e.preventDefault()}
-        className='posts-container posts-filter'
-      >
-        <input
-          value={serachText}
-          placeholder='search keyword'
-          onChange={e => setSearchText(e.target.value)}
-          required
-        />
-        <div className='posts-search-container'>
-          <select
-            onChange={e => {
-              setPosts([...filterByPrice(e.target.value)])
-            }}
-          >
-            <option value=''>filter by price</option>
-            <option value='min'>low to high</option>
-            <option value='max'>high to low</option>
-          </select>
-          <button
-            className='posts-button'
-            type='submit'
-            onClick={() => {
-              if (serachText === '') {
-                toast.error('please enter a keyword', {
-                  position: toast.POSITION.BOTTOM_RIGHT
-                })
-              } else setPosts([...filterByKeyword()])
-            }}
-          >
-            search
-          </button>
-          <button
-            className='posts-button'
-            type='reset'
-            onClick={() => {
-              setPosts([...props.posts])
-              resetFilterVars()
-            }}
-          >
-            clear
-          </button>
-        </div>
-        {props.user.user_name ? (
-          <div className='posts-user-option-container'>
-            <span>
-              <label>my posts</label>
-              <input
-                onChange={() => {
-                  setUserPostBool(!userPostBool)
-                }}
-                type='checkbox'
-              />
-            </span>
-            <Link to='/form'>
-              <button className='posts-button posts-item-button'>
-                Post Item
-              </button>
-            </Link>
+      <div id='posts' className='posts-animation-container'>
+        <form
+          onSubmit={e => e.preventDefault()}
+          className='posts-container posts-filter'
+        >
+          <input
+            value={serachText}
+            placeholder='search keyword'
+            onChange={e => setSearchText(e.target.value)}
+            required
+          />
+          <div className='posts-search-container'>
+            <select
+              onChange={e => {
+                setPosts([...filterByPrice(e.target.value)])
+              }}
+            >
+              <option value=''>filter by price</option>
+              <option value='min'>low to high</option>
+              <option value='max'>high to low</option>
+            </select>
+            <button
+              className='posts-button'
+              type='submit'
+              onClick={() => {
+                if (serachText === '') {
+                  toast.error('please enter a keyword', {
+                    position: toast.POSITION.BOTTOM_RIGHT
+                  })
+                } else setPosts([...filterByKeyword()])
+              }}
+            >
+              search
+            </button>
+            <button
+              className='posts-button'
+              type='reset'
+              onClick={() => {
+                setPosts([...props.posts])
+                resetFilterVars()
+              }}
+            >
+              clear
+            </button>
           </div>
-        ) : (
-          <></>
-        )}
-      </form>
-      <div className='posts-container'>{postDisplayArr}</div>
+          {props.user.user_name ? (
+            <div className='posts-user-option-container'>
+              <span>
+                <label>my posts</label>
+                <input
+                  onChange={() => {
+                    setUserPostBool(!userPostBool)
+                  }}
+                  type='checkbox'
+                />
+              </span>
+              <Link to='/form'>
+                <button className='posts-button posts-item-button'>
+                  Post Item
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <></>
+          )}
+        </form>
+        <div className='posts-container'>{postDisplayArr}</div>
+      </div>
       <ToastContainer autoClose={2000} />
     </div>
   )

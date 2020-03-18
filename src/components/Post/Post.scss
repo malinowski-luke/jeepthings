@@ -6,13 +6,12 @@
 }
 
 .post-container {
-  position: fixed;
-  top: 18vh;
   width: 90vw;
   height: 79vh;
   background: $white;
   border-radius: 10px;
-  opacity: 0.95;
+  opacity: 0;
+  transition: 1s;
   overflow-y: scroll;
   @include flex-box(column, space-between, center);
 }
@@ -45,13 +44,13 @@
 }
 
 .post-flex-container > button {
-  width:18vw;
-  height: 7vh;
+  width: 22vw;
+  height: 8vh;
   color: $white;
   background-color: $secondary-color;
   margin-bottom: 4vh;
   border-radius: 10px;
-  font-size: 20px;
+  font-size: 25px;
   text-transform: uppercase;
 }
 
@@ -64,7 +63,7 @@
   margin-bottom: 5vh;
 }
 
-@media (min-width: 767px) {
+@media (min-width: $tablet) {
   .post-container {
     width: 80vw;
   }
@@ -87,7 +86,7 @@
   }
 
   .post-flex-container > button {
-    font-size: 30px;
+    font-size: 35px;
     width: 15vw;
   }
 
@@ -97,7 +96,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: $desktop) {
   .post-container {
     width: 50vw;
   }

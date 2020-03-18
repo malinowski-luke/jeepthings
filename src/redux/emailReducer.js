@@ -12,25 +12,25 @@ export function clearEmailReducer() {
   return action
 }
 
-export function sendMsgToUser(msgInfo){
+export function sendMsgToUser(msgInfo) {
   let action = {
     type: actionList.SEND_MSG_TO_USER,
-    payload: axios.post('/api/email/msg',msgInfo)
+    payload: axios.post('/api/email/msg', msgInfo)
   }
   return action
 }
 
-export default function emailReducer(state = initialState, action){
-  const {type,payload} = action
+export default function emailReducer(state = initialState, action) {
+  const { type, payload } = action
   switch (type) {
     case actionList.SEND_MSG_TO_USER + '_PENDING':
       return { ...state }
     case actionList.SEND_MSG_TO_USER + '_FULFILLED':
       return { toastMsg: payload.data }
     case actionList.SEND_MSG_TO_USER + '_REJECTED':
-      return { toastMsg: payload.data  }
+      return { toastMsg: payload.response.data }
     case actionList.CLEAR_EMAIL_REDUCER:
-     return {...initialState};
+      return { ...initialState }
     default:
       return state
   }

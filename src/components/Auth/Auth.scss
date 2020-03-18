@@ -49,21 +49,6 @@
   text-decoration: underline;
 }
 
-
-// animations
-.fade-in-auth{
-  opacity: 0.93;
-}
-
-@keyframes slideDownAuth {
-  from {
-    margin-top: 0;
-  }
-  to {
-    margin-top: 25vh;
-  }
-}
-
 @media (min-width: $tablet) {
   .auth-header {
     font-size: 110px;
@@ -80,7 +65,7 @@
   .auth-input {
     width: 50vw;
     height: 5vh;
-    font-size:25px;
+    font-size: 25px;
   }
 }
 
@@ -96,7 +81,7 @@
   .auth-input {
     width: 35vw;
     height: 5vh;
-    font-size:25px;
+    font-size: 25px;
   }
 
   .auth-button {

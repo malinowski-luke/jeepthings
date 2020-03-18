@@ -5,6 +5,7 @@ import {
   register as registerRedux,
   clearUserReducer
 } from '../../redux/userReducer'
+import { slideDown } from '../utils/animations'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './Auth.scss'
@@ -15,17 +16,13 @@ function Auth(props) {
   const [registerBool, setRegisterBool] = useState(false)
   useEffect(() => {
     if (props.user.user_name) props.history.push('/posts')
-    const slidedownForm = document.getElementById("login-form")
-    if (slidedownForm) {
-      slidedownForm.style.animation = 'slideDownAuth 0.5s ease-out forwards'
-      slidedownForm.classList.add('fade-in-auth')
-    }
+    slideDown('login')
   }, [props.user])
   const resetInput = () => {
     setUsername('')
     setPassword('')
   }
-  const register = ()=>{
+  const register = () => {
     if (username !== '' && password !== '') {
       props.registerRedux(username, password)
       resetInput()
@@ -33,7 +30,7 @@ function Auth(props) {
       toast.error('please fill out all the fields', {
         position: toast.POSITION.BOTTOM_RIGHT
       })
-    } 
+    }
   }
   const login = () => {
     if (username !== '' && password !== '') {
@@ -53,7 +50,11 @@ function Auth(props) {
   }
   return (
     <section className='Auth'>
-      <form onSubmit={e => e.preventDefault()} className='auth-input-container' id='login-form'>
+      <form
+        onSubmit={e => e.preventDefault()}
+        className='auth-input-container'
+        id='login'
+      >
         <h1 className='auth-header'>jeepThings</h1>
         <input
           value={username}
@@ -71,10 +72,7 @@ function Auth(props) {
         />
         {!registerBool ? (
           <>
-            <button
-              className='auth-button'
-              onClick={()=>register()}
-            >
+            <button className='auth-button' onClick={() => register()}>
               Register
             </button>
             <p className='auth-change-text'>
@@ -90,10 +88,7 @@ function Auth(props) {
           </>
         ) : (
           <>
-            <button
-              className='auth-button'
-              onClick={()=>login()}
-            >
+            <button className='auth-button' onClick={() => login()}>
               Login
             </button>
             <p className='auth-change-text'>

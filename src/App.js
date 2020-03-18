@@ -7,6 +7,8 @@ import img3 from './assets/img3.jpg'
 import img4 from './assets/img4.jpg'
 import Nav from './components/Nav/Nav'
 import './App.scss'
+import './components/utils/animations.css' //needs to be in highest component
+// beacuse all components use it
 
 function App(props) {
   const imgArr = [img1, img2, img3, img4]
@@ -23,7 +25,7 @@ function App(props) {
       className='App'
       style={{
         backgroundImage: `url(${imgArr[imgIndex]})`,
-        transition: '1s'
+        transition: '1.5s'
       }}
     >
       <Nav {...props} />

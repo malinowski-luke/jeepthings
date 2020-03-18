@@ -5,22 +5,24 @@
   @include flex-box(column, center, center);
 }
 
+.posts-animation-container {
+  opacity: 0;
+  transition: 1s;
+}
+
 .posts-container {
-  position: fixed;
-  top: 45vh;
   width: 90vw;
   height: 52vh;
   background: $white;
   border-radius: 10px;
-  opacity: 0.95;
   overflow-y: auto;
   @include flex-box(column, flex-start, center);
 }
 
 .posts-filter {
-  top: 18vh;
   height: 25vh;
   overflow-y: scroll;
+  margin-bottom: 2vh;
   @include flex-box(column, space-evenly, center);
 }
 
