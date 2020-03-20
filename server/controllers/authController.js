@@ -25,14 +25,15 @@ module.exports = {
     if (user) return res.status(400).send('user already exists')
     const salt = bcrypt.genSaltSync(10),
       hash = bcrypt.hashSync(password, salt)
+    let profile_pic = img.generateRandomImg()
     let newUser = await db.register_user([
       username,
       hash,
-      img.generateRandomImg()
+      profile_pic
     ])
     newUser = newUser[0]
     session.user = newUser
-    emailCtrl.sendWelcomeEmail(username)
+    emailCtrl.sendWelcomeEmail(username,profile_pic)
     return res.status(201).send(session.user)
   },
   logout: (req, res) => {

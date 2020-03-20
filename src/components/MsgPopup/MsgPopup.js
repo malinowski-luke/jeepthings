@@ -30,6 +30,7 @@ function MsgPopup(props) {
       props.sendMsgToUser({
         email: props.post.user_name,
         buyerEmail: props.user.user_name,
+        profile_img: props.user.profile_img,
         msg,
         postTitle: props.post.title,
         img: props.post.img
