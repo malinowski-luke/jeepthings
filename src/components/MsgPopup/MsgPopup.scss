@@ -1,17 +1,19 @@
 @import '../../sass/vars';
 
-.Popup{
-  width:100vw;
-  height:100vh;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-  z-index:1;
-  opacity:0;
-  transition: 1s;
+.Popup {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  opacity: 0;
+  transition: 0.5s;
   @include flex-box(column, center, center);
 }
 
-.popup-Container{
+.popup-Container {
   width: 80vw;
   height: 60vh;
   background-color: $secondary-color;
@@ -21,7 +23,7 @@
   @include flex-box(column, space-evenly, center);
 }
 
-.popup-Container h1{
+.popup-Container h1 {
   color: $white;
   text-transform: uppercase;
   font-size: 40px;
@@ -33,83 +35,82 @@
   font-size: 25px;
   resize: none;
   color: $secondary-color;
-  border-radius: 10px
+  border-radius: 10px;
 }
 
-.popup-button-container{
+.popup-button-container {
   width: 70vw;
   @include flex-box(row, space-between, center);
 }
 
-.popup-button-container button{
+.popup-button-container button {
   width: 25vw;
   height: 7vh;
   color: $white;
   background-color: $primary-color;
   border-radius: 10px;
   text-transform: uppercase;
-  font-size: 20px
+  font-size: 20px;
 }
 
-// animations
-.fade-in-popup{
-  opacity: 1;
-}
+// // animations
+// .fade-in-popup{
+//   opacity: 1;
+// }
 
-.fade-out-popup{
-  opacity: 0;
-}
+// .fade-out-popup{
+//   opacity: 0;
+// }
 
-@keyframes slideDownPopup {
-  from {
-    margin-top: 0;
-  }
-  to {
-    margin-top: 10vh;
-  }
-}
+// @keyframes slideDownPopup {
+//   from {
+//     margin-top: 0;
+//   }
+//   to {
+//     margin-top: 10vh;
+//   }
+// }
 
 @media (min-width: $tablet) {
-  .popup-Container{
+  .popup-Container {
     width: 70vw;
     height: 50vh;
   }
-  
-  .popup-Container h1{
+
+  .popup-Container h1 {
     font-size: 45px;
   }
-  
+
   .popup-Container textarea {
     width: 60vw;
     height: 25vh;
   }
-  
-  .popup-button-container{
+
+  .popup-button-container {
     width: 60vw;
   }
-  
-  .popup-button-container button{
+
+  .popup-button-container button {
     width: 20vw;
-    font-size: 25px
+    font-size: 25px;
   }
 }
 @media (min-width: $desktop) {
-  .popup-Container{
+  .popup-Container {
     width: 40vw;
     height: 60vh;
   }
-  
-  
+
   .popup-Container textarea {
     width: 35vw;
   }
-  
-  .popup-button-container{
+
+  .popup-button-container {
     width: 35vw;
   }
-  
-  .popup-button-container button{
+
+  .popup-button-container button {
     width: 10vw;
-    height:8vh;
+    height: 8vh;
   }
 }

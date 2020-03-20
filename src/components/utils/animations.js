@@ -1,9 +1,25 @@
 export function slideDown(id) {
-  const slidedownForm = document.getElementById(id)
-  if (slidedownForm) {
+  const slidedownElement = document.getElementById(id)
+  if (slidedownElement) {
     if (id === 'login')
-      slidedownForm.style.animation = 'slideDownLogin 0.5s ease-out forwards'
-    else slidedownForm.style.animation = 'slideDown 0.5s ease-out forwards'
-    slidedownForm.classList.add('fade-in')
+      slidedownElement.style.animation = 'slideDownLogin 0.5s ease-out forwards'
+    else slidedownElement.style.animation = 'slideDown 0.5s ease-out forwards'
+    slidedownElement.classList.add('fade-in')
   }
+}
+
+export function slideDownPopup(id) {
+  const popup = document.getElementById(id)
+  if (popup) popup.style.animation = 'slideDownPopup 0.5s ease-out forwards'
+}
+
+export function fadeInPopupBackground(id) {
+  const popupBackground = document.getElementById(id)
+  if (popupBackground) popupBackground.classList.add('fade-in-popup')
+}
+
+export function fadeOutPopupBackground(id) {
+  const popupBackground = document.getElementById(id)
+  popupBackground.classList.remove('fade-in-popup')
+  popupBackground.classList.add('fade-out')
 }

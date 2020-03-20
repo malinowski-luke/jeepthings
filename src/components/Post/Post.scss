@@ -16,6 +16,25 @@
   @include flex-box(column, space-between, center);
 }
 
+.post-user-profile-container {
+  width: 80vw;
+  margin-top: 4vh;
+  @include flex-box(row, flex-start, center);
+}
+
+.post-user-profile-container h3 {
+  margin-left: 15px;
+  font-size: 25px;
+}
+
+.posted-user-profile-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 5px solid $white;
+  box-shadow: 0px 0px 10px 5px $black;
+}
+
 .post-flex-container {
   width: 80vw;
   text-align: left;
@@ -24,18 +43,26 @@
 
 .post-flex-container > h1,
 .post-flex-container > p,
+.post-user-profile-container h3,
 .post-location {
   color: $secondary-color;
   text-transform: capitalize;
 }
 
-.post-flex-container > h1 {
+.post-flex-container > h1,
+.post-flex-container > p {
   margin-top: 4vh;
+}
+
+.post-flex-container > h3 {
+  font-size: 20px;
+}
+
+.post-flex-container > h1 {
   font-size: 35px;
 }
 
 .post-flex-container > p {
-  margin-top: 4vh;
   font-size: 22px;
 }
 
@@ -68,16 +95,28 @@
     width: 80vw;
   }
 
+  .post-user-profile-container {
+    width: 70vw;
+  }
+
+  .post-user-profile-container h3 {
+    font-size: 30px;
+  }
+
+  .posted-user-profile-img {
+    width: 60px;
+    height: 60px;
+  }
+
   .post-flex-container {
     width: 70vw;
   }
+
   .post-flex-container > h1 {
-    margin-top: 6vh;
     font-size: 50px;
   }
 
   .post-flex-container > p {
-    margin-top: 6vh;
     font-size: 40px;
   }
 
@@ -99,6 +138,19 @@
 @media (min-width: $desktop) {
   .post-container {
     width: 50vw;
+  }
+
+  .post-user-profile-container {
+    width: 40vw;
+  }
+
+  .post-user-profile-container h3 {
+    font-size: 25px;
+  }
+
+  .posted-user-profile-img {
+    width: 50px;
+    height: 50px;
   }
 
   .post-flex-container {

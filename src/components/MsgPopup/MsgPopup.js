@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { sendMsgToUser } from '../../redux/emailReducer'
+import {
+  slideDownPopup,
+  fadeInPopupBackground,
+  fadeOutPopupBackground
+} from '../utils/animations'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './MsgPopup.scss'
@@ -9,12 +14,8 @@ function MsgPopup(props) {
   const [msg, setMsg] = useState('')
   const resetInput = () => setMsg('')
   useEffect(() => {
-    const slidedownForm = document.getElementById('popup'),
-      fadeBackgroundForm = document.getElementById('popup-background')
-    if (slidedownForm) {
-      slidedownForm.style.animation = 'slideDownPopup 0.5s ease-out forwards'
-      fadeBackgroundForm.classList.add('fade-in-popup')
-    }
+    fadeInPopupBackground('popup-background')
+    slideDownPopup('popup')
   }, [])
   const cancelClicked = e => {
     e.preventDefault()
@@ -22,9 +23,7 @@ function MsgPopup(props) {
       props.setShowPopup(false)
     }, 1000)
     resetInput()
-    const fadeBackgroundForm = document.getElementById('popup-background')
-    fadeBackgroundForm.classList.remove('fade-in-popup')
-    fadeBackgroundForm.classList.add('fade-out-popup')
+    fadeOutPopupBackground('popup-background')
   }
   const submitMsg = e => {
     if (msg) {

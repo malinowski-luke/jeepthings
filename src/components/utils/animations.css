@@ -3,6 +3,14 @@
   opacity: 0.93;
 }
 
+.fade-in-popup {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
 @keyframes slideDown {
   from {
     margin-top: 0;
@@ -18,5 +26,14 @@
   }
   to {
     margin-top: 25vh;
+  }
+}
+
+@keyframes slideDownPopup {
+  from {
+    margin-top: 0;
+  }
+  to {
+    margin-top: 10vh;
   }
 }

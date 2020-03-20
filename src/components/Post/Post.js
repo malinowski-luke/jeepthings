@@ -58,6 +58,14 @@ function Item(props) {
   return (
     <div className='Post'>
       <div className='post-container' id='post'>
+        <div className='post-user-profile-container'>
+          <img
+            src={props.post.profile_img}
+            alt={`user profile img${props.post.user_name}`}
+            className='posted-user-profile-img'
+          />
+          <h3>{props.post.user_name}</h3>
+        </div>
         <div className='post-flex-container'>
           <h1>{props.post.title}</h1>
           <h1>${props.post.price}</h1>
