@@ -41,7 +41,7 @@
 
 .posts-search-container select {
   color: $secondary-color;
-  font-size: 12px;
+  font-size: 15px;
   text-transform: uppercase;
 }
 
@@ -55,7 +55,7 @@
   font-size: 18px;
   text-transform: uppercase;
 }
-.posts-user-option-container input[type='checkbox'] {
+.posts-user-option-container span input[type='checkbox'] {
   width: 15px;
   height: 15px;
 }
@@ -76,7 +76,7 @@
 }
 
 .posts-item-button {
-  width: 30vw;
+  width: 28vw;
 }
 
 @media (min-width: $tablet) {
@@ -91,13 +91,19 @@
   .posts-user-option-container label {
     font-size: 30px;
   }
-  .posts-user-option-container input[type='checkbox'] {
-    width: 25px;
-    height: 25px;
+  .posts-user-option-container span input[type='checkbox'] {
+    width: 20px;
+    height: 20px;
   }
 
   .posts-button {
+    width: 20vw;
+    height: 6vh;
     font-size: 30px;
+  }
+  
+  .posts-item-button {
+    width: 25vw;
   }
 }
 
@@ -116,7 +122,8 @@
   }
 
   .posts-search-container select {
-    font-size: 20px;
+    width: 12vw;
+    font-size: 18px;
   }
 
   .posts-user-option-container {
@@ -126,7 +133,7 @@
   .posts-button {
     width: 10vw;
     height: 6vh;
-    font-size: 25px;
+    font-size: 22px;
   }
 
   .posts-item-button {

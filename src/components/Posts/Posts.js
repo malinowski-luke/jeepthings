@@ -101,7 +101,7 @@ function Posts(props) {
             <div className='posts-user-option-container'>
               <span>
                 <label>my posts</label>
-                <input
+                <input 
                   onChange={() => {
                     setUserPostBool(!userPostBool)
                   }}

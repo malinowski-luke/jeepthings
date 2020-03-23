@@ -23,8 +23,9 @@
 }
 
 .post-user-profile-container h3 {
-  margin-left: 15px;
-  font-size: 25px;
+  color: $secondary-color;
+  margin-left: 10px;
+  font-size: 18px;
 }
 
 .posted-user-profile-img {
@@ -43,7 +44,6 @@
 
 .post-flex-container > h1,
 .post-flex-container > p,
-.post-user-profile-container h3,
 .post-location {
   color: $secondary-color;
   text-transform: capitalize;
@@ -100,6 +100,7 @@
   }
 
   .post-user-profile-container h3 {
+    margin-left:25px;
     font-size: 30px;
   }
 

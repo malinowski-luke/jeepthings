@@ -53,24 +53,6 @@
   font-size: 20px;
 }
 
-// // animations
-// .fade-in-popup{
-//   opacity: 1;
-// }
-
-// .fade-out-popup{
-//   opacity: 0;
-// }
-
-// @keyframes slideDownPopup {
-//   from {
-//     margin-top: 0;
-//   }
-//   to {
-//     margin-top: 10vh;
-//   }
-// }
-
 @media (min-width: $tablet) {
   .popup-Container {
     width: 70vw;
