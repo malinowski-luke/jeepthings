@@ -12,6 +12,7 @@
 /build
 # misc
 /email
+package-lock.json
 .env
 .env.prod
 .DS_Store
