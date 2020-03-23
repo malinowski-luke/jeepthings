@@ -1,6 +1,10 @@
 {
   "name": "jeepthings",
   "version": "0.1.0",
+  "engines": {
+    "npm": "6.13.6",
+    "node": "12.14.1"
+  }
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
