@@ -74,7 +74,7 @@ function Item(props) {
           <p>{props.post.content}</p>
         </div>
         <img src={props.post.img || defaultImg} className='post-map-img' />
-        <h1 className='post-location'>Location: {props.post.city}</h1>
+        <h1 className='post-location'>Location: {props.post.city} {props.post.state}</h1>
         <div className='post-map-img'>
           <GoogleMapReact
             bootstrapURLKeys={{ key: props.apiKey }}
