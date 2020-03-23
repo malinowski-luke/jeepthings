@@ -10,7 +10,8 @@ const express = require('express'),
   s3Ctrl = require('./controllers/s3Controller'),
   { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
-app.use(express.static(`${__dirname}/../build` ))
+
+app.use(express.static(`${__dirname}/../build` )) // runs front end for hosting 
 app.use(express.json())
 app.use(
   session({
