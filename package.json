@@ -58,6 +58,5 @@
       "last 1 safari version"
     ]
   },
-  "main": "server/index.js",
-  "proxy":"https://mighty-dusk-27101.herokuapp.com"
+  "main": "server/index.js"
 }

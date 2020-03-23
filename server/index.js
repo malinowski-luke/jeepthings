@@ -10,6 +10,7 @@ const express = require('express'),
   s3Ctrl = require('./controllers/s3Controller'),
   { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
+app.use(express.static(`${__dirname}/../build` ))
 app.use(express.json())
 app.use(
   session({
@@ -54,5 +55,5 @@ app.delete('/api/posts/:post_id', postCtrl.deletePost)
 app.get('/api/sign-s3', s3Ctrl.signInS3)
 
 // --------------EMAIL-----------------
-app.post('/api/email/msg', emailCtrl.sendMsgToUser)
+// app.post('/api/email/msg', emailCtrl.sendMsgToUser)
 app.post('/api/email/welcome', emailCtrl.sendWelcomeEmail)
