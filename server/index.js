@@ -12,10 +12,7 @@ const express = require('express'),
   { PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
 
-// if(process.env.NODE_ENV==='production'){
-  app.use(express.static(`${__dirname}/../build`));
-// }
-
+app.use(express.static(`${__dirname}/../build`)); //serves up the front end 
 app.use(express.json())
 app.use(
   session({
