@@ -9,7 +9,7 @@ const express = require('express'),
   emailCtrl = require('./controllers/emailController'),
   s3Ctrl = require('./controllers/s3Controller'),
   path = require('path'),
-  { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
+  { PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
 
 app.use(express.static(`${__dirname}/../build` )) // runs front end for hosting 
@@ -30,8 +30,8 @@ massive({
 })
   .then(db => {
     app.set('db', db)
-    app.listen(SERVER_PORT || 4420, () => {
-      console.log(`SERVER RUNNING ON PORT:${SERVER_PORT}`)
+    app.listen(PORT || 4420, () => {
+      console.log(`SERVER RUNNING ON PORT:${PORT}`)
       console.log('db connected')
     })
   })
