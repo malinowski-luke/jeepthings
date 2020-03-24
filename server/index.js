@@ -11,7 +11,7 @@ const express = require('express'),
   path = require('path'),
   { PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
-// app.use(express.static(`${__dirname}/../build` )) // runs front end for hosting 
+app.use(express.static(`${__dirname}/../build` )) // runs front end for hosting 
 app.use(express.json())
 app.use(
   session({
@@ -38,7 +38,7 @@ massive({
 
 
 // if(process.env.NODE_ENV==='production'){
-  app.use(express.static('build'))
+  // app.use(express.static('build'))
   // app.get('*',(req,res)=>{
   //   res.sendFile('build/index.html')
   // })
