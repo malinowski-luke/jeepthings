@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect ,useRef } from 'react'
 import GoogleMapReact from 'google-map-react'
 import Geocode from 'react-geocode'
 import Marker from '../Marker/Marker'
 import MsgPopup from '../MsgPopup/MsgPopup'
 import defaultImg from '../../assets/default.png'
 import { connect } from 'react-redux'
-import { deletePost, getCurrentPost } from '../../redux/postReducer'
+import { deletePost, getCurrentPost,clearPostReducer } from '../../redux/postReducer'
 import { clearEmailReducer } from '../../redux/emailReducer'
 import { ToastContainer, toast } from 'react-toastify'
 import { slideDown } from '../utils/animations'
@@ -25,15 +25,14 @@ function Item(props) {
   const [center, setCenter] = useState({ lat: null, lng: null })
   const [showPopup, setShowPopup] = useState(false)
   const { post_id } = props.match.params
-  const map = () => {
-    if (!center.lat && props.post.state) {
-      Geocode.fromAddress(`${props.post.city} ${props.post.state}`)
-        .then(res => {
-          const { lat, lng } = res.results[0].geometry.location
-          setCenter({ lat, lng })
-        })
-        .catch(err => console.log(err))
-    }
+  const map =  () => {
+    console.log('hit')
+    Geocode.fromAddress(`${props.post.city} ${props.post.state}`)
+      .then(res => {
+        const { lat, lng } = res.results[0].geometry.location
+        setCenter({lat, lng })
+      })
+      .catch(err => console.log(err))
   }
   const emailPopup = () => {
     if (props.toastMsg) {
@@ -50,10 +49,12 @@ function Item(props) {
     }
   }
   useEffect(() => {
-    props.getCurrentPost(+post_id)
+    if(!props.post.title|| +post_id!==props.post.post_id)
+      props.getCurrentPost(+post_id)
+    if(props.post.state||+post_id!==props.post.post_id)map()
     slideDown('post')
-  }, [post_id])
-  map()
+  }, [props.post.state])
+  console.log(props.post)
   emailPopup()
   return (
     <div className='Post'>
@@ -74,18 +75,21 @@ function Item(props) {
           <p>{props.post.content}</p>
         </div>
         <img src={props.post.img || defaultImg} className='post-map-img' />
-        <h1 className='post-location'>Location: {props.post.city}</h1>
+        <h1 className='post-location'>Location: {props.post.city} {props.post.state}</h1>
         <div className='post-map-img'>
           <GoogleMapReact
             bootstrapURLKeys={{ key: props.apiKey }}
             center={center}
             defaultZoom={props.zoom}
           >
-            <Marker lat={center.lat} lng={center.lng} />
+          <Marker lat={center.lat} lng={center.lng}/>
           </GoogleMapReact>
         </div>
         <div className='post-flex-container'>
-          <button onClick={() => props.history.push('/posts')}>back</button>
+          <button onClick={() => {
+            props.history.push('/posts')
+            props.clearPostReducer()
+          }}>back</button>
           {props.user.user_name &&
           props.user.user_name !== props.post.user_name ? (
             <button onClick={() => setShowPopup(true)}>MSG</button>
@@ -128,6 +132,7 @@ const mapStateToProps = reduxState => {
 const mapDispatchToProps = {
   deletePost,
   getCurrentPost,
+  clearPostReducer,
   clearEmailReducer
 }
 

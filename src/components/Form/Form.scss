@@ -36,10 +36,22 @@
   @include flex-box(column, space-evenly, center);
 }
 
+.form-top-input-container{
+  width:65vw;
+  @include flex-box(row, space-between, center);
+}
+
+.form-top-input-container > input{
+  width: 29vw;
+}
+
 .form-input-container > input {
   width: 65vw;
+}
+.form-top-input-container > input,
+.form-input-container > input{
   height: 3vh;
-  font-size: 20px;
+  font-size: 20px;  
 }
 
 .form-input-container > textarea {
@@ -67,7 +79,8 @@
 .form-input-container > input,
 .form-input-container > textarea,
 .form-location-container > input,
-.form-location-container > select {
+.form-location-container > select,
+.form-top-input-container > input{
   color: $secondary-color;
 }
 
@@ -82,25 +95,14 @@
   background-color: $secondary-color;
   border-radius: 10px;
   color: $white;
-  font-size: 20px;
+  font-size: 22px;
   text-transform: uppercase;
 }
 
-// animations
-.fade-in-form {
-  opacity: 0.93;
-}
-
-@keyframes slideDownForm {
-  from {
-    margin-top: 0;
-  }
-  to {
-    margin-top: 18vh;
-  }
-}
-
 @media (min-width: $tablet) {
+  .form-container {
+    width: 75vw;
+  }
   .form-header {
     font-size: 60px;
   }
@@ -114,20 +116,35 @@
     height: 45vh;
   }
 
+  .form-top-input-container > input{
+    width: 29vw;
+  }
+
   .form-location-container {
     width: 65vw;
   }
 
-  .form-location-container > input {
-    width: 30vw;
-  }
   .form-location-container > select {
     width: 20vw;
+    font-size:25px;
+  }
+  .form-top-input-container > input,
+  .form-input-container > input{
+    font-size: 25px;  
+  }
+ 
+  .form-input-container > textarea {
+    font-size: 20px;
+  }
+
+  .form-location-container > input,
+  .form-location-container > select {
+    font-size: 25px;
   }
 
   .form-button-container button {
     width: 20vw;
-    font-size: 25px;
+    font-size: 32px;
   }
 }
 
@@ -137,7 +154,7 @@
   }
 
   .form-header {
-    font-size: 40px;
+    font-size: 35px;
   }
 
   .form-img {
@@ -145,17 +162,31 @@
     height: 165px;
   }
 
-  .form-input-container {
-    height: 45vh;
+  .form-top-input-container {
+    width: 40vw;
   }
 
+  .form-top-input-container >input {
+    width: 19vw;
+  }
+
+  .form-input-container {
+    height: 42vh;
+  }
+ 
   .form-input-container > input {
     width: 40vw;
   }
 
+  .form-top-input-container > input,
+  .form-input-container > input{
+    font-size: 20px;  
+  }
+  
   .form-input-container > textarea {
-    width: 40vw;
-    font-size: 18px;
+    width: 39vw;
+    height: 8vh;
+    font-size: 15px;
   }
 
   .form-location-container {

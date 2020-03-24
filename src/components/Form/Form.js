@@ -57,7 +57,8 @@ function Form(props) {
         <form onSubmit={e => e.preventDefault()}>
           <div className='form-input-container'>
             <Upload formValues={formValues} setFormValues={setFormValues} />
-            <input
+            <div className='form-top-input-container'>
+              <input
               value={formValues.title}
               type='text'
               placeholder='title'
@@ -76,6 +77,7 @@ function Form(props) {
               }
               required
             />
+            </div>
             <textarea
               value={formValues.content}
               placeholder='item description'
@@ -119,7 +121,6 @@ function Form(props) {
               {post_id ? (
                 <button
                   onClick={() => {
-                    console.log(formValues)
                     props.updatePost(post_id, { ...formValues })
                     props.clearPostReducer()
                     props.history.push(`/post/${post_id}`)

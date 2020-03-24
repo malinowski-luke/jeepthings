@@ -138,7 +138,7 @@
 
 @media (min-width: $desktop) {
   .post-container {
-    width: 50vw;
+    width: 45vw;
   }
 
   .post-user-profile-container {
@@ -150,8 +150,10 @@
   }
 
   .posted-user-profile-img {
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
+    border: 3px solid $white;
+
   }
 
   .post-flex-container {
