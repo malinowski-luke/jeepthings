@@ -19,7 +19,13 @@ function Nav(props) {
               jeepThings
             </h1>
             <div className='profile-info-container'>
-              <Link to='/profile' className='Link'>
+              <Link to='/profile' className='Link'  onClick={()=>{
+              const mobileNav = document.getElementById('mobile-nav')
+              if (document.querySelectorAll('#mobile-nav.show')) {
+                mobileNav.classList.remove('show')
+                mobileNav.classList.add('hide') 
+              }
+            }}>
                 <img
                   src={user.profile_img}
                   alt='profile img'
