@@ -8,7 +8,7 @@ const express = require('express'),
   postCtrl = require('./controllers/postController'),
   emailCtrl = require('./controllers/emailController'),
   s3Ctrl = require('./controllers/s3Controller'),
-  path = require('path')
+  path = require('path'),
   { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
 
