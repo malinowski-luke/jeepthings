@@ -8,6 +8,7 @@ const express = require('express'),
   postCtrl = require('./controllers/postController'),
   emailCtrl = require('./controllers/emailController'),
   s3Ctrl = require('./controllers/s3Controller'),
+  path = require('path')
   { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
 
@@ -35,6 +36,15 @@ massive({
     })
   })
   .catch(err => console.log(`db not connected ${err}`))
+
+
+if(process.env.NODE_ENV==='production'){
+  app.use(express.static('build'))
+  app.get('*',(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'build','index.html'))
+  })
+}
+
 
 // --------------AUTH-----------------
 app.post('/api/auth/login', authCtrl.login)
