@@ -11,8 +11,7 @@ const express = require('express'),
   path = require('path'),
   { PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
-
-app.use(express.static(`${__dirname}/../build` )) // runs front end for hosting 
+// app.use(express.static(`${__dirname}/../build` )) // runs front end for hosting 
 app.use(express.json())
 app.use(
   session({
@@ -38,12 +37,12 @@ massive({
   .catch(err => console.log(`db not connected ${err}`))
 
 
-if(process.env.NODE_ENV==='production'){
+// if(process.env.NODE_ENV==='production'){
   app.use(express.static('build'))
-  app.get('*',(req,res)=>{
-    res.sendFile(path.join(__dirname,'build','index.html'))
-  })
-}
+  // app.get('*',(req,res)=>{
+  //   res.sendFile('build/index.html')
+  // })
+// }
 
 
 // --------------AUTH-----------------
@@ -66,5 +65,4 @@ app.delete('/api/posts/:post_id', postCtrl.deletePost)
 app.get('/api/sign-s3', s3Ctrl.signInS3)
 
 // --------------EMAIL-----------------
-// app.post('/api/email/msg', emailCtrl.sendMsgToUser)
-app.post('/api/email/welcome', emailCtrl.sendWelcomeEmail)
+// app.post('/api/email/welcome', emailCtrl.sendWelcomeEmail)
