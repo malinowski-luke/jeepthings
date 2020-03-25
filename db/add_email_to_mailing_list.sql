@@ -1,0 +1,1 @@
+INSERT INTO mailing_list (email) VALUES ($1);

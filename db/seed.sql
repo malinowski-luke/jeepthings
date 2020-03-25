@@ -15,7 +15,12 @@ CREATE TABLE posts (
   author_id INT REFERENCES users(user_id)
 );
 
-INSERT INTO POSTS (title, img, content, price, city, state, author_id)
+CREATE TABLE mailing_list (
+  mailing_id SERIAL PRIMARY KEY,
+  email VARCHAR (350)
+);
+
+INSERT INTO posts (title, img, content, price, city, state, author_id)
 VALUES (
     'Shark Grill For JK Wrangler',
     'https://cdn.shopify.com/s/files/1/0011/0601/8351/products/shark-grille-matte-black-07-18-wrangler-jk-grilles-and-grille-deletes-am-off-road-323608.jpg?v=1582961689',
@@ -32,4 +37,6 @@ VALUES (
     'Deer Park',
     'NY',
     2
-),
+);
+
+INSERT INTO mailing_list (email) VALUES ('malinowski.luke123@gmail.com');
