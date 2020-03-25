@@ -26,7 +26,6 @@ function Item(props) {
   const [showPopup, setShowPopup] = useState(false)
   const { post_id } = props.match.params
   const map =  () => {
-    console.log('hit')
     Geocode.fromAddress(`${props.post.city} ${props.post.state}`)
       .then(res => {
         const { lat, lng } = res.results[0].geometry.location
@@ -54,7 +53,6 @@ function Item(props) {
     if(props.post.state||+post_id!==props.post.post_id)map()
     slideDown('post')
   }, [props.post.state])
-  console.log(props.post)
   emailPopup()
   return (
     <div className='Post'>

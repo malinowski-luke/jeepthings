@@ -22,9 +22,17 @@
   box-shadow: 2px 2px 10px $black;
 }
 
+.profile-container >h1,
 .user-name-text {
   color: $secondary-color;
-  font-size: 22px;
+}
+
+.profile-container >h1{
+  font-size:40px;
+}
+
+.user-name-text{
+  font-size:22px;
 }
 
 .profile-img-input {
@@ -37,6 +45,9 @@
 @media (min-width: $tablet) {
   .profile-img-lg {
     max-width: 65vw;
+  }
+  .profile-container >h1{
+    font-size:60px;
   }
   .user-name-text {
     font-size: 45px;
@@ -57,5 +68,8 @@
   }
   .user-name-text {
     font-size: 35px;
+  }
+  .profile-container >h1{
+    font-size:50px;
   }
 }

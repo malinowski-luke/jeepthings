@@ -109,6 +109,7 @@ function Nav(props) {
     </header>
   )
 }
+
 const mapStateToProps = reduxState => {
   const { user } = reduxState.userReducer
   return { user }

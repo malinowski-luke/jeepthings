@@ -13,13 +13,14 @@ function Profile(props) {
   return (
     <div className='Profile'>
       <div className='profile-container' id='profile'>
+        <h1>Update Profile</h1>
         <img
           src={user.profile_img}
           alt={`profile pic ${user.user_name}`}
           className='profile-img-lg'
         />
-        <p className='user-name-text'>{user.user_name}</p>
         <Upload user_id={user.user_id} updateProfileImg={updateProfileImg} />
+        <p className='user-name-text'>{user.user_name}</p>
       </div>
     </div>
   )
