@@ -8,7 +8,7 @@ const express = require('express'),
   postCtrl = require('./controllers/postController'),
   emailCtrl = require('./controllers/emailController'),
   s3Ctrl = require('./controllers/s3Controller'),
-  { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
+  { PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
 app.use(express.json())
 app.use(
@@ -27,8 +27,8 @@ massive({
 })
   .then(db => {
     app.set('db', db)
-    app.listen(SERVER_PORT || 4420, () => {
-      console.log(`SERVER RUNNING ON PORT:${SERVER_PORT}`)
+    app.listen(PORT || 4420, () => {
+      console.log(`SERVER RUNNING ON PORT:${PORT}`)
       console.log('db connected')
     })
   })
