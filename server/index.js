@@ -8,9 +8,7 @@ const express = require('express'),
   postCtrl = require('./controllers/postController'),
   emailCtrl = require('./controllers/emailController'),
   s3Ctrl = require('./controllers/s3Controller'),
-  path = require('path'),
   { PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
-
 
 app.use(express.static(`${__dirname}/../build`)); //serves up the front end 
 app.use(express.json())
@@ -58,3 +56,4 @@ app.get('/api/sign-s3', s3Ctrl.signInS3)
 
 // --------------EMAIL-----------------
 app.post('/api/email/msg', emailCtrl.sendMsgToUser)
+app.post('/api/email/newpost', emailCtrl.newPostMassEmail)

@@ -33,7 +33,6 @@ module.exports = {
         return res.sendStatus(200)
       })
       .catch(err => {
-        console.log(err)
         return res.sendStatus(500)
       })
   },

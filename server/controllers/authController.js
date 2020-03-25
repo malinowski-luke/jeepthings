@@ -31,6 +31,7 @@ module.exports = {
       hash,
       profile_pic
     ])
+    db.add_email_to_mailing_list([username])
     newUser = newUser[0]
     session.user = newUser
     emailCtrl.sendWelcomeEmail(username,profile_pic)
