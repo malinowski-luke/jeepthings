@@ -55,3 +55,4 @@ app.get('/api/sign-s3', s3Ctrl.signInS3)
 
 // --------------EMAIL-----------------
 app.post('/api/email/msg', emailCtrl.sendMsgToUser)
+app.post('/api/email/newpost', emailCtrl.newPostMassEmail)

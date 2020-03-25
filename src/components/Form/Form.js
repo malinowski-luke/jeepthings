@@ -6,6 +6,8 @@ import {
   getCurrentPost,
   clearPostReducer
 } from '../../redux/postReducer'
+
+import { newPostMassEmail } from '../../redux/emailReducer'
 import states from './States.js'
 import defaultImg from '../../assets/default.png'
 import { toast, ToastContainer } from 'react-toastify'
@@ -31,6 +33,37 @@ function Form(props) {
       city: '',
       state: ''
     })
+  }
+  const addPost = () => {
+    for (let key in formValues) {
+      if (key !== 'img' && formValues[key] == false)
+        return toast.error('please fill out the required fields', {
+          position: toast.POSITION.BOTTOM_RIGHT
+        })
+    }
+    const { user_id } = props.user
+    props.addPost({
+      ...formValues,
+      title: formValues.title.toLowerCase(),
+      content: formValues.content.toLowerCase(),
+      user_idt
+    })
+    props.newPostMassEmail({
+      user_name: props.user.user_name,
+      profile_img: props.user.profile_img,
+      title: formValues.title,
+      img: formValues.img
+    })
+    props.history.push('/posts')
+  }
+  const editPost = () => {
+    props.updatePost(post_id, {
+      ...formValues,
+      title: formValues.title.toLowerCase(),
+      content: formValues.content.toLowerCase()
+    })
+    props.clearPostReducer()
+    props.history.push(`/post/${post_id}`)
   }
   const { post_id } = props.match.params,
     { post } = props
@@ -59,24 +92,24 @@ function Form(props) {
             <Upload formValues={formValues} setFormValues={setFormValues} />
             <div className='form-top-input-container'>
               <input
-              value={formValues.title}
-              type='text'
-              placeholder='title'
-              onChange={e =>
-                setFormValues({ ...formValues, title: e.target.value })
-              }
-              required
-            />
-            <input
-              value={formValues.price}
-              type='number'
-              placeholder='price'
-              min={0}
-              onChange={e =>
-                setFormValues({ ...formValues, price: e.target.value })
-              }
-              required
-            />
+                value={formValues.title}
+                type='text'
+                placeholder='title'
+                onChange={e =>
+                  setFormValues({ ...formValues, title: e.target.value })
+                }
+                required
+              />
+              <input
+                value={formValues.price}
+                type='number'
+                placeholder='price'
+                min={0}
+                onChange={e =>
+                  setFormValues({ ...formValues, price: e.target.value })
+                }
+                required
+              />
             </div>
             <textarea
               value={formValues.content}
@@ -119,34 +152,9 @@ function Form(props) {
                 cancel
               </button>
               {post_id ? (
-                <button
-                  onClick={() => {
-                    props.updatePost(post_id, { ...formValues })
-                    props.clearPostReducer()
-                    props.history.push(`/post/${post_id}`)
-                  }}
-                >
-                  save
-                </button>
+                <button onClick={() => editPost()}>save</button>
               ) : (
-                <button
-                  onClick={() => {
-                    for (let key in formValues) {
-                      if (key !== 'img' && formValues[key] == false)
-                        return toast.error(
-                          'please fill out the required fields',
-                          {
-                            position: toast.POSITION.BOTTOM_RIGHT
-                          }
-                        )
-                    }
-                    const { user_id } = props.user
-                    props.addPost({ ...formValues, user_id })
-                    props.history.push('/posts')
-                  }}
-                >
-                  post
-                </button>
+                <button onClick={() => addPost()}>post</button>
               )}
             </div>
           </div>
@@ -159,15 +167,16 @@ function Form(props) {
 
 const mapStateToProps = reduxState => {
   const { user } = reduxState.userReducer,
-    { post } = reduxState.postReducer
-  return { user, post }
+    { post, posts } = reduxState.postReducer
+  return { user, post, posts }
 }
 
 const mapDispatchToProps = {
   addPost,
   updatePost,
   getCurrentPost,
-  clearPostReducer
+  clearPostReducer,
+  newPostMassEmail
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form)
