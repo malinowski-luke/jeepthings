@@ -46,7 +46,7 @@ function Form(props) {
       ...formValues,
       title: formValues.title.toLowerCase(),
       content: formValues.content.toLowerCase(),
-      user_idt
+      user_id
     })
     props.newPostMassEmail({
       user_name: props.user.user_name,
