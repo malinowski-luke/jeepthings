@@ -1,7 +1,8 @@
 @import '../../sass/vars';
 
 .Post {
-  width: 100;
+  width: 100%;
+  height: auto;
   @include flex-box(column, center, center);
 }
 
@@ -100,7 +101,7 @@
   }
 
   .post-user-profile-container h3 {
-    margin-left:25px;
+    margin-left: 25px;
     font-size: 30px;
   }
 
@@ -153,7 +154,6 @@
     width: 55px;
     height: 55px;
     border: 3px solid $white;
-
   }
 
   .post-flex-container {
