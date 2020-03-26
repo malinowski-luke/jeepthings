@@ -1,7 +1,7 @@
 @import '../../sass/vars';
 
 .Posts {
-  width: 100;
+  width: 100%;
   @include flex-box(column, center, center);
 }
 
@@ -101,7 +101,7 @@
     height: 6vh;
     font-size: 30px;
   }
-  
+
   .posts-item-button {
     width: 25vw;
   }

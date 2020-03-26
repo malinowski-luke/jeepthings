@@ -11,11 +11,14 @@
 }
 
 .display-post-header {
+  margin-left: 2vw;
+  margin-bottom: 2vh;
+  overflow: scroll;
   @include flex-box(row, space-between, center);
-  margin: 4vw;
 }
 
 .display-post-text {
+  height: 4vh;
   color: $white;
   font-size: 30px;
   text-transform: capitalize;

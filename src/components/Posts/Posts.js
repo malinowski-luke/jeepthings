@@ -36,7 +36,9 @@ function Posts(props) {
   }
   const filterByKeyword = () => {
     if (serachText !== '')
-      return postsArr.filter(elm => elm.title.includes(serachText))
+      return postsArr.filter(elm =>
+        elm.title.includes(serachText.toLowerCase())
+      )
   }
   const resetFilterVars = () => {
     setSearchText('')
@@ -101,7 +103,7 @@ function Posts(props) {
             <div className='posts-user-option-container'>
               <span>
                 <label>my posts</label>
-                <input 
+                <input
                   onChange={() => {
                     setUserPostBool(!userPostBool)
                   }}
