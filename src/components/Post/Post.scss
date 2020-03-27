@@ -36,10 +36,17 @@
   box-shadow: 0px 0px 10px 5px $black;
 }
 
+.post-button-container {
+  width: 80vw;
+  height: 25vh;
+  @include flex-box(column, center, center);
+}
+
 .post-flex-container {
   width: 80vw;
+  height: 40vh;
   text-align: left;
-  @include flex-box(row, space-between, center);
+  @include flex-box(column, space-betwee, center);
 }
 
 .post-flex-container > h1,
@@ -51,33 +58,39 @@
 
 .post-flex-container > h1,
 .post-flex-container > p {
-  margin-top: 4vh;
+  margin-top: 2vh;
 }
 
-.post-flex-container > h3 {
-  font-size: 20px;
-}
+// .post-flex-container > h3 {
+//   font-size: 20px;
+// }
 
 .post-flex-container > h1 {
-  font-size: 35px;
+  font-size: 30px;
 }
 
 .post-flex-container > p {
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .post-location {
   font-size: 25px;
 }
 
-.post-flex-container > button {
-  width: 22vw;
-  height: 8vh;
+.post-button-container {
+  width: 80vw;
+  height: 25vh;
+  text-align: left;
+  @include flex-box(column, center, center);
+}
+
+.post-button-container > button {
+  width: 80vw;
   color: $white;
   background-color: $secondary-color;
   margin-bottom: 4vh;
-  border-radius: 10px;
-  font-size: 25px;
+  border-radius: 5px;
+  font-size: 30px;
   text-transform: uppercase;
 }
 
@@ -100,7 +113,7 @@
   }
 
   .post-user-profile-container h3 {
-    margin-left:25px;
+    margin-left: 25px;
     font-size: 30px;
   }
 
@@ -153,7 +166,6 @@
     width: 55px;
     height: 55px;
     border: 3px solid $white;
-
   }
 
   .post-flex-container {

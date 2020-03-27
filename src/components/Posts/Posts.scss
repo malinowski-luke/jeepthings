@@ -68,15 +68,15 @@
 .posts-button {
   background-color: $secondary-color;
   color: $white;
-  width: 20vw;
+  width: 22vw;
   height: 5vh;
-  font-size: 15px;
+  font-size: 12px;
   text-transform: uppercase;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .posts-item-button {
-  width: 28vw;
+  width: 30vw;
 }
 
 @media (min-width: $tablet) {
