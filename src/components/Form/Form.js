@@ -77,86 +77,76 @@ function Form(props) {
   return (
     <div className='Form'>
       <div className='form-container' id='form'>
-        <div>
-          <h1 className='form-header'>
-            {post_id ? 'edit post' : 'create post'}
-          </h1>
-          <img
-            src={formValues.img || defaultImg}
-            alt='post img'
-            className='form-img'
-          />
-        </div>
+        <img
+          src={formValues.img || defaultImg}
+          alt='post img'
+          className='form-img'
+        />
         <form onSubmit={e => e.preventDefault()}>
-          <div className='form-input-container'>
+          <div className='upload-container'>
             <Upload formValues={formValues} setFormValues={setFormValues} />
-            <div className='form-top-input-container'>
-              <input
-                value={formValues.title}
-                type='text'
-                placeholder='title'
-                onChange={e =>
-                  setFormValues({ ...formValues, title: e.target.value })
-                }
-                required
-              />
-              <input
-                value={formValues.price}
-                type='number'
-                placeholder='price'
-                min={0}
-                onChange={e =>
-                  setFormValues({ ...formValues, price: e.target.value })
-                }
-                required
-              />
-            </div>
-            <textarea
-              value={formValues.content}
-              placeholder='item description'
-              onChange={e =>
-                setFormValues({ ...formValues, content: e.target.value })
-              }
-              required
-            ></textarea>
-            <div className='form-location-container'>
-              <input
-                value={formValues.city}
-                type='text'
-                placeholder='city'
-                onChange={e =>
-                  setFormValues({ ...formValues, city: e.target.value })
-                }
-                required
-              />
-              <select
-                value={formValues.state}
-                onChange={e =>
-                  setFormValues({ ...formValues, state: e.target.value })
-                }
-                required
-              >
-                <option value=''>state</option>
-                {states}
-              </select>
-            </div>
-            <div className='form-button-container'>
-              <button
-                type='reset'
-                onClick={() => {
-                  resetForm()
-                  props.clearPostReducer()
-                  props.history.push('/posts')
-                }}
-              >
-                cancel
-              </button>
-              {post_id ? (
-                <button onClick={() => editPost()}>save</button>
-              ) : (
-                <button onClick={() => addPost()}>post</button>
-              )}
-            </div>
+          </div>
+          <input
+            type='text'
+            placeholder='title'
+            onChange={e =>
+              setFormValues({ ...formValues, title: e.target.value })
+            }
+            required
+          />
+          <input
+            value={formValues.price}
+            type='number'
+            placeholder='price'
+            min={0}
+            onChange={e =>
+              setFormValues({ ...formValues, price: e.target.value })
+            }
+            required
+          />
+          <textarea
+            value={formValues.content}
+            placeholder='item description'
+            onChange={e =>
+              setFormValues({ ...formValues, content: e.target.value })
+            }
+            required
+          ></textarea>
+          <input
+            value={formValues.city}
+            type='text'
+            placeholder='city'
+            onChange={e =>
+              setFormValues({ ...formValues, city: e.target.value })
+            }
+            required
+          />
+          <select
+            value={formValues.state}
+            onChange={e =>
+              setFormValues({ ...formValues, state: e.target.value })
+            }
+            required
+          >
+            <option value=''>state</option>
+            {states}
+          </select>
+          <div className='form-button-container'>
+            <button
+              type='reset'
+              onClick={() => {
+                resetForm()
+                props.clearPostReducer()
+                props.history.push('/posts')
+              }}
+            >
+              cancel
+            </button>
+            {post_id ? (
+              <button onClick={() => editPost()}>save</button>
+            ) : (
+              <button onClick={() => addPost()}>post</button>
+            )}
           </div>
         </form>
       </div>

@@ -40,7 +40,6 @@
   width: 80vw;
   height: 30vh;
   text-align: left;
-  // @include flex-box(column, space-betwee, center);
 }
 
 .post-flex-container > h1,
@@ -54,10 +53,6 @@
 .post-flex-container > p {
   margin-top: 2vh;
 }
-
-// .post-flex-container > h3 {
-//   font-size: 20px;
-// }
 
 .post-flex-container > h1 {
   font-size: 30px;
@@ -76,8 +71,8 @@
 .post-button-container {
   width: 80vw;
   height: 20vh;
+  margin-bottom: 2vh;
   text-align: left;
-  // @include flex-box(column, center, center);
 }
 
 .post-button-container > button {
