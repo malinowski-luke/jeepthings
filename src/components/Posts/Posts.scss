@@ -5,11 +5,6 @@
   @include flex-box(column, center, center);
 }
 
-.posts-animation-container {
-  opacity: 0;
-  transition: 1s;
-}
-
 .posts-container {
   width: 90vw;
   height: 52vh;
@@ -41,7 +36,7 @@
 
 .posts-search-container select {
   color: $secondary-color;
-  font-size: 15px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 

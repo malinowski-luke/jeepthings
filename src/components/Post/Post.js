@@ -74,10 +74,9 @@ function Item(props) {
           <h1>${props.post.price}</h1>
           <p>{props.post.content}</p>
         </div>
-        <img src={props.post.img || defaultImg} className='post-map-img' />
-        <h1 className='post-location'>
-          Location: {props.post.city} {props.post.state}
-        </h1>
+        <div>
+          <img src={props.post.img || defaultImg} className='post-map-img' />
+        </div>
         <div className='post-map-img'>
           <GoogleMapReact
             bootstrapURLKeys={{ key: props.apiKey }}
@@ -87,6 +86,9 @@ function Item(props) {
             <Marker lat={center.lat} lng={center.lng} />
           </GoogleMapReact>
         </div>
+        <h1 className='post-location'>
+          Location: {props.post.city} {props.post.state}
+        </h1>
         <div className='post-button-container'>
           <button
             onClick={() => {

@@ -12,8 +12,8 @@
   border-radius: 10px;
   opacity: 0;
   transition: 1s;
-  overflow-y: scroll;
-  @include flex-box(column, space-between, center);
+  overflow-y: auto;
+  @include flex-box(column, flex-start, center);
 }
 
 .post-user-profile-container {
@@ -36,17 +36,11 @@
   box-shadow: 0px 0px 10px 5px $black;
 }
 
-.post-button-container {
-  width: 80vw;
-  height: 25vh;
-  @include flex-box(column, center, center);
-}
-
 .post-flex-container {
   width: 80vw;
-  height: 40vh;
+  height: 30vh;
   text-align: left;
-  @include flex-box(column, space-betwee, center);
+  // @include flex-box(column, space-betwee, center);
 }
 
 .post-flex-container > h1,
@@ -74,33 +68,34 @@
 }
 
 .post-location {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
   font-size: 25px;
 }
 
 .post-button-container {
   width: 80vw;
-  height: 25vh;
+  height: 20vh;
   text-align: left;
-  @include flex-box(column, center, center);
+  // @include flex-box(column, center, center);
 }
 
 .post-button-container > button {
   width: 80vw;
   color: $white;
   background-color: $secondary-color;
-  margin-bottom: 4vh;
+  margin-bottom: 2vh;
   border-radius: 5px;
   font-size: 30px;
   text-transform: uppercase;
 }
 
 .post-map-img {
-  width: 285px;
-  height: 285px;
+  width: 65vw;
+  height: 65vw;
   border: 6px solid $white;
   box-shadow: 2px 2px 10px $black;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
+  margin-top: 4vh;
 }
 
 @media (min-width: $tablet) {
