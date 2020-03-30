@@ -16,12 +16,16 @@
   overflow-y: auto;
 }
 
+.form-img-container {
+  margin-top: 4vh;
+  height: 30vh;
+}
+
 .form-img {
   border: 6px solid $secondary-color;
   width: 60vw;
   height: 60vw;
   box-shadow: 2px 2px 10px $black;
-  margin-top: 4vh;
 }
 
 .upload-container {

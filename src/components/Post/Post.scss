@@ -1,7 +1,7 @@
 @import '../../sass/vars';
 
 .Post {
-  width: 100;
+  width: 100%;
   @include flex-box(column, center, center);
 }
 
