@@ -14,7 +14,11 @@
   transition: 1s;
   text-align: center;
   overflow-y: auto;
-  @include flex-box(column, center, center);
+}
+
+.form-img-container {
+  margin-top: 4vh;
+  height: 30vh;
 }
 
 .form-img {
@@ -22,7 +26,6 @@
   width: 60vw;
   height: 60vw;
   box-shadow: 2px 2px 10px $black;
-  margin-top: 12vh;
 }
 
 .upload-container {

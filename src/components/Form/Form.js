@@ -77,16 +77,19 @@ function Form(props) {
   return (
     <div className='Form'>
       <div className='form-container' id='form'>
-        <img
-          src={formValues.img || defaultImg}
-          alt='post img'
-          className='form-img'
-        />
+        <div className='form-img-container'>
+          <img
+            src={formValues.img || defaultImg}
+            alt='post img'
+            className='form-img'
+          />
+        </div>
         <form onSubmit={e => e.preventDefault()}>
           <div className='upload-container'>
             <Upload formValues={formValues} setFormValues={setFormValues} />
           </div>
           <input
+            value={formValues.title}
             type='text'
             placeholder='title'
             onChange={e =>

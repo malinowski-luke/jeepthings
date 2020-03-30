@@ -1,7 +1,7 @@
 @import '../../sass/vars';
 
 .Post {
-  width: 100;
+  width: 100%;
   @include flex-box(column, center, center);
 }
 
@@ -70,7 +70,7 @@
 
 .post-button-container {
   width: 80vw;
-  height: 20vh;
+  height: 25vh;
   margin-bottom: 2vh;
   text-align: left;
 }
