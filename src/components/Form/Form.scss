@@ -19,6 +19,7 @@
 .form-img-container {
   margin-top: 4vh;
   height: 30vh;
+  width: 90vw;
 }
 
 .form-img {
@@ -30,6 +31,7 @@
 
 .upload-container {
   width: 90vw;
+  height: 5vh;
   margin-top: 2vh;
   margin-bottom: 2vh;
   @include flex-box(row, center, center);
