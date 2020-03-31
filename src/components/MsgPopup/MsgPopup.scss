@@ -44,13 +44,13 @@
 }
 
 .popup-button-container button {
-  width: 25vw;
+  width: 30vw;
   height: 7vh;
   color: $white;
   background-color: $primary-color;
   border-radius: 10px;
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 @media (min-width: $tablet) {
@@ -73,7 +73,7 @@
   }
 
   .popup-button-container button {
-    width: 20vw;
+    width: 25vw;
     font-size: 25px;
   }
 }

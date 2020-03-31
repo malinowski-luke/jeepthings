@@ -16,29 +16,10 @@
   @include flex-box(column, flex-start, center);
 }
 
-.post-user-profile-container {
-  width: 80vw;
-  margin-top: 4vh;
-  @include flex-box(row, flex-start, center);
-}
-
-.post-user-profile-container h3 {
-  color: $secondary-color;
-  margin-left: 10px;
-  font-size: 18px;
-}
-
-.posted-user-profile-img {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  border: 2px solid $white;
-  box-shadow: 0px 0px 10px 5px $black;
-}
-
 .post-flex-container {
+  margin-top: 4vh;
   width: 80vw;
-  height: 30vh;
+  height: auto;
   text-align: left;
 }
 
@@ -62,6 +43,26 @@
   font-size: 18px;
 }
 
+
+.post-user-profile-container {
+  height:10vh;
+  @include flex-box(row, flex-start, center);
+}
+
+.post-user-profile-container h3 {
+  color: $secondary-color;
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+.posted-user-profile-img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: 2px solid $white;
+  box-shadow: 0px 0px 10px 5px $black;
+}
+
 .post-location {
   margin-top: 2vh;
   margin-bottom: 2vh;
@@ -70,18 +71,17 @@
 
 .post-button-container {
   width: 80vw;
-  height: 25vh;
+  @include flex-box(column,center,center)
   margin-bottom: 2vh;
-  text-align: left;
 }
 
 .post-button-container > button {
   width: 80vw;
   color: $white;
   background-color: $secondary-color;
-  margin-bottom: 2vh;
   border-radius: 5px;
   font-size: 30px;
+  margin-bottom:2vh;
   text-transform: uppercase;
 }
 
@@ -90,7 +90,7 @@
   height: 65vw;
   border: 6px solid $white;
   box-shadow: 2px 2px 10px $black;
-  margin-top: 4vh;
+  margin-top: 2vh;
 }
 
 @media (min-width: $tablet) {
@@ -103,8 +103,8 @@
   }
 
   .post-user-profile-container h3 {
-    margin-left: 25px;
-    font-size: 30px;
+    margin-left: 15px;
+    font-size: 25px;
   }
 
   .posted-user-profile-img {
@@ -117,25 +117,28 @@
   }
 
   .post-flex-container > h1 {
-    font-size: 50px;
+    font-size: 40px;
   }
 
   .post-flex-container > p {
-    font-size: 40px;
+    font-size: 22px;
   }
 
   .post-location {
-    font-size: 40px;
+    font-size: 30px;
   }
 
-  .post-flex-container > button {
-    font-size: 35px;
-    width: 15vw;
+  .post-button-container {
+    width: 70vw;
   }
+
+  .post-button-container > button {
+    width: 70vw;
+`  }
 
   .post-map-img {
-    width: 350px;
-    height: 350px;
+    width: 45vw;
+    height: 45vw;
   }
 }
 
@@ -149,7 +152,7 @@
   }
 
   .post-user-profile-container h3 {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   .posted-user-profile-img {
@@ -163,25 +166,25 @@
   }
 
   .post-flex-container > h1 {
-    font-size: 40px;
+    font-size:32px;
   }
 
   .post-flex-container > p {
-    font-size: 28px;
+    font-size: 18px;
   }
 
-  .post-location {
-    font-size: 30px;
+  .post-button-container {
+    width: 40vw;
+    @include flex-box(row, space-between,center)
   }
 
-  .post-flex-container > button {
-    width: 8vw;
+  .post-button-container > button {
+    width: 10vw;
     height: 8vh;
-    font-size: 25px;
   }
 
   .post-map-img {
-    width: 275px;
-    height: 275px;
+    width: 22vw;
+    height: 22vw;
   }
 }

@@ -1,63 +1,89 @@
 @import '../../sass/vars';
 
 .DisplayPost {
-  width: 80vw;
-  height: 30vh;
+  width: 85vw;
+  height: 20vh;
   margin-top: 2vh;
   margin-bottom: 2vh;
   border-radius: 10px;
   background: $secondary-color;
   flex-shrink: 0;
-}
-
-.display-post-header {
-  margin-left: 2vw;
-  margin-bottom: 2vh;
-  overflow: scroll;
-  @include flex-box(row, space-between, center);
+  @include flex-box(row,center,center)
 }
 
 .display-post-text {
-  height: 4vh;
+  height: 7vh;
   color: $white;
-  font-size: 25px;
+  font-size: 16px;
+  text-align: right;
   text-transform: capitalize;
-  margin-top: 2vh;
+}
+
+.price{
+  font-size:25px;
 }
 
 .display-post-content {
-  @include flex-box(row, space-evenly, center);
+  width:82vw;
+  height: 20vh;
+  @include flex-box(row, space-between, center);
 }
 
 .display-post-img {
-  width: 150px;
-  height: 125px;
+  width: 30vw;
+  height: 30vw;
   border: 6px solid $white;
   box-shadow: 2px 2px 10px $black;
 }
 
 @media (min-width: $tablet) {
-  .display-post-header {
-    margin: 2vw;
+  .DisplayPost {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
   }
+
   .display-post-text {
-    font-size: 40px;
+    height: 8vh;
+    font-size: 28px;
   }
+
+  .price{
+    font-size:35px;
+  }
+
+  .display-post-content {
+    width:80vw;
+  }
+
   .display-post-img {
-    width: 225px;
-    height: 175px;
+    width: 22vw;
+    height: 22vw;
   }
 }
 @media (min-width: $desktop) {
   .DisplayPost {
     width: 48vw;
-    height: 40vh;
+    height: 25vh;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
   }
-  .display-post-header {
-    margin: 2vw;
+
+  .display-post-text {
+    height: 10vh;
+    font-size: 30px;
   }
+
+  .price{
+    font-size:38px;
+  }
+
+  .display-post-content {
+    width:45vw;
+    height:20vh;
+  }
+
   .display-post-img {
-    width: 200px;
-    height: 150px;
+    width: 10vw;
+    height: 10vw;
   }
 }
