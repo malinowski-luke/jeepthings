@@ -43,9 +43,8 @@
   font-size: 18px;
 }
 
-
 .post-user-profile-container {
-  height:10vh;
+  height: 10vh;
   @include flex-box(row, flex-start, center);
 }
 
@@ -71,17 +70,17 @@
 
 .post-button-container {
   width: 80vw;
-  @include flex-box(column,center,center)
   margin-bottom: 2vh;
 }
 
 .post-button-container > button {
   width: 80vw;
+  height: 5vh;
   color: $white;
   background-color: $secondary-color;
   border-radius: 5px;
   font-size: 30px;
-  margin-bottom:2vh;
+  margin-bottom: 2vh;
   text-transform: uppercase;
 }
 
@@ -166,7 +165,7 @@
   }
 
   .post-flex-container > h1 {
-    font-size:32px;
+    font-size: 32px;
   }
 
   .post-flex-container > p {
@@ -175,7 +174,7 @@
 
   .post-button-container {
     width: 40vw;
-    @include flex-box(row, space-between,center)
+    @include flex-box(row, space-between, center);
   }
 
   .post-button-container > button {
