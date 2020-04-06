@@ -3,14 +3,6 @@ body {
   width: 100%;
   /* removing height fixes chrome nav bar animation */
   overflow-y: auto;
-  scroll-behavior: smooth;
-}
-
-@media (max-width: 767px) {
-  html,
-  body {
-    overflow-x: hidden;
-  }
 }
 
 body {
