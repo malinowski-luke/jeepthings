@@ -2,7 +2,7 @@
 
 .About {
   width: 100%;
-  height: 110vh;
+  height: inherit;
   @include flex-box(column, center, center);
 }
 
