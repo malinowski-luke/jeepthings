@@ -14,5 +14,7 @@ select {
 }
 
 @media (max-width: 576px){
-  height: 115vh;
+  .App {
+    height: 115vh;
+  }
 }
