@@ -6,7 +6,13 @@ select {
 }
 
 .App {
+  width: inherit;
+  height: 100vh;
   text-align: center;
   background-size: cover;
   background-position: center;
+}
+
+@media (max-width: 536){
+  height: 115vh;
 }
