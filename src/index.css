@@ -1,8 +1,7 @@
 html,
 body {
-  min-width: 100%;
-  min-height: 100%;
-  overflow: visible;
+  width: 100%;
+  overflow-y: visible;
   /* removing height fixes chrome nav bar animation */
 }
 
