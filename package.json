@@ -58,5 +58,6 @@
       "last 1 safari version"
     ]
   },
+  "display": "standalone",
   "main": "server/index.js"
 }
