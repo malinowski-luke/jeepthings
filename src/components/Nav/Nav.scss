@@ -16,10 +16,10 @@
 
 .profile-img {
   margin-left: 2vw;
-  width: 70px;
-  height: 70px;
+  width: 8vh;
+  height: 8vh;
   border-radius: 50%;
-  border: 5px solid $white;
+  border: 2px solid $white;
   box-shadow: 0px 0px 10px 5px $black;
 }
 
@@ -79,15 +79,9 @@
 }
 
 #button-nav {
-  width: 15vh;
+  width: 25vw;
   height: 8vh;
   margin-right: 2vw;
-  background: $secondary-color;
-  border-radius: 10px;
-  color: $white;
-  text-transform: uppercase;
-  font-size: 20px;
-  @include flex-box(row, space-evenly, center);
 }
 
 @media (min-width: $tablet) {
@@ -101,8 +95,8 @@
   }
 
   .profile-img {
-    width: 100px;
-    height: 100px;
+    width: 10vh;
+    height: 10vh;
     border: 3px solid $white;
   }
 

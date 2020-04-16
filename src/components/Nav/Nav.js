@@ -11,7 +11,7 @@ function Nav(props) {
     if (!user.user_name) props.checkUser()
   }, [user.user_name])
   return (
-    <header className="Nav">
+    <header className='Nav'>
       <div className='nav-logo-profile-container'>
         {user.user_name ? (
           <div className='profile-info-container'>
@@ -19,13 +19,17 @@ function Nav(props) {
               jeepThings
             </h1>
             <div className='profile-info-container'>
-              <Link to='/profile' className='Link'  onClick={()=>{
-              const mobileNav = document.getElementById('mobile-nav')
-              if (document.querySelectorAll('#mobile-nav.show')) {
-                mobileNav.classList.remove('show')
-                mobileNav.classList.add('hide') 
-              }
-            }}>
+              <Link
+                to='/profile'
+                className='Link'
+                onClick={() => {
+                  const mobileNav = document.getElementById('mobile-nav')
+                  if (document.querySelectorAll('#mobile-nav.show')) {
+                    mobileNav.classList.remove('show')
+                    mobileNav.classList.add('hide')
+                  }
+                }}
+              >
                 <img
                   src={user.profile_img}
                   alt='profile img'
@@ -39,17 +43,25 @@ function Nav(props) {
           <h1 id='nav-logo'>jeepThings</h1>
         )}
       </div>
-      <button
+      {/* <button
         id='button-nav'
         onClick={() => {
           const mobileNav = document.getElementById('mobile-nav')
           mobileNav.classList.toggle('hide')
           mobileNav.classList.toggle('show')
         }}
-      >
-        Menu
-        <img src={icon} alt='menu-icon' />
-      </button>
+      > */}
+      {/* Menu */}
+      <img
+        id='button-nav'
+        src={icon}
+        alt='menu-icon'
+        onClick={() => {
+          const mobileNav = document.getElementById('mobile-nav')
+          mobileNav.classList.toggle('hide')
+          mobileNav.classList.toggle('show')
+        }}
+      />
       <ul
         id='mobile-nav'
         className='hide'
@@ -110,14 +122,14 @@ function Nav(props) {
   )
 }
 
-const mapStateToProps = reduxState => {
+const mapStateToProps = (reduxState) => {
   const { user } = reduxState.userReducer
   return { user }
 }
 
 const mapDispatchToProps = {
   logout,
-  checkUser
+  checkUser,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav)
