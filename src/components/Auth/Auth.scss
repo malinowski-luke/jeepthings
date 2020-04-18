@@ -1,105 +1,41 @@
 @import '../../sass/vars';
 
 .Auth {
-  width: 100%;
   @include flex-box(row, center, center);
 }
 
-.auth-input-container {
-  width: 90vw;
-  height: 65vh;
+.auth-container {
+  width: auto;
+  height: auto;
+  padding: 4vh;
   background: $primary-color;
-  border-radius: 10px;
-  opacity: 0;
-  transition: 1s;
+  border-radius: 5px;
   @include flex-box(column, space-around, center);
 }
 
 .auth-header {
   font-family: $logo-font;
   color: #ffffff;
-  font-size: 4.5em;
-}
-
-.auth-input {
-  width: 80vw;
-  height: 5vh;
-  font-size: 25px;
-  color: $secondary-color;
+  font-size: 4em;
 }
 
 .auth-button {
-  width: 80vw;
-  height: 8vh;
-  background: $secondary-color;
+  background: $secondary-color !important;
   color: $white;
-  border-radius: 5px;
-  border: none;
-  font-size: 30px;
+  font-size: 1.8em !important;
   text-transform: uppercase;
 }
 
-.auth-change-text {
-  text-align: center;
+p,
+.label {
   color: $white;
-  font-size: 30px;
+  font-size: 1.4em;
 }
 
 .auth-link {
   text-decoration: underline;
 }
 
-@media (min-width: $tablet) {
-  .auth-header {
-    font-size: 110px;
-  }
-  .auth-input-container {
-    width: 65vw;
-    height: 65vh;
-  }
-  .auth-button {
-    width: 25vw;
-    height: 7vh;
-    width: 50vw;
-    font-size: 35px;
-  }
-  .auth-input {
-    width: 50vw;
-    height: 5vh;
-    font-size: 30px;
-  }
-  .auth-change-text {
-    font-size: 26px;
-  }
-}
-
-@media (min-width: $desktop) {
-  .auth-header {
-    font-size: 115px;
-  }
-  .auth-input-container {
-    width: 40vw;
-    height: 65vh;
-  }
-
-  .auth-input {
-    width: 35vw;
-    height: 5vh;
-    font-size: 25px;
-  }
-
-  .auth-button {
-    width: 20vw;
-    height: 8vh;
-    font-size: 30px;
-  }
-
-  .auth-change-text {
-    font-size: 25px;
-  }
-
-  /* show on desktop can't hover on mobile */
-  .auth-link:hover {
-    color: $secondary-color;
-  }
+.auth-link:hover {
+  color: $secondary-color;
 }

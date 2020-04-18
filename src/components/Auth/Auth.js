@@ -3,11 +3,13 @@ import { connect } from 'react-redux'
 import {
   login as loginRedux,
   register as registerRedux,
-  clearUserReducer
+  clearUserReducer,
 } from '../../redux/userReducer'
 import { slideDown } from '../utils/animations'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { toast } from 'react-toastify'
+import toastSettingObj from '../utils/custom-toast/toastSettingObj'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 import './Auth.scss'
 
 function Auth(props) {
@@ -26,97 +28,100 @@ function Auth(props) {
     if (username !== '' && password !== '') {
       props.registerRedux(username, password)
       resetInput()
-    } else {
-      toast.error('please fill out all the fields', {
-        position: toast.POSITION.BOTTOM_RIGHT
-      })
-    }
+    } else toast('please fill out all the fields', toastSettingObj)
   }
   const login = () => {
     if (username !== '' && password !== '') {
       props.loginRedux(username, password)
       resetInput()
-    } else {
-      toast.error('please fill out all the fields', {
-        position: toast.POSITION.BOTTOM_RIGHT
-      })
-    }
+    } else toast('please fill out all the fields', toastSettingObj)
   }
   if (props.err) {
-    toast.error(props.errMsg, {
-      position: toast.POSITION.BOTTOM_RIGHT
-    })
+    toast.error(props.errMsg, toastSettingObj)
     props.clearUserReducer()
   }
   return (
     <section className='Auth'>
-      <form
-        onSubmit={e => e.preventDefault()}
-        className='auth-input-container'
-        id='login'
-      >
-        <h1 className='auth-header'>jeepThings</h1>
-        <input
-          value={username}
-          className='auth-input'
-          type='email'
-          placeholder='email'
-          onChange={e => setUsername(e.target.value)}
-        />
-        <input
-          value={password}
-          className='auth-input'
-          type='password'
-          placeholder='password'
-          onChange={e => setPassword(e.target.value)}
-        />
-        {!registerBool ? (
-          <>
-            <button className='auth-button' onClick={() => register()}>
-              Register
-            </button>
-            <p className='auth-change-text'>
-              If you already have a account click{' '}
-              <span
-                className='auth-link'
-                onClick={() => setRegisterBool(!registerBool)}
-              >
-                here
-              </span>{' '}
-              to login
-            </p>
-          </>
-        ) : (
-          <>
-            <button className='auth-button' onClick={() => login()}>
-              Login
-            </button>
-            <p className='auth-change-text'>
-              If you don't have a account click{' '}
-              <span
-                className='auth-link'
-                onClick={() => setRegisterBool(!registerBool)}
-              >
-                here
-              </span>{' '}
-              to sign up
-            </p>
-          </>
-        )}
-      </form>
-      <ToastContainer autoClose={2000} />
+      <div id='login' className='auth-container animation-contianer'>
+        <Form>
+          <h1 className='auth-header text-center mb-4'>jeepThings</h1>
+          <Form.Group controlId='formBasicEmail'>
+            <Form.Label className='label'>Email</Form.Label>
+            <Form.Control
+              type='email'
+              placeholder='Enter email'
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId='formBasicEmail'>
+            <Form.Label className='label'>Password</Form.Label>
+            <Form.Control
+              type='password'
+              placeholder='Enter password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Group>
+          <div className='text-center'>
+            {!registerBool ? (
+              <>
+                <Button
+                  size='sm'
+                  className='auth-button'
+                  onClick={() => register()}
+                  block
+                >
+                  Register
+                </Button>
+                <p className='mt-4'>
+                  If you already have a account click{' '}
+                  <span
+                    className='auth-link'
+                    onClick={() => setRegisterBool(!registerBool)}
+                  >
+                    here
+                  </span>{' '}
+                  to login
+                </p>
+              </>
+            ) : (
+              <>
+                <Button
+                  size='sm'
+                  className='auth-button'
+                  onClick={() => login()}
+                  block
+                >
+                  Login
+                </Button>
+                <p className='mt-4'>
+                  If you don't have a account click{' '}
+                  <span
+                    className='auth-link'
+                    onClick={() => setRegisterBool(!registerBool)}
+                  >
+                    here
+                  </span>{' '}
+                  to sign up
+                </p>
+              </>
+            )}
+          </div>
+        </Form>
+      </div>
     </section>
   )
 }
 
-const mapStateToProps = reduxState => {
+const mapStateToProps = (reduxState) => {
   return reduxState.userReducer
 }
 
 const mapDispatchToProps = {
   loginRedux,
   registerRedux,
-  clearUserReducer
+  clearUserReducer,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth)

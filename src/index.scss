@@ -1,9 +1,16 @@
+@import './sass/vars';
+
 html,
 body {
   width: 100%;
-  /* removing height fixes chrome nav bar animation */
   overflow-y: auto;
   scroll-behavior: smooth;
+}
+
+body,
+input,
+select {
+  font-family: $main-font;
 }
 
 @media (max-width: 767px) {

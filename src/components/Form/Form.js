@@ -4,13 +4,14 @@ import {
   addPost,
   updatePost,
   getCurrentPost,
-  clearPostReducer
+  clearPostReducer,
 } from '../../redux/postReducer'
 
 import { newPostMassEmail } from '../../redux/emailReducer'
 import states from './States.js'
 import defaultImg from '../../assets/default.png'
-import { toast, ToastContainer } from 'react-toastify'
+import { toast } from 'react-toastify'
+import toastSettingObj from '../utils/custom-toast/toastSettingObj'
 import Upload from '../Upload/Upload'
 import { slideDown } from '../utils/animations'
 import './Form.scss'
@@ -22,7 +23,7 @@ function Form(props) {
     content: '',
     img: '',
     city: '',
-    state: ''
+    state: '',
   })
   const resetForm = () => {
     setFormValues({
@@ -31,28 +32,26 @@ function Form(props) {
       content: '',
       img: '',
       city: '',
-      state: ''
+      state: '',
     })
   }
   const addPost = () => {
     for (let key in formValues) {
       if (key !== 'img' && formValues[key] == false)
-        return toast.error('please fill out the required fields', {
-          position: toast.POSITION.BOTTOM_RIGHT
-        })
+        return toast('please fill out the required fields', toastSettingObj)
     }
     const { user_id } = props.user
     props.addPost({
       ...formValues,
       title: formValues.title.toLowerCase(),
       content: formValues.content.toLowerCase(),
-      user_id
+      user_id,
     })
     props.newPostMassEmail({
       user_name: props.user.user_name,
       profile_img: props.user.profile_img,
       title: formValues.title,
-      img: formValues.img
+      img: formValues.img,
     })
     props.history.push('/posts')
   }
@@ -60,7 +59,7 @@ function Form(props) {
     props.updatePost(post_id, {
       ...formValues,
       title: formValues.title.toLowerCase(),
-      content: formValues.content.toLowerCase()
+      content: formValues.content.toLowerCase(),
     })
     props.clearPostReducer()
     props.history.push(`/post/${post_id}`)
@@ -84,7 +83,7 @@ function Form(props) {
             className='form-img'
           />
         </div>
-        <form onSubmit={e => e.preventDefault()}>
+        <form onSubmit={(e) => e.preventDefault()}>
           <div className='upload-container'>
             <Upload formValues={formValues} setFormValues={setFormValues} />
           </div>
@@ -92,7 +91,7 @@ function Form(props) {
             value={formValues.title}
             type='text'
             placeholder='title'
-            onChange={e =>
+            onChange={(e) =>
               setFormValues({ ...formValues, title: e.target.value })
             }
             required
@@ -102,7 +101,7 @@ function Form(props) {
             type='number'
             placeholder='price'
             min={0}
-            onChange={e =>
+            onChange={(e) =>
               setFormValues({ ...formValues, price: e.target.value })
             }
             required
@@ -110,7 +109,7 @@ function Form(props) {
           <textarea
             value={formValues.content}
             placeholder='item description'
-            onChange={e =>
+            onChange={(e) =>
               setFormValues({ ...formValues, content: e.target.value })
             }
             required
@@ -119,14 +118,14 @@ function Form(props) {
             value={formValues.city}
             type='text'
             placeholder='city'
-            onChange={e =>
+            onChange={(e) =>
               setFormValues({ ...formValues, city: e.target.value })
             }
             required
           />
           <select
             value={formValues.state}
-            onChange={e =>
+            onChange={(e) =>
               setFormValues({ ...formValues, state: e.target.value })
             }
             required
@@ -153,12 +152,11 @@ function Form(props) {
           </div>
         </form>
       </div>
-      <ToastContainer autoClose={2000} />
     </div>
   )
 }
 
-const mapStateToProps = reduxState => {
+const mapStateToProps = (reduxState) => {
   const { user } = reduxState.userReducer,
     { post, posts } = reduxState.postReducer
   return { user, post, posts }
@@ -169,7 +167,7 @@ const mapDispatchToProps = {
   updatePost,
   getCurrentPost,
   clearPostReducer,
-  newPostMassEmail
+  newPostMassEmail,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form)
