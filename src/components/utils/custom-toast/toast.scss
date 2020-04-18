@@ -1,0 +1,10 @@
+@import '../../../sass/vars';
+
+.custom-toast {
+  color: $white !important;
+  background: $secondary-color !important;
+  font-weight: bolder;
+}
+.custom-toast-progress {
+  background: $primary-color !important;
+}

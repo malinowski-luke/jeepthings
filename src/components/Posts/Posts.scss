@@ -1,134 +1,19 @@
 @import '../../sass/vars';
 
 .Posts {
-  width: 100%;
-  height: 100vh;
   @include flex-box(column, center, center);
 }
 
 .posts-container {
-  width: 90vw;
-  height: 52vh;
   background: $white;
-  border-radius: 10px;
-  overflow-y: auto;
-  @include flex-box(column, flex-start, center);
-}
-
-.posts-filter {
-  height: 25vh;
-  overflow-y: scroll;
-  margin-bottom: 2vh;
-  @include flex-box(column, space-evenly, center);
-}
-
-.posts-filter > input {
-  width: 80vw;
-  height: 4vh;
-  color: $secondary-color;
-  font-size: 20px;
-  margin-top: 2vh;
-}
-
-.posts-search-container {
-  width: 80vw;
-  @include flex-box(row, space-between, center);
-}
-
-.posts-search-container select {
-  color: $secondary-color;
-  font-size: 10px;
-  text-transform: uppercase;
-}
-
-.posts-user-option-container {
-  width: 80vw;
-  @include flex-box(row, space-between, center);
-}
-
-.posts-user-option-container label {
-  color: $secondary-color;
-  font-size: 18px;
-  text-transform: uppercase;
-}
-.posts-user-option-container span input[type='checkbox'] {
-  width: 15px;
-  height: 15px;
-}
-.posts-filter > input,
-.posts-search-container,
-.posts-user-option-container {
-  margin-bottom: 2vh;
-}
-
-.posts-button {
-  background-color: $secondary-color;
-  color: $white;
-  width: 22vw;
-  height: 5vh;
-  font-size: 12px;
-  text-transform: uppercase;
   border-radius: 5px;
+  padding: 2vh;
+  max-height: 80vh;
+  @include flex-box(column, flex-start, center);
+  overflow-y: auto;
 }
 
-.posts-item-button {
-  width: 30vw;
-}
-
-@media (min-width: $tablet) {
-  .posts-filter > input {
-    font-size: 30px;
-  }
-  .posts-search-container select {
-    font-size: 20px;
-  }
-  .posts-user-option-container label {
-    font-size: 25px;
-  }
-  .posts-user-option-container span input[type='checkbox'] {
-    width: 20px;
-    height: 20px;
-  }
-  .posts-button {
-    width: 25vw;
-    height: 6vh;
-    font-size: 25px;
-  }
-  .posts-item-button {
-    width: 28vw;
-  }
-}
-
-@media (min-width: $desktop) {
-  .posts-container {
-    width: 50vw;
-  }
-
-  .posts-filter > input {
-    width: 45vw;
-    font-size: 20px;
-  }
-
-  .posts-search-container {
-    width: 45vw;
-  }
-
-  .posts-search-container select {
-    width: 12vw;
-    font-size: 18px;
-  }
-
-  .posts-user-option-container {
-    width: 45vw;
-  }
-
-  .posts-button {
-    width: 10vw;
-    height: 6vh;
-    font-size: 22px;
-  }
-
-  .posts-item-button {
-    width: 12vw;
-  }
+.filter-button {
+  background: $secondary-color !important;
+  text-transform: uppercase;
 }

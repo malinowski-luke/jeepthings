@@ -1,13 +1,45 @@
 @import './sass/vars';
-body,
-input,
-select {
-  font-family: $main-font;
-}
 
 .App {
   width: inherit;
   height: 100vh;
   background-size: cover;
   background-position: center;
+}
+
+.Link {
+  @include link($white);
+}
+
+.Link:hover {
+  color: $primary-color;
+}
+
+/*Wrapping element*/
+/*Set some basic padding to keep content from hitting the edges*/
+.body-content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.animation-container {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
 }

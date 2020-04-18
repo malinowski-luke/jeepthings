@@ -1,6 +1,7 @@
 // colors
 $primary-color: #ad4d29;
 $secondary-color: #298aad;
+$grey: #373433;
 $white: #f3f3f3;
 $black: #1a1818;
 
@@ -18,4 +19,9 @@ $desktop: 1025px; //ipad pro 1024px
   flex-direction: $dir;
   justify-content: $just;
   align-items: $align;
+}
+
+@mixin link($color: $white) {
+  color: $color;
+  text-decoration: none !important;
 }
