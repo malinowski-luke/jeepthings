@@ -7,7 +7,7 @@ import store from './redux/store'
 import * as serviceWorker from './serviceWorker'
 // framework stylesheets
 import 'react-toastify/dist/ReactToastify.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/scss/bootstrap.scss'
 // custom stylesheets
 import './reset.css'
 // build custom toast css
