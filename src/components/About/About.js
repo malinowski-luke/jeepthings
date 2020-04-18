@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import Carousel from 'react-material-ui-carousel'
 import { slideDown } from '../utils/animations'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import './About.scss'
 
@@ -13,7 +15,7 @@ export default function About() {
     'https://jeepthings-img-bucket.s3.amazonaws.com/cf26bbbd-aefc-4b90-8ad5-7172f633a4b2-jeep-orange.jpg',
   ]
   const carouselImages = imgPaths.map((elm, index) => {
-    return <Image key={index} src={elm} alt='about page img' fluid/>
+    return <Image key={index} src={elm} alt='about page img' fluid />
   })
   return (
     <div className='About'>
