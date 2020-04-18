@@ -58,18 +58,13 @@
 }
 
 .show {
-  height: 25vh;
+  height: 30vh;
 }
 
 #button-nav {
   width: 20vw;
   height: 5vh;
   margin-right: 2vw;
-}
-
-#desktop-nav li,
-#desktop-nav a {
-  @include link($white);
 }
 
 #desktop-nav li:hover,

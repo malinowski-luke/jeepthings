@@ -10,16 +10,16 @@ function DisplayPost(props) {
     <div className='DisplayPost'>
       <Row>
         <Col md='4' className='text-left'>
-        <Image
-          src={props.img || defaultImg}
-          alt='item img'
-          className='display-post-img'
-          fluid
-        />
+          <Image
+            src={props.img || defaultImg}
+            alt='item img'
+            className='display-post-img'
+            fluid
+          />
         </Col>
         <Col md='8' className='text-content'>
-         <h1>{props.title}</h1>
-          <h1>${props.price}</h1>
+          <h1 className='post-header'>{props.title}</h1>
+          <h2>${props.price}</h2>
         </Col>
       </Row>
     </div>
