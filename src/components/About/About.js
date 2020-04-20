@@ -18,7 +18,8 @@ export default function About() {
         key={index}
         src={elm}
         alt='about page img'
-        className='carousel-img'
+        className='frame'
+        style={{ width: 'inherit' }}
         fluid
       />
     )
