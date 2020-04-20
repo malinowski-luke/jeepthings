@@ -8,8 +8,7 @@ import {
 import { slideDown } from '../utils/animations'
 import { toast } from 'react-toastify'
 import toastSettingObj from '../utils/custom-toast/toastSettingObj'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import {Form, Button} from 'react-bootstrap'
 import './Auth.scss'
 
 function Auth(props) {
@@ -68,7 +67,7 @@ function Auth(props) {
               <>
                 <Button
                   size='sm'
-                  className='auth-button'
+                  className='buttons'
                   onClick={() => register()}
                   block
                 >
@@ -89,7 +88,7 @@ function Auth(props) {
               <>
                 <Button
                   size='sm'
-                  className='auth-button'
+                  className='buttons'
                   onClick={() => login()}
                   block
                 >

@@ -15,11 +15,11 @@ export function slideDownPopup(id) {
 
 export function fadeInPopupBackground(id) {
   const popupBackground = document.getElementById(id)
-  if (popupBackground) popupBackground.classList.add('fade-in-popup')
+  if (popupBackground) popupBackground.classList.add('fade-in')
 }
 
 export function fadeOutPopupBackground(id) {
   const popupBackground = document.getElementById(id)
-  popupBackground.classList.remove('fade-in-popup')
+  popupBackground.classList.remove('fade-in')
   popupBackground.classList.add('fade-out')
 }

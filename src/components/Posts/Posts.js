@@ -2,14 +2,12 @@ import React, { useState, useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
 import { getAllUserPosts } from '../../redux/postReducer'
 import { toast } from 'react-toastify'
+import toastSettingObj from '../utils/custom-toast/toastSettingObj'
 import './Posts.scss'
 import DisplayPost from '../DisplayPost/DisplayPost'
 import { slideDown } from '../utils/animations'
 import { Link } from 'react-router-dom'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
+import { Form, Button, Col, Container } from 'react-bootstrap'
 
 function Posts(props) {
   const [serachText, setSearchText] = useState('')
@@ -58,7 +56,7 @@ function Posts(props) {
   })
   return (
     <div className='Posts'>
-      <Container id='posts' className='posts-container animation-continer'>
+      <Container id='posts' className='custom-card animation-continer'>
         <Form style={{ width: 'inherit' }}>
           <Form.Row>
             <Form.Group as={Col} md='2'>
@@ -87,13 +85,11 @@ function Posts(props) {
                 size='sm'
                 type='submit'
                 onClick={() => {
-                  if (serachText === '') {
-                    toast('please enter a keyword', {
-                      position: toast.POSITION.TOP_RIGHT,
-                    })
-                  } else setPosts([...filterByKeyword()])
+                  if (serachText === '')
+                    toast('please enter a keyword', toastSettingObj)
+                  else setPosts([...filterByKeyword()])
                 }}
-                className='filter-button'
+                className='buttons'
                 block
               >
                 Submit
@@ -108,7 +104,7 @@ function Posts(props) {
                   setPosts([...props.posts])
                   resetFilterVars()
                 }}
-                className='filter-button'
+                className='buttons'
                 block
               >
                 Clear
@@ -118,7 +114,7 @@ function Posts(props) {
               <>
                 <Form.Group as={Col}>
                   <Link to='/form'>
-                    <Button block size='sm' className='filter-button'>
+                    <Button block size='sm' className='buttons'>
                       Post
                     </Button>
                   </Link>

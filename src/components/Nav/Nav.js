@@ -28,6 +28,7 @@ function Nav(props) {
                   mobileNav.classList.add('hide')
                 }
               }}
+              className='ml-2 ml-md-4'
             >
               <img
                 src={user.profile_img}
@@ -57,10 +58,10 @@ function Nav(props) {
           mobileNav.classList.toggle('show')
         }}
       >
-        <Link to='/'>
+        <Link to='/' className='Link'>
           <li>about</li>
         </Link>
-        <Link to='/posts'>
+        <Link to='/posts' className='Link'>
           <li>posts</li>
         </Link>
         {props.user.user_name ? (
@@ -73,17 +74,21 @@ function Nav(props) {
             logout
           </li>
         ) : (
-          <Link to='/login'>
+          <Link to='/login' className='Link'>
             <li>login</li>
           </Link>
         )}
       </ul>
       <ul id='desktop-nav'>
         <li>
-          <Link to='/'>about</Link>
+          <Link to='/' className='Link'>
+            about
+          </Link>
         </li>
         <li>
-          <Link to='/posts'>posts</Link>
+          <Link to='/posts' className='Link'>
+            posts
+          </Link>
         </li>
         {user.user_name ? (
           <li
@@ -95,7 +100,7 @@ function Nav(props) {
             logout
           </li>
         ) : (
-          <Link to='/login'>
+          <Link to='/login' className='Link'>
             <li>login</li>
           </Link>
         )}

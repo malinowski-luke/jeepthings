@@ -12,7 +12,7 @@
 }
 
 .Link:hover {
-  color: $primary-color;
+  color: $white;
 }
 
 /*Wrapping element*/
@@ -42,4 +42,37 @@
 
 .text-right {
   text-align: right !important;
+}
+
+.custom-card {
+  background: $white;
+  border-radius: 5px;
+  padding: 2vh;
+  max-height: 75vh;
+  @include flex-box(column, flex-start, center);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.profile-img {
+  width: 6vh;
+  height: 6vh;
+  border-radius: 50%;
+  border: 2px solid $white;
+  box-shadow: 0px 0px 10px 5px $black;
+}
+
+.buttons {
+  background: $secondary-color !important;
+  font-size: 1.4em !important;
+  text-transform: uppercase;
+}
+
+.buttons:hover {
+  background: $secondary-color-hover !important;
+}
+
+.frame {
+  border: 6px solid $white;
+  box-shadow: 2px 2px 10px $black;
 }

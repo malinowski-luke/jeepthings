@@ -5,71 +5,14 @@
   @include flex-box(row, center, center);
 }
 
-.profile-container {
-  width: 90vw;
-  height: 79vh;
-  background: $white;
-  border-radius: 10px;
-  opacity: 0;
-  transition: 1s;
-  text-align: center;
-  @include flex-box(column, space-evenly, center);
-}
-
-.profile-img-lg {
-  border: 6px solid $secondary-color;
-  max-width: 75vw;
-  box-shadow: 2px 2px 10px $black;
-}
-
-.profile-container >h1,
-.user-name-text {
-  color: $secondary-color;
-}
-
-.profile-container >h1{
-  font-size:40px;
-}
-
-.user-name-text{
-  font-size:22px;
-}
-
-.profile-img-input {
-  width: 70vw;
-  height: 4vh;
-  font-size: 25px;
+.Profile h1,
+.Profile h2,
+.Profile p {
   color: $secondary-color;
 }
 
 @media (min-width: $tablet) {
-  .profile-img-lg {
-    max-width: 65vw;
-  }
-  .profile-container >h1{
-    font-size:60px;
-  }
-  .user-name-text {
-    font-size: 45px;
-  }
-  .profile-img-input {
-    width: 65vw;
-    height: 5vh;
-  }
-}
-
-@media (min-width: $desktop) {
-  .profile-container {
-    width: 40vw;
-  }
-  .profile-img-lg {
-    max-width: 25vw;
-    max-height: 40vh;
-  }
-  .user-name-text {
-    font-size: 35px;
-  }
-  .profile-container >h1{
-    font-size:50px;
+  .Profile p {
+    font-size: 1.5em;
   }
 }
