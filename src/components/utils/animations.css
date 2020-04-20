@@ -1,9 +1,5 @@
 /* animations */
 .fade-in {
-  opacity: 0.93;
-}
-
-.fade-in-popup {
   opacity: 1;
 }
 

@@ -3,8 +3,3 @@
 .Posts {
   @include flex-box(column, center, center);
 }
-
-.filter-button {
-  background: $secondary-color !important;
-  text-transform: uppercase;
-}

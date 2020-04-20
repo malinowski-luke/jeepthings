@@ -48,7 +48,7 @@
   background: $white;
   border-radius: 5px;
   padding: 2vh;
-  max-height: 80vh;
+  max-height: 75vh;
   @include flex-box(column, flex-start, center);
   overflow-y: auto;
   overflow-x: hidden;
@@ -63,9 +63,13 @@
 }
 
 .buttons {
-  background-color: $secondary-color !important;
+  background: $secondary-color !important;
   font-size: 1.4em !important;
   text-transform: uppercase;
+}
+
+.buttons:hover {
+  background: $secondary-color-hover !important;
 }
 
 .frame {

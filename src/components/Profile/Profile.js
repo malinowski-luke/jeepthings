@@ -14,14 +14,15 @@ function Profile(props) {
   return (
     <div className='Profile'>
       <Container className=' custom-card animation-container' id='profile'>
-        <h1>Update Profile</h1>
+        <h1 classname='text-center'>Profile</h1>
         <div style={{ width: 'inherit' }}>
           <Row className='text-center mt-4 align-items-center'>
             <Col lg={6}>
               <Image
                 src={user.profile_img}
                 alt={`profile pic ${user.user_name}`}
-                className='img-border mb-4'
+                className='frame mb-4'
+                style={{ width: 'inherit' }}
                 fluid
               />
               <Upload
@@ -31,7 +32,7 @@ function Profile(props) {
             </Col>
             <Col lg={6} className='mt-4 mt-lg-0'>
               <h2>Email:</h2>
-              <h3>{user.user_name}</h3>
+              <p>{user.user_name}</p>
             </Col>
           </Row>
         </div>

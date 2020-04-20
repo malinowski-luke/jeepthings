@@ -7,7 +7,7 @@ import './Posts.scss'
 import DisplayPost from '../DisplayPost/DisplayPost'
 import { slideDown } from '../utils/animations'
 import { Link } from 'react-router-dom'
-import {Form,Button,Col,Container} from 'react-bootstrap'
+import { Form, Button, Col, Container } from 'react-bootstrap'
 
 function Posts(props) {
   const [serachText, setSearchText] = useState('')
@@ -89,7 +89,7 @@ function Posts(props) {
                     toast('please enter a keyword', toastSettingObj)
                   else setPosts([...filterByKeyword()])
                 }}
-                className='filter-button'
+                className='buttons'
                 block
               >
                 Submit
@@ -104,7 +104,7 @@ function Posts(props) {
                   setPosts([...props.posts])
                   resetFilterVars()
                 }}
-                className='filter-button'
+                className='buttons'
                 block
               >
                 Clear
@@ -114,7 +114,7 @@ function Posts(props) {
               <>
                 <Form.Group as={Col}>
                   <Link to='/form'>
-                    <Button block size='sm' className='filter-button'>
+                    <Button block size='sm' className='buttons'>
                       Post
                     </Button>
                   </Link>
