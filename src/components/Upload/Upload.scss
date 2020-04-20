@@ -1,29 +1,10 @@
 @import '../../sass/vars';
 
-.Upload{
-  width: 150px;
-  height: 40px;
-  font-size: 25px;
-  color:  $primary-color;
+.Upload {
+  height: 5vh;
+  font-size: 1.5em;
+  color: $primary-color;
   border: 4px dashed $primary-color;
   text-transform: Uppercase;
-  @include flex-box(row,center,center);
+  @include flex-box(row, center, center);
 }
-
-@media (min-width: $tablet) {
-  .Upload{
-    width: 175px;
-    height: 50px;
-    font-size: 30px;
-    border-width: 6px;
-  }
-}
-
-@media (min-width: $desktop) {
- .Upload{
-    width:150px;
-    height:30px;
-    font-size: 20px;
-  }
-}
-

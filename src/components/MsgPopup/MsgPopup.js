@@ -4,9 +4,10 @@ import { sendMsgToUser } from '../../redux/emailReducer'
 import {
   slideDownPopup,
   fadeInPopupBackground,
-  fadeOutPopupBackground
+  fadeOutPopupBackground,
 } from '../utils/animations'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
+import { Form, Row, Col, Button } from 'react-bootstrap'
 import 'react-toastify/dist/ReactToastify.css'
 import './MsgPopup.scss'
 
@@ -17,7 +18,7 @@ function MsgPopup(props) {
     fadeInPopupBackground('popup-background')
     slideDownPopup('popup')
   }, [])
-  const cancelClicked = e => {
+  const cancelClicked = (e) => {
     e.preventDefault()
     setTimeout(() => {
       props.setShowPopup(false)
@@ -25,7 +26,7 @@ function MsgPopup(props) {
     resetInput()
     fadeOutPopupBackground('popup-background')
   }
-  const submitMsg = e => {
+  const submitMsg = (e) => {
     if (msg) {
       props.sendMsgToUser({
         email: props.post.user_name,
@@ -33,42 +34,66 @@ function MsgPopup(props) {
         profile_img: props.user.profile_img,
         msg,
         postTitle: props.post.title,
-        img: props.post.img
+        img: props.post.img,
       })
       cancelClicked(e)
     } else {
       toast.error('please fill out the msg field', {
-        position: toast.POSITION.BOTTOM_RIGHT
+        position: toast.POSITION.TOP_RIGHT,
       })
     }
   }
   return (
     <div className='Popup' id='popup-background'>
       <div className='popup-Container' id='popup'>
-        <h1>Msg Seller</h1>
-        <textarea
-          value={msg}
-          onChange={e => setMsg(e.target.value)}
-          placeholder='msg to seller...'
-        ></textarea>
-        <div className='popup-button-container'>
-          <button onClick={e => cancelClicked(e)}>cancel</button>
-          <button onClick={e => submitMsg(e)}>send</button>
-        </div>
+        <h1 className='text-center'> Msg Seller</h1>
+        <Form className='mt-2'>
+          <Form.Group>
+            <Form.Label>Send Email To Seller</Form.Label>
+            <Form.Control
+              as='textarea'
+              rows={5}
+              placeholder='Is this part still for sale .etc'
+              value={msg}
+              onChange={(e) => setMsg(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
+          <Row>
+            <Col>
+              <Button
+                onClick={(e) => cancelClicked(e)}
+                size='lg'
+                className='buttons'
+                block
+              >
+                cancel
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                onClick={(e) => submitMsg(e)}
+                className='buttons'
+                size='lg'
+                block
+              >
+                send
+              </Button>
+            </Col>
+          </Row>
+        </Form>
       </div>
-      <ToastContainer autoClose={2000} />
     </div>
   )
 }
 
-const mapStateToProps = reduxState => {
+const mapStateToProps = (reduxState) => {
   const { post } = reduxState.postReducer,
     { user } = reduxState.userReducer
   return { user, post }
 }
 
 const mapDispatchToProps = {
-  sendMsgToUser
+  sendMsgToUser,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MsgPopup)

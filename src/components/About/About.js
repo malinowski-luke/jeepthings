@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
 import Carousel from 'react-material-ui-carousel'
 import { slideDown } from '../utils/animations'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Image from 'react-bootstrap/Image'
+import { Row, Col, Image, Container } from 'react-bootstrap'
 import './About.scss'
 
 export default function About() {
@@ -15,21 +13,36 @@ export default function About() {
     'https://jeepthings-img-bucket.s3.amazonaws.com/cf26bbbd-aefc-4b90-8ad5-7172f633a4b2-jeep-orange.jpg',
   ]
   const carouselImages = imgPaths.map((elm, index) => {
-    return <Image key={index} src={elm} alt='about page img' fluid />
+    return (
+      <Image
+        key={index}
+        src={elm}
+        alt='about page img'
+        className='carousel-img'
+        fluid
+      />
+    )
   })
   return (
     <div className='About'>
-      <div className='about-container animation-container' id='about'>
-        <Carousel autoPlay indicators animation={'fade'} interval={8000}>
-          {carouselImages}
-        </Carousel>
-        <p className='text-center'>
-          This project started off as a clone of craigslist with a jeep twist.
-          Where fellow jeep people could post parts for sale with less creeps
-          around (sorry craigslist). The goal of this project was to build an
-          app with the same functiality as craigslist but, with better css.
-        </p>
-      </div>
+      <Container className='custom-card animation-container' id='about'>
+        <Row className='align-items-center'>
+          <Col lg={6}>
+            <Carousel autoPlay indicators animation={'fade'} interval={8000}>
+              {carouselImages}
+            </Carousel>
+          </Col>
+          <Col lg={6}>
+            <h3 className='text-center'>
+              This project started off as a clone of craigslist with a jeep
+              twist. Where fellow jeep people could post parts for sale with
+              less creeps around (sorry craigslist). The goal of this project
+              was to build an app with the same functiality as craigslist but,
+              with better css.
+            </h3>
+          </Col>
+        </Row>
+      </Container>
     </div>
   )
 }

@@ -5,185 +5,34 @@
   @include flex-box(column, center, center);
 }
 
-.post-container {
-  width: 90vw;
-  height: 79vh;
-  background: $white;
-  border-radius: 10px;
-  opacity: 0;
-  transition: 1s;
-  overflow-y: auto;
-  @include flex-box(column, flex-start, center);
-}
-
-.post-flex-container {
-  margin-top: 4vh;
-  width: 80vw;
-  height: auto;
-  text-align: left;
-}
-
-.post-flex-container > h1,
-.post-flex-container > p,
-.post-location {
+.Post p,
+.Post h1,
+.Post h2,
+.Post h3,
+.Post h4 {
   color: $secondary-color;
+}
+
+.Post h1 {
   text-transform: capitalize;
 }
 
-.post-flex-container > h1,
-.post-flex-container > p {
-  margin-top: 2vh;
+.post-title {
+  text-align: center;
 }
 
-.post-flex-container > h1 {
-  font-size: 30px;
+.post-img {
+  width: inherit;
+  height: auto;
 }
 
-.post-flex-container > p {
-  font-size: 18px;
-}
-
-.post-user-profile-container {
-  height: 10vh;
-  @include flex-box(row, flex-start, center);
-}
-
-.post-user-profile-container h3 {
-  color: $secondary-color;
-  margin-left: 10px;
-  font-size: 18px;
-}
-
-.posted-user-profile-img {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  border: 2px solid $white;
-  box-shadow: 0px 0px 10px 5px $black;
-}
-
-.post-location {
-  margin-top: 2vh;
-  margin-bottom: 2vh;
-  font-size: 25px;
-}
-
-.post-button-container {
-  width: 80vw;
-  margin-bottom: 2vh;
-}
-
-.post-button-container > button {
-  width: 80vw;
-  height: 5vh;
-  color: $white;
-  background-color: $secondary-color;
-  border-radius: 5px;
-  font-size: 30px;
-  margin-bottom: 2vh;
-  text-transform: uppercase;
-}
-
-.post-map-img {
-  width: 65vw;
-  height: 65vw;
-  border: 6px solid $white;
-  box-shadow: 2px 2px 10px $black;
-  margin-top: 2vh;
+.map {
+  width: inherit;
+  height: 40vh;
 }
 
 @media (min-width: $tablet) {
-  .post-container {
-    width: 80vw;
-  }
-
-  .post-user-profile-container {
-    width: 70vw;
-  }
-
-  .post-user-profile-container h3 {
-    margin-left: 15px;
-    font-size: 25px;
-  }
-
-  .posted-user-profile-img {
-    width: 70px;
-    height: 70px;
-  }
-
-  .post-flex-container {
-    width: 70vw;
-  }
-
-  .post-flex-container > h1 {
-    font-size: 40px;
-  }
-
-  .post-flex-container > p {
-    font-size: 22px;
-  }
-
-  .post-location {
-    font-size: 30px;
-  }
-
-  .post-button-container {
-    width: 70vw;
-  }
-
-  .post-button-container > button {
-    width: 70vw;
-  }
-
-  .post-map-img {
-    width: 45vw;
-    height: 45vw;
-  }
-}
-
-@media (min-width: $desktop) {
-  .post-container {
-    width: 45vw;
-  }
-
-  .post-user-profile-container {
-    width: 40vw;
-  }
-
-  .post-user-profile-container h3 {
-    font-size: 20px;
-  }
-
-  .posted-user-profile-img {
-    width: 55px;
-    height: 55px;
-    border: 3px solid $white;
-  }
-
-  .post-flex-container {
-    width: 40vw;
-  }
-
-  .post-flex-container > h1 {
-    font-size: 32px;
-  }
-
-  .post-flex-container > p {
-    font-size: 18px;
-  }
-
-  .post-button-container {
-    width: 40vw;
-    @include flex-box(row, space-between, center);
-  }
-
-  .post-button-container > button {
-    width: 10vw;
-    height: 8vh;
-  }
-
-  .post-map-img {
-    width: 22vw;
-    height: 22vw;
+  .post-title {
+    text-align: right;
   }
 }

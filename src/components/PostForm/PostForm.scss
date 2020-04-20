@@ -1,0 +1,9 @@
+@import '../../sass/vars';
+
+.PostForm {
+  @include flex-box(column, center, center);
+}
+
+.PostForm label {
+  color: $secondary-color;
+}

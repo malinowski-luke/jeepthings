@@ -1,8 +1,6 @@
 import React from 'react'
 import defaultImg from '../../assets/default.png'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Image from 'react-bootstrap/Image'
+import { Row, Col, Image } from 'react-bootstrap'
 import './DisplayPost.scss'
 
 function DisplayPost(props) {
