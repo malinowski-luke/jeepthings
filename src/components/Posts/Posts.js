@@ -113,7 +113,7 @@ function Posts(props) {
             {props.user.user_name ? (
               <>
                 <Form.Group as={Col}>
-                  <Link to='/form'>
+                  <Link to='/post'>
                     <Button block size='sm' className='buttons'>
                       Post
                     </Button>

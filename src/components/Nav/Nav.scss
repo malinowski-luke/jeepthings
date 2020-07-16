@@ -38,7 +38,7 @@
 #mobile-nav > li {
   background-color: $secondary-color;
   color: $white;
-  text-transform: uppercase;
+  text-transform: capitalize;
   padding: 15px;
   font-size: 1.2em;
   border: 1px solid $white;
@@ -76,7 +76,7 @@
   }
   #desktop-nav {
     width: 50%;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-size: 2em;
     color: $white;
     @include flex-box(row, space-around, center);
