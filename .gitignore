@@ -10,7 +10,6 @@
 
 # production
 # misc
-/email
 /build
 .env
 .DS_Store
