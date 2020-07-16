@@ -43,6 +43,7 @@
     "local-react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test-backend-utils": "jest ./server/__test__/imgGenerator.test.js",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm install && npm run build"
   },

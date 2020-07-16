@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs'),
-  img = require('../imgGenerator/imgGenerator'),
+  imgGenerator = require('../utils/imgGenerator'),
   emailCtrl = require('./emailController')
 module.exports = {
   login: async (req, res) => {
@@ -25,16 +25,12 @@ module.exports = {
     if (user) return res.status(400).send('user already exists')
     const salt = bcrypt.genSaltSync(10),
       hash = bcrypt.hashSync(password, salt)
-    let profile_pic = img.generateRandomImg()
-    let newUser = await db.register_user([
-      username,
-      hash,
-      profile_pic
-    ])
+    let profile_pic = imgGenerator()
+    let newUser = await db.register_user([username, hash, profile_pic])
     db.add_email_to_mailing_list([username])
     newUser = newUser[0]
     session.user = newUser
-    emailCtrl.sendWelcomeEmail(username,profile_pic)
+    emailCtrl.sendWelcomeEmail(username, profile_pic)
     return res.status(201).send(session.user)
   },
   logout: (req, res) => {
@@ -45,5 +41,5 @@ module.exports = {
     const { session } = req
     if (session.user) return res.status(202).send(session.user)
     else return res.status(500).send('please login')
-  }
+  },
 }
