@@ -10,7 +10,7 @@ const express = require('express'),
   s3Ctrl = require('./controllers/s3Controller'),
   { PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
-app.use(express.static(`${__dirname}/../build`)); //serves up the front end 
+app.use(express.static(`${__dirname}/../build`)) //serves up the front end
 app.use(express.json())
 app.use(
   session({
@@ -18,22 +18,22 @@ app.use(
     saveUninitialized: true,
     rejectUnauthorized: false,
     cookie: { maxAge: 1000 * 60 * 60 * 24 },
-    secret: SESSION_SECRET
+    secret: SESSION_SECRET,
   })
 )
 
 massive({
   connectionString: CONNECTION_STRING,
-  ssl: { rejectUnauthorized: false }
+  ssl: { rejectUnauthorized: false },
 })
-  .then(db => {
+  .then((db) => {
     app.set('db', db)
-    app.listen(PORT || 4420, () => {
+    app.listen(PORT || 9000, () => {
       console.log(`SERVER RUNNING ON PORT:${PORT}`)
       console.log('db connected')
     })
   })
-  .catch(err => console.log(`db not connected ${err}`))
+  .catch((err) => console.log(`db not connected ${err}`))
 
 // --------------AUTH-----------------
 app.post('/api/auth/login', authCtrl.login)
