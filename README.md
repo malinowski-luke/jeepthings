@@ -1,6 +1,6 @@
 # Introduction
 
-**jeepThings** A web app for car lovers and rebuilders to trade, sell, and buy auto parts (node required!!!!).
+**jeepThings**: A marketplace app for jeep lovers and rebuilders to trade, sell, and buy auto parts. Users can filter parts by keywords and sort them by price. This app utilizes google’s map api to show users where a part is located. Users also receive welcome and update emails as well as emails from other users regarding the parts they posted for sale (node required!!!!).
 
 ## To Run This App </>
 
